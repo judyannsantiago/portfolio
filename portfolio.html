@@ -30,7 +30,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 2.5rem;
-            align-items: start;
+            align-items: center; /* Vertically aligns text and graphic */
         }
         
         @media (max-width: 992px) {
@@ -42,20 +42,16 @@
         .section-icon-header {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.85rem;
             margin-bottom: 0.5rem;
         }
         
-        .icon-badge {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: #f4ece1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
+        .custom-icon {
+            width: 38px;
+            height: 38px;
+            object-fit: contain;
             flex-shrink: 0;
+            display: block;
         }
         
         .results-box-grid {
@@ -64,7 +60,7 @@
             gap: 1rem;
             margin-top: 1.5rem;
             padding-top: 1.5rem;
-            border-top: 1px solid #e0d8cd;
+            border-top: 1px solid #EAE0D5;
         }
         
         .result-item {
@@ -76,12 +72,22 @@
             color: var(--primary-navy);
         }
         
+        .preview-graphic-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
         .preview-graphic {
             width: 100%;
+            height: auto;
+            max-height: 100%;
             border-radius: 8px;
             border: 1px solid #e2e8f0;
             box-shadow: 0 8px 24px rgba(0,0,0,0.06);
             display: block;
+            object-fit: contain;
         }
     </style>
 </head>
@@ -135,20 +141,20 @@
                         <h4 style="color: #a8815e; font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem;">SYSTEM FOR A BUSY EXECUTIVE</h4>
                         <p style="font-style: italic; color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem;">Organized. Prioritized. Nothing missed.</p>
                         
-                        <div style="border-top: 1px solid #e0d8cd; padding-top: 1.2rem; margin-bottom: 1.2rem;">
+                        <div style="border-top: 1px solid #EAE0D5; padding-top: 1.2rem; margin-bottom: 1.2rem;">
                             <div class="section-icon-header">
-                                <div class="icon-badge">👤</div>
-                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem;">The Scenario</h4>
+                                <img src="assets/images/icon-scenario.png" alt="Scenario Icon" class="custom-icon">
+                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem; font-weight: 700;">The Scenario</h4>
                             </div>
-                            <p style="font-size: 0.9rem; margin-left: 2.75rem; color: #4a5568;">The client receives 50+ emails daily, leading to missed messages, delayed responses, and difficulty prioritizing tasks.</p>
+                            <p style="font-size: 0.9rem; margin-left: 3rem; color: #4a5568;">The client receives 50+ emails daily, leading to missed messages, delayed responses, and difficulty prioritizing tasks.</p>
                         </div>
 
-                        <div style="border-top: 1px solid #e0d8cd; padding-top: 1.2rem; margin-bottom: 1.2rem;">
+                        <div style="border-top: 1px solid #EAE0D5; padding-top: 1.2rem; margin-bottom: 1.2rem;">
                             <div class="section-icon-header">
-                                <div class="icon-badge">⚠️</div>
-                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem;">The Problem</h4>
+                                <img src="assets/images/icon-problem.png" alt="Problem Icon" class="custom-icon">
+                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem; font-weight: 700;">The Problem</h4>
                             </div>
-                            <ul style="font-size: 0.9rem; margin-left: 2.75rem; padding: 0; color: #4a5568; list-style-type: disc;">
+                            <ul style="font-size: 0.9rem; margin-left: 3rem; padding: 0; color: #4a5568; list-style-type: disc;">
                                 <li style="margin-bottom: 0.3rem;">Important emails get buried</li>
                                 <li style="margin-bottom: 0.3rem;">No clear categorization</li>
                                 <li style="margin-bottom: 0.3rem;">Delayed responses</li>
@@ -156,12 +162,12 @@
                             </ul>
                         </div>
 
-                        <div style="border-top: 1px solid #e0d8cd; padding-top: 1.2rem; margin-bottom: 1.2rem;">
+                        <div style="border-top: 1px solid #EAE0D5; padding-top: 1.2rem; margin-bottom: 1.2rem;">
                             <div class="section-icon-header">
-                                <div class="icon-badge">⚙️</div>
-                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem;">My Approach</h4>
+                                <img src="assets/images/icon-approach.png" alt="Approach Icon" class="custom-icon">
+                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem; font-weight: 700;">My Approach</h4>
                             </div>
-                            <ul style="font-size: 0.9rem; margin-left: 2.75rem; padding: 0; color: #4a5568; list-style-type: disc;">
+                            <ul style="font-size: 0.9rem; margin-left: 3rem; padding: 0; color: #4a5568; list-style-type: disc;">
                                 <li style="margin-bottom: 0.3rem;">Reviewed email types and common senders</li>
                                 <li style="margin-bottom: 0.3rem;">Created a labeling system based on priority and category</li>
                                 <li style="margin-bottom: 0.3rem;">Set up filters to automatically organize incoming emails</li>
@@ -169,12 +175,12 @@
                             </ul>
                         </div>
 
-                        <div style="border-top: 1px solid #e0d8cd; padding-top: 1.2rem;">
+                        <div style="border-top: 1px solid #EAE0D5; padding-top: 1.2rem;">
                             <div class="section-icon-header">
-                                <div class="icon-badge">🎯</div>
-                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem;">The Result</h4>
+                                <img src="assets/images/icon-result.png" alt="Result Icon" class="custom-icon">
+                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem; font-weight: 700;">The Result</h4>
                             </div>
-                            <p style="font-size: 0.9rem; margin-left: 2.75rem; color: #4a5568; margin-bottom: 1rem;">Emails are now sorted automatically, reducing clutter and making it easier to focus on priority tasks.</p>
+                            <p style="font-size: 0.9rem; margin-left: 3rem; color: #4a5568; margin-bottom: 1rem;">Emails are now sorted automatically, reducing clutter and making it easier to focus on priority tasks.</p>
                             
                             <div class="results-box-grid">
                                 <div class="result-item">🕒 <span>Faster response time</span></div>
@@ -185,7 +191,7 @@
                     </div>
                     
                     <!-- Right Column: Visual Presentation Graphic -->
-                    <div>
+                    <div class="preview-graphic-wrapper">
                         <img src="assets/images/case-study-01-inbox.png" alt="Inbox Management Case Study Visualization" class="preview-graphic">
                     </div>
 
@@ -203,20 +209,20 @@
                         <h4 style="color: #a8815e; font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem;">& SCHEDULING SYSTEM</h4>
                         <p style="font-style: italic; color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem;">Structured schedule. Better focus. More done.</p>
                         
-                        <div style="border-top: 1px solid #e0d8cd; padding-top: 1.2rem; margin-bottom: 1.2rem;">
+                        <div style="border-top: 1px solid #EAE0D5; padding-top: 1.2rem; margin-bottom: 1.2rem;">
                             <div class="section-icon-header">
-                                <div class="icon-badge">👤</div>
-                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem;">The Scenario</h4>
+                                <img src="assets/images/icon-scenario.png" alt="Scenario Icon" class="custom-icon">
+                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem; font-weight: 700;">The Scenario</h4>
                             </div>
-                            <p style="font-size: 0.9rem; margin-left: 2.75rem; color: #4a5568;">The client manages multiple meetings daily, leading to scheduling conflicts, missed appointments, and lack of focused work time.</p>
+                            <p style="font-size: 0.9rem; margin-left: 3rem; color: #4a5568;">The client manages multiple meetings daily, leading to scheduling conflicts, missed appointments, and lack of focused work time.</p>
                         </div>
 
-                        <div style="border-top: 1px solid #e0d8cd; padding-top: 1.2rem; margin-bottom: 1.2rem;">
+                        <div style="border-top: 1px solid #EAE0D5; padding-top: 1.2rem; margin-bottom: 1.2rem;">
                             <div class="section-icon-header">
-                                <div class="icon-badge">⚠️</div>
-                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem;">The Problem</h4>
+                                <img src="assets/images/icon-problem.png" alt="Problem Icon" class="custom-icon">
+                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem; font-weight: 700;">The Problem</h4>
                             </div>
-                            <ul style="font-size: 0.9rem; margin-left: 2.75rem; padding: 0; color: #4a5568; list-style-type: disc;">
+                            <ul style="font-size: 0.9rem; margin-left: 3rem; padding: 0; color: #4a5568; list-style-type: disc;">
                                 <li style="margin-bottom: 0.3rem;">Overlapping meetings</li>
                                 <li style="margin-bottom: 0.3rem;">No buffer time between calls</li>
                                 <li style="margin-bottom: 0.3rem;">Missed or double-booked appointments</li>
@@ -224,12 +230,12 @@
                             </ul>
                         </div>
 
-                        <div style="border-top: 1px solid #e0d8cd; padding-top: 1.2rem; margin-bottom: 1.2rem;">
+                        <div style="border-top: 1px solid #EAE0D5; padding-top: 1.2rem; margin-bottom: 1.2rem;">
                             <div class="section-icon-header">
-                                <div class="icon-badge">⚙️</div>
-                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem;">My Approach</h4>
+                                <img src="assets/images/icon-approach.png" alt="Approach Icon" class="custom-icon">
+                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem; font-weight: 700;">My Approach</h4>
                             </div>
-                            <ul style="font-size: 0.9rem; margin-left: 2.75rem; padding: 0; color: #4a5568; list-style-type: disc;">
+                            <ul style="font-size: 0.9rem; margin-left: 3rem; padding: 0; color: #4a5568; list-style-type: disc;">
                                 <li style="margin-bottom: 0.3rem;">Reviewed existing schedule and meeting patterns</li>
                                 <li style="margin-bottom: 0.3rem;">Identified conflicts and time gaps</li>
                                 <li style="margin-bottom: 0.3rem;">Reorganized calendar with clear time blocks</li>
@@ -238,10 +244,10 @@
                             </ul>
                         </div>
 
-                        <div style="border-top: 1px solid #e0d8cd; padding-top: 1.2rem;">
+                        <div style="border-top: 1px solid #EAE0D5; padding-top: 1.2rem;">
                             <div class="section-icon-header">
-                                <div class="icon-badge">🎯</div>
-                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem;">The Result</h4>
+                                <img src="assets/images/icon-result.png" alt="Result Icon" class="custom-icon">
+                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem; font-weight: 700;">The Result</h4>
                             </div>
                             <div class="results-box-grid">
                                 <div class="result-item">📅 <span>No scheduling conflicts</span></div>
@@ -253,7 +259,7 @@
                     </div>
                     
                     <!-- Right Column: Visual Presentation Graphic -->
-                    <div>
+                    <div class="preview-graphic-wrapper">
                         <img src="assets/images/case-study-02-calendar.png" alt="Calendar Management Case Study Visualization" class="preview-graphic">
                     </div>
 
@@ -271,20 +277,20 @@
                         <h4 style="color: #a8815e; font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem;">& TRACKING SYSTEM</h4>
                         <p style="font-style: italic; color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem;">Organized Data. Clear tracking. Better decisions.</p>
                         
-                        <div style="border-top: 1px solid #e0d8cd; padding-top: 1.2rem; margin-bottom: 1.2rem;">
+                        <div style="border-top: 1px solid #EAE0D5; padding-top: 1.2rem; margin-bottom: 1.2rem;">
                             <div class="section-icon-header">
-                                <div class="icon-badge">👤</div>
-                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem;">The Scenario</h4>
+                                <img src="assets/images/icon-scenario.png" alt="Scenario Icon" class="custom-icon">
+                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem; font-weight: 700;">The Scenario</h4>
                             </div>
-                            <p style="font-size: 0.9rem; margin-left: 2.75rem; color: #4a5568;">The client manages multiple records manually, resulting in inconsistent data, difficulty tracking updates, and time-consuming searches.</p>
+                            <p style="font-size: 0.9rem; margin-left: 3rem; color: #4a5568;">The client manages multiple records manually, resulting in inconsistent data, difficulty tracking updates, and time-consuming searches.</p>
                         </div>
 
-                        <div style="border-top: 1px solid #e0d8cd; padding-top: 1.2rem; margin-bottom: 1.2rem;">
+                        <div style="border-top: 1px solid #EAE0D5; padding-top: 1.2rem; margin-bottom: 1.2rem;">
                             <div class="section-icon-header">
-                                <div class="icon-badge">⚠️</div>
-                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem;">The Problem</h4>
+                                <img src="assets/images/icon-problem.png" alt="Problem Icon" class="custom-icon">
+                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem; font-weight: 700;">The Problem</h4>
                             </div>
-                            <ul style="font-size: 0.9rem; margin-left: 2.75rem; padding: 0; color: #4a5568; list-style-type: disc;">
+                            <ul style="font-size: 0.9rem; margin-left: 3rem; padding: 0; color: #4a5568; list-style-type: disc;">
                                 <li style="margin-bottom: 0.3rem;">Disorganized data entries</li>
                                 <li style="margin-bottom: 0.3rem;">Missing or incomplete information</li>
                                 <li style="margin-bottom: 0.3rem;">Difficult to track updates</li>
@@ -292,12 +298,12 @@
                             </ul>
                         </div>
 
-                        <div style="border-top: 1px solid #e0d8cd; padding-top: 1.2rem; margin-bottom: 1.2rem;">
+                        <div style="border-top: 1px solid #EAE0D5; padding-top: 1.2rem; margin-bottom: 1.2rem;">
                             <div class="section-icon-header">
-                                <div class="icon-badge">⚙️</div>
-                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem;">My Approach</h4>
+                                <img src="assets/images/icon-approach.png" alt="Approach Icon" class="custom-icon">
+                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem; font-weight: 700;">My Approach</h4>
                             </div>
-                            <ul style="font-size: 0.9rem; margin-left: 2.75rem; padding: 0; color: #4a5568; list-style-type: disc;">
+                            <ul style="font-size: 0.9rem; margin-left: 3rem; padding: 0; color: #4a5568; list-style-type: disc;">
                                 <li style="margin-bottom: 0.3rem;">Reviewed existing data structure</li>
                                 <li style="margin-bottom: 0.3rem;">Cleaned and standardized entries</li>
                                 <li style="margin-bottom: 0.3rem;">Created a structured tracking system</li>
@@ -306,10 +312,10 @@
                             </ul>
                         </div>
 
-                        <div style="border-top: 1px solid #e0d8cd; padding-top: 1.2rem;">
+                        <div style="border-top: 1px solid #EAE0D5; padding-top: 1.2rem;">
                             <div class="section-icon-header">
-                                <div class="icon-badge">🎯</div>
-                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem;">The Result</h4>
+                                <img src="assets/images/icon-result.png" alt="Result Icon" class="custom-icon">
+                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem; font-weight: 700;">The Result</h4>
                             </div>
                             <div class="results-box-grid">
                                 <div class="result-item">⏱️ <span>Faster data access</span></div>
@@ -321,7 +327,7 @@
                     </div>
                     
                     <!-- Right Column: Visual Presentation Graphic -->
-                    <div>
+                    <div class="preview-graphic-wrapper">
                         <img src="assets/images/case-study-03-data.png" alt="Data Management Case Study Visualization" class="preview-graphic">
                     </div>
 
@@ -361,7 +367,7 @@
                     </div>
                     
                     <!-- Right Column: Visual Presentation Graphic -->
-                    <div>
+                    <div class="preview-graphic-wrapper">
                         <img src="assets/images/case-study-04-dashboard.png" alt="Dynamic Search Dashboard Visualization" class="preview-graphic">
                     </div>
 
