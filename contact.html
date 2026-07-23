@@ -60,7 +60,7 @@
                 <div class="hero-content">
                     <h2>Contact Details</h2>
                     <p style="margin-bottom: 2rem;">
-                        I am available for virtual assistant roles, operational support projects, and administrative coordination. Send me a message or connect directly through email or LinkedIn.
+                        I am available for virtual assistant roles, operational support projects, and administrative coordination. Send me a message or connect directly through email.
                     </p>
 
                     <div style="display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 2.5rem;">
@@ -81,14 +81,6 @@
                         </div>
 
                         <div style="display: flex; align-items: flex-start; gap: 1rem;">
-                            <div style="font-size: 1.5rem;">💼</div>
-                            <div>
-                                <h4 style="font-size: 1rem; color: var(--primary-navy); margin-bottom: 0.2rem;">LinkedIn</h4>
-                                <a href="https://linkedin.com" target="_blank" rel="noopener" style="color: var(--accent-gold); text-decoration: none; font-weight: 500;">Connect on LinkedIn</a>
-                            </div>
-                        </div>
-
-                        <div style="display: flex; align-items: flex-start; gap: 1rem;">
                             <div style="font-size: 1.5rem;">📄</div>
                             <div>
                                 <h4 style="font-size: 1rem; color: var(--primary-navy); margin-bottom: 0.2rem;">Resume</h4>
@@ -101,31 +93,32 @@
                 <!-- Contact Form Column -->
                 <div style="background: var(--bg-surface); padding: 2.5rem; border-radius: 8px; border: 1px solid var(--border-color);">
                     <h3 style="margin-bottom: 1.5rem; color: var(--primary-navy);">Send a Message</h3>
-                    <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Thank you for reaching out! Your message has been sent.');">
+                    
+                    <form action="https://formspree.io/f/xjgnejdj" method="POST">
                         
                         <div style="margin-bottom: 1.25rem;">
                             <label style="display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.4rem; color: var(--primary-navy);">Your Name</label>
-                            <input type="text" required placeholder="John Doe" style="width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 6px; font-family: var(--font-body); font-size: 0.95rem;">
+                            <input type="text" name="name" required placeholder="John Doe" style="width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 6px; font-family: var(--font-body); font-size: 0.95rem;">
                         </div>
 
                         <div style="margin-bottom: 1.25rem;">
                             <label style="display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.4rem; color: var(--primary-navy);">Email Address</label>
-                            <input type="email" required placeholder="john@example.com" style="width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 6px; font-family: var(--font-body); font-size: 0.95rem;">
+                            <input type="email" name="email" required placeholder="john@example.com" style="width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 6px; font-family: var(--font-body); font-size: 0.95rem;">
                         </div>
 
                         <div style="margin-bottom: 1.25rem;">
                             <label style="display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.4rem; color: var(--primary-navy);">Service / Inquiries</label>
-                            <select style="width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 6px; font-family: var(--font-body); font-size: 0.95rem; background: #fff;">
-                                <option value="general">General Inquiry</option>
-                                <option value="inbox">Inbox & Calendar Support</option>
-                                <option value="data">Data Management & Tracking</option>
-                                <option value="operations">Full Administrative Support</option>
+                            <select name="service_inquiry" style="width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 6px; font-family: var(--font-body); font-size: 0.95rem; background: #fff;">
+                                <option value="General Inquiry">General Inquiry</option>
+                                <option value="Inbox & Calendar Support">Inbox & Calendar Support</option>
+                                <option value="Data Management & Tracking">Data Management & Tracking</option>
+                                <option value="Full Administrative Support">Full Administrative Support</option>
                             </select>
                         </div>
 
                         <div style="margin-bottom: 1.5rem;">
                             <label style="display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.4rem; color: var(--primary-navy);">Message</label>
-                            <textarea rows="5" required placeholder="Tell me a bit about how I can help you..." style="width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 6px; font-family: var(--font-body); font-size: 0.95rem; resize: vertical;"></textarea>
+                            <textarea name="message" rows="5" required placeholder="Tell me a bit about how I can help you..." style="width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); border-radius: 6px; font-family: var(--font-body); font-size: 0.95rem; resize: vertical;"></textarea>
                         </div>
 
                         <button type="submit" class="btn btn-primary" style="width: 100%; text-align: center;">Send Message</button>
