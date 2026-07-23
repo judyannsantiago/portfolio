@@ -15,6 +15,75 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/responsive.css">
+    
+    <style>
+        .portfolio-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 3.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: start;
+        }
+        
+        @media (max-width: 992px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .section-icon-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .icon-badge {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #f4ece1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .results-box-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e0d8cd;
+        }
+        
+        .result-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary-navy);
+        }
+        
+        .preview-graphic {
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+            display: block;
+        }
+    </style>
 </head>
 <body>
 
@@ -52,163 +121,252 @@
     </section>
 
     <!-- Case Studies Section -->
-    <section class="framework-section" style="padding: 4rem 0;">
+    <section class="framework-section" style="padding: 3rem 0;">
         <div class="container">
             
-            <!-- CASE STUDY 01 -->
-            <article id="case-01" class="case-study-card" style="margin-bottom: 3rem; padding: 2.5rem; background: #fff; border: 1px solid var(--border-color); border-radius: 8px;">
-                <div style="margin-bottom: 1.5rem;">
-                    <span class="case-tag">Case Study 01</span>
-                    <h2 style="margin-top: 0.5rem;">Inbox Management System for a Busy Executive</h2>
-                    <p>Organized. Prioritized. Nothing missed.</p>
-                </div>
+            <!-- CASE STUDY 01: INBOX MANAGEMENT -->
+            <article class="portfolio-card">
+                <div class="portfolio-grid">
+                    
+                    <!-- Left Column: Details -->
+                    <div>
+                        <span class="case-tag" style="color: var(--text-muted); font-size: 0.85rem; letter-spacing: 1px; font-weight: 700;">CASE STUDY 01</span>
+                        <h2 style="font-size: 2.2rem; color: var(--primary-navy); margin: 0.3rem 0 0.1rem 0; font-family: var(--font-heading); text-transform: uppercase;">Inbox Management</h2>
+                        <h4 style="color: #a8815e; font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem;">SYSTEM FOR A BUSY EXECUTIVE</h4>
+                        <p style="font-style: italic; color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem;">Organized. Prioritized. Nothing missed.</p>
+                        
+                        <div style="border-top: 1px solid #e0d8cd; padding-top: 1.2rem; margin-bottom: 1.2rem;">
+                            <div class="section-icon-header">
+                                <div class="icon-badge">👤</div>
+                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem;">The Scenario</h4>
+                            </div>
+                            <p style="font-size: 0.9rem; margin-left: 2.75rem; color: #4a5568;">The client receives 50+ emails daily, leading to missed messages, delayed responses, and difficulty prioritizing tasks.</p>
+                        </div>
 
-                <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
-                    <div style="background: var(--bg-surface); padding: 1.5rem; border-radius: 6px;">
-                        <h4 style="color: var(--primary-navy); margin-bottom: 0.5rem;">The Scenario</h4>
-                        <p style="font-size: 0.95rem;">The client received 50+ emails daily, leading to missed messages, delayed responses, and difficulty prioritizing urgent tasks.</p>
+                        <div style="border-top: 1px solid #e0d8cd; padding-top: 1.2rem; margin-bottom: 1.2rem;">
+                            <div class="section-icon-header">
+                                <div class="icon-badge">⚠️</div>
+                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem;">The Problem</h4>
+                            </div>
+                            <ul style="font-size: 0.9rem; margin-left: 2.75rem; padding: 0; color: #4a5568; list-style-type: disc;">
+                                <li style="margin-bottom: 0.3rem;">Important emails get buried</li>
+                                <li style="margin-bottom: 0.3rem;">No clear categorization</li>
+                                <li style="margin-bottom: 0.3rem;">Delayed responses</li>
+                                <li style="margin-bottom: 0.3rem;">Inbox clutter affecting productivity</li>
+                            </ul>
+                        </div>
+
+                        <div style="border-top: 1px solid #e0d8cd; padding-top: 1.2rem; margin-bottom: 1.2rem;">
+                            <div class="section-icon-header">
+                                <div class="icon-badge">⚙️</div>
+                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem;">My Approach</h4>
+                            </div>
+                            <ul style="font-size: 0.9rem; margin-left: 2.75rem; padding: 0; color: #4a5568; list-style-type: disc;">
+                                <li style="margin-bottom: 0.3rem;">Reviewed email types and common senders</li>
+                                <li style="margin-bottom: 0.3rem;">Created a labeling system based on priority and category</li>
+                                <li style="margin-bottom: 0.3rem;">Set up filters to automatically organize incoming emails</li>
+                                <li style="margin-bottom: 0.3rem;">Flagged urgent messages for immediate attention</li>
+                            </ul>
+                        </div>
+
+                        <div style="border-top: 1px solid #e0d8cd; padding-top: 1.2rem;">
+                            <div class="section-icon-header">
+                                <div class="icon-badge">🎯</div>
+                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem;">The Result</h4>
+                            </div>
+                            <p style="font-size: 0.9rem; margin-left: 2.75rem; color: #4a5568; margin-bottom: 1rem;">Emails are now sorted automatically, reducing clutter and making it easier to focus on priority tasks.</p>
+                            
+                            <div class="results-box-grid">
+                                <div class="result-item">🕒 <span>Faster response time</span></div>
+                                <div class="result-item">☑️ <span>Clear prioritization</span></div>
+                                <div class="result-item">✉️ <span>Zero missed emails</span></div>
+                            </div>
+                        </div>
                     </div>
-                    <div style="background: var(--bg-surface); padding: 1.5rem; border-radius: 6px;">
-                        <h4 style="color: var(--primary-navy); margin-bottom: 0.5rem;">The Problem</h4>
-                        <ul style="list-style: none; padding: 0; font-size: 0.9rem;">
-                            <li style="margin-bottom: 0.3rem;">• Important emails buried in noise</li>
-                            <li style="margin-bottom: 0.3rem;">• Lack of clear categorization</li>
-                            <li style="margin-bottom: 0.3rem;">• Inbox clutter affecting productivity</li>
-                        </ul>
+                    
+                    <!-- Right Column: Visual Presentation Graphic -->
+                    <div>
+                        <img src="assets/images/case-study-01-inbox.png" alt="Inbox Management Case Study Visualization" class="preview-graphic">
                     </div>
-                </div>
 
-                <div style="margin-bottom: 2rem;">
-                    <h4 style="color: var(--primary-navy); margin-bottom: 0.75rem;">My Approach</h4>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Reviewed incoming email types and identified primary senders.
-                        </li>
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Created a clear labeling system based on priority and categories (Urgent, Follow-Up, Clients, Internal).
-                        </li>
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Configured automatic filters to route incoming messages into designated folders.
-                        </li>
-                    </ul>
-                </div>
-
-                <div style="background: var(--primary-navy); color: #fff; padding: 1.5rem; border-radius: 6px;">
-                    <h4 style="color: var(--accent-gold); margin-bottom: 0.5rem;">The Results</h4>
-                    <p style="color: var(--border-color); font-size: 0.95rem; margin-bottom: 0;">Faster response times, clear priority visibility, and zero missed emails.</p>
                 </div>
             </article>
 
-            <!-- CASE STUDY 02 -->
-            <article id="case-02" class="case-study-card" style="margin-bottom: 3rem; padding: 2.5rem; background: #fff; border: 1px solid var(--border-color); border-radius: 8px;">
-                <div style="margin-bottom: 1.5rem;">
-                    <span class="case-tag">Case Study 02</span>
-                    <h2 style="margin-top: 0.5rem;">Calendar Management & Scheduling System</h2>
-                    <p>Structured schedule. Better focus. More done.</p>
-                </div>
+            <!-- CASE STUDY 02: CALENDAR MANAGEMENT -->
+            <article class="portfolio-card">
+                <div class="portfolio-grid">
+                    
+                    <!-- Left Column: Details -->
+                    <div>
+                        <span class="case-tag" style="color: var(--text-muted); font-size: 0.85rem; letter-spacing: 1px; font-weight: 700;">CASE STUDY 02</span>
+                        <h2 style="font-size: 2.2rem; color: var(--primary-navy); margin: 0.3rem 0 0.1rem 0; font-family: var(--font-heading); text-transform: uppercase;">Calendar Management</h2>
+                        <h4 style="color: #a8815e; font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem;">& SCHEDULING SYSTEM</h4>
+                        <p style="font-style: italic; color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem;">Structured schedule. Better focus. More done.</p>
+                        
+                        <div style="border-top: 1px solid #e0d8cd; padding-top: 1.2rem; margin-bottom: 1.2rem;">
+                            <div class="section-icon-header">
+                                <div class="icon-badge">👤</div>
+                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem;">The Scenario</h4>
+                            </div>
+                            <p style="font-size: 0.9rem; margin-left: 2.75rem; color: #4a5568;">The client manages multiple meetings daily, leading to scheduling conflicts, missed appointments, and lack of focused work time.</p>
+                        </div>
 
-                <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
-                    <div style="background: var(--bg-surface); padding: 1.5rem; border-radius: 6px;">
-                        <h4 style="color: var(--primary-navy); margin-bottom: 0.5rem;">The Scenario</h4>
-                        <p style="font-size: 0.95rem;">The client managed multiple daily appointments manually, resulting in scheduling conflicts and no time for deep work.</p>
+                        <div style="border-top: 1px solid #e0d8cd; padding-top: 1.2rem; margin-bottom: 1.2rem;">
+                            <div class="section-icon-header">
+                                <div class="icon-badge">⚠️</div>
+                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem;">The Problem</h4>
+                            </div>
+                            <ul style="font-size: 0.9rem; margin-left: 2.75rem; padding: 0; color: #4a5568; list-style-type: disc;">
+                                <li style="margin-bottom: 0.3rem;">Overlapping meetings</li>
+                                <li style="margin-bottom: 0.3rem;">No buffer time between calls</li>
+                                <li style="margin-bottom: 0.3rem;">Missed or double-booked appointments</li>
+                                <li style="margin-bottom: 0.3rem;">No dedicated focus time</li>
+                            </ul>
+                        </div>
+
+                        <div style="border-top: 1px solid #e0d8cd; padding-top: 1.2rem; margin-bottom: 1.2rem;">
+                            <div class="section-icon-header">
+                                <div class="icon-badge">⚙️</div>
+                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem;">My Approach</h4>
+                            </div>
+                            <ul style="font-size: 0.9rem; margin-left: 2.75rem; padding: 0; color: #4a5568; list-style-type: disc;">
+                                <li style="margin-bottom: 0.3rem;">Reviewed existing schedule and meeting patterns</li>
+                                <li style="margin-bottom: 0.3rem;">Identified conflicts and time gaps</li>
+                                <li style="margin-bottom: 0.3rem;">Reorganized calendar with clear time blocks</li>
+                                <li style="margin-bottom: 0.3rem;">Added buffer time between meetings</li>
+                                <li style="margin-bottom: 0.3rem;">Prioritized high-impact tasks and focus hours</li>
+                            </ul>
+                        </div>
+
+                        <div style="border-top: 1px solid #e0d8cd; padding-top: 1.2rem;">
+                            <div class="section-icon-header">
+                                <div class="icon-badge">🎯</div>
+                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem;">The Result</h4>
+                            </div>
+                            <div class="results-box-grid">
+                                <div class="result-item">📅 <span>No scheduling conflicts</span></div>
+                                <div class="result-item">🕒 <span>Better time management</span></div>
+                                <div class="result-item">📈 <span>Increased productivity</span></div>
+                                <div class="result-item">☑️ <span>Clear daily structure</span></div>
+                            </div>
+                        </div>
                     </div>
-                    <div style="background: var(--bg-surface); padding: 1.5rem; border-radius: 6px;">
-                        <h4 style="color: var(--primary-navy); margin-bottom: 0.5rem;">The Problem</h4>
-                        <ul style="list-style: none; padding: 0; font-size: 0.9rem;">
-                            <li style="margin-bottom: 0.3rem;">• Overlapping and double-booked meetings</li>
-                            <li style="margin-bottom: 0.3rem;">• Zero buffer time between calls</li>
-                            <li style="margin-bottom: 0.3rem;">• Constant calendar friction and missed calls</li>
-                        </ul>
+                    
+                    <!-- Right Column: Visual Presentation Graphic -->
+                    <div>
+                        <img src="assets/images/case-study-02-calendar.png" alt="Calendar Management Case Study Visualization" class="preview-graphic">
                     </div>
-                </div>
 
-                <div style="margin-bottom: 2rem;">
-                    <h4 style="color: var(--primary-navy); margin-bottom: 0.75rem;">My Approach</h4>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Audited existing appointment patterns and identified recurring overlap times.
-                        </li>
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Reorganized the calendar using time blocking for priority calls, follow-ups, and deep work.
-                        </li>
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Enforced automatic 30-minute buffer zones between consecutive meetings.
-                        </li>
-                    </ul>
-                </div>
-
-                <div style="background: var(--primary-navy); color: #fff; padding: 1.5rem; border-radius: 6px;">
-                    <h4 style="color: var(--accent-gold); margin-bottom: 0.5rem;">The Results</h4>
-                    <p style="color: var(--border-color); font-size: 0.95rem; margin-bottom: 0;">Eliminated scheduling conflicts, improved time management, and established predictable daily focus hours.</p>
                 </div>
             </article>
 
-            <!-- CASE STUDY 03 -->
-            <article id="case-03" class="case-study-card" style="margin-bottom: 3rem; padding: 2.5rem; background: #fff; border: 1px solid var(--border-color); border-radius: 8px;">
-                <div style="margin-bottom: 1.5rem;">
-                    <span class="case-tag">Case Study 03</span>
-                    <h2 style="margin-top: 0.5rem;">Data Management & Interactive Insights Dashboard</h2>
-                    <p>Organized data. Clear tracking. Better decisions.</p>
-                </div>
+            <!-- CASE STUDY 03: DATA MANAGEMENT -->
+            <article class="portfolio-card">
+                <div class="portfolio-grid">
+                    
+                    <!-- Left Column: Details -->
+                    <div>
+                        <span class="case-tag" style="color: var(--text-muted); font-size: 0.85rem; letter-spacing: 1px; font-weight: 700;">CASE STUDY 03</span>
+                        <h2 style="font-size: 2.2rem; color: var(--primary-navy); margin: 0.3rem 0 0.1rem 0; font-family: var(--font-heading); text-transform: uppercase;">Data Management</h2>
+                        <h4 style="color: #a8815e; font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem;">& TRACKING SYSTEM</h4>
+                        <p style="font-style: italic; color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem;">Organized Data. Clear tracking. Better decisions.</p>
+                        
+                        <div style="border-top: 1px solid #e0d8cd; padding-top: 1.2rem; margin-bottom: 1.2rem;">
+                            <div class="section-icon-header">
+                                <div class="icon-badge">👤</div>
+                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem;">The Scenario</h4>
+                            </div>
+                            <p style="font-size: 0.9rem; margin-left: 2.75rem; color: #4a5568;">The client manages multiple records manually, resulting in inconsistent data, difficulty tracking updates, and time-consuming searches.</p>
+                        </div>
 
-                <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
-                    <div style="background: var(--bg-surface); padding: 1.5rem; border-radius: 6px;">
-                        <h4 style="color: var(--primary-navy); margin-bottom: 0.5rem;">The Scenario</h4>
-                        <p style="font-size: 0.95rem;">Client record management was handled manually across inconsistent spreadsheets, making status tracking difficult and slow.</p>
+                        <div style="border-top: 1px solid #e0d8cd; padding-top: 1.2rem; margin-bottom: 1.2rem;">
+                            <div class="section-icon-header">
+                                <div class="icon-badge">⚠️</div>
+                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem;">The Problem</h4>
+                            </div>
+                            <ul style="font-size: 0.9rem; margin-left: 2.75rem; padding: 0; color: #4a5568; list-style-type: disc;">
+                                <li style="margin-bottom: 0.3rem;">Disorganized data entries</li>
+                                <li style="margin-bottom: 0.3rem;">Missing or incomplete information</li>
+                                <li style="margin-bottom: 0.3rem;">Difficult to track updates</li>
+                                <li style="margin-bottom: 0.3rem;">Time wasted searching for records</li>
+                            </ul>
+                        </div>
+
+                        <div style="border-top: 1px solid #e0d8cd; padding-top: 1.2rem; margin-bottom: 1.2rem;">
+                            <div class="section-icon-header">
+                                <div class="icon-badge">⚙️</div>
+                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem;">My Approach</h4>
+                            </div>
+                            <ul style="font-size: 0.9rem; margin-left: 2.75rem; padding: 0; color: #4a5568; list-style-type: disc;">
+                                <li style="margin-bottom: 0.3rem;">Reviewed existing data structure</li>
+                                <li style="margin-bottom: 0.3rem;">Cleaned and standardized entries</li>
+                                <li style="margin-bottom: 0.3rem;">Created a structured tracking system</li>
+                                <li style="margin-bottom: 0.3rem;">Added clear categories and fields</li>
+                                <li style="margin-bottom: 0.3rem;">Ensured consistency across all records</li>
+                            </ul>
+                        </div>
+
+                        <div style="border-top: 1px solid #e0d8cd; padding-top: 1.2rem;">
+                            <div class="section-icon-header">
+                                <div class="icon-badge">🎯</div>
+                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem;">The Result</h4>
+                            </div>
+                            <div class="results-box-grid">
+                                <div class="result-item">⏱️ <span>Faster data access</span></div>
+                                <div class="result-item">🎯 <span>Reduced errors</span></div>
+                                <div class="result-item">📋 <span>Clear tracking progress</span></div>
+                                <div class="result-item">📁 <span>Better organization</span></div>
+                            </div>
+                        </div>
                     </div>
-                    <div style="background: var(--bg-surface); padding: 1.5rem; border-radius: 6px;">
-                        <h4 style="color: var(--primary-navy); margin-bottom: 0.5rem;">The Problem</h4>
-                        <ul style="list-style: none; padding: 0; font-size: 0.9rem;">
-                            <li style="margin-bottom: 0.3rem;">• Inconsistent entries and missing fields</li>
-                            <li style="margin-bottom: 0.3rem;">• Time wasted manually searching for records</li>
-                            <li style="margin-bottom: 0.3rem;">• Poor visibility into ongoing vs completed client statuses</li>
-                        </ul>
+                    
+                    <!-- Right Column: Visual Presentation Graphic -->
+                    <div>
+                        <img src="assets/images/case-study-03-data.png" alt="Data Management Case Study Visualization" class="preview-graphic">
                     </div>
-                </div>
 
-                <div style="margin-bottom: 2rem;">
-                    <h4 style="color: var(--primary-navy); margin-bottom: 0.75rem;">My Approach</h4>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Cleaned and standardized legacy entries with dropdown validation lists.
-                        </li>
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Built an interactive dynamic search box utilizing VLOOKUP formulas for instant client retrieval.
-                        </li>
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Created a automated status chart summarize progress at a glance.
-                        </li>
-                    </ul>
-                </div>
-
-                <div style="background: var(--primary-navy); color: #fff; padding: 1.5rem; border-radius: 6px;">
-                    <h4 style="color: var(--accent-gold); margin-bottom: 0.5rem;">The Results</h4>
-                    <p style="color: var(--border-color); font-size: 0.95rem; margin-bottom: 0;">Reduced search times from minutes to seconds, eliminated formatting errors, and gave stakeholders complete visibility.</p>
                 </div>
             </article>
 
-            <!-- Upcoming / Placeholder Projects Section -->
-            <div style="margin-top: 4rem;">
-                <h3 style="text-align: center; margin-bottom: 2rem;">Upcoming Case Studies & Capabilities</h3>
-                <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
-                    <div style="background: var(--bg-surface); padding: 1.25rem; border-radius: 6px; border: 1px dashed var(--border-color);">
-                        <h4 style="font-size: 1rem; color: var(--text-muted);">SOP Documentation</h4>
-                        <p style="font-size: 0.85rem; margin-top: 0.25rem;">Standardizing operations routines into clear guidelines.</p>
+            <!-- CASE STUDY 03 - PART 02: DYNAMIC SEARCH -->
+            <article class="portfolio-card">
+                <div class="portfolio-grid">
+                    
+                    <!-- Left Column: Details -->
+                    <div>
+                        <span class="case-tag" style="color: var(--text-muted); font-size: 0.85rem; letter-spacing: 1px; font-weight: 700;">CASE STUDY 03 - PART 02</span>
+                        <h2 style="font-size: 2.2rem; color: var(--primary-navy); margin: 0.3rem 0 0.1rem 0; font-family: var(--font-heading); text-transform: uppercase;">Dynamic Search</h2>
+                        <h4 style="color: #a8815e; font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem;">& INTERACTIVE INSIGHTS</h4>
+                        <p style="font-style: italic; color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem;">Smart retrieval. Automated summaries. Effortless access.</p>
+                        
+                        <div style="background: var(--primary-navy); color: #fff; padding: 1.2rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                            <strong style="color: var(--accent-gold); display: block; margin-bottom: 0.3rem;">DATA SOURCE</strong>
+                            <p style="margin: 0; font-size: 0.85rem; color: #cbd5e1;">This analysis is based on the data tracker from Case Study 03. (7 Client Records)</p>
+                        </div>
+
+                        <ul style="list-style: none; padding: 0; font-size: 0.9rem;">
+                            <li style="margin-bottom: 0.8rem; display: flex; align-items: flex-start; gap: 0.75rem;">
+                                <span style="color: var(--accent-gold); font-weight: bold;">📊</span> Quickly summarize data using Pivot Tables
+                            </li>
+                            <li style="margin-bottom: 0.8rem; display: flex; align-items: flex-start; gap: 0.75rem;">
+                                <span style="color: var(--accent-gold); font-weight: bold;">🔍</span> Look up specific information instantly with VLOOKUP
+                            </li>
+                            <li style="margin-bottom: 0.8rem; display: flex; align-items: flex-start; gap: 0.75rem;">
+                                <span style="color: var(--accent-gold); font-weight: bold;">📅</span> Track time and follow-ups with simple formulas
+                            </li>
+                            <li style="margin-bottom: 0.8rem; display: flex; align-items: flex-start; gap: 0.75rem;">
+                                <span style="color: var(--accent-gold); font-weight: bold;">☑️</span> Better visibility leads to better decisions
+                            </li>
+                        </ul>
                     </div>
-                    <div style="background: var(--bg-surface); padding: 1.25rem; border-radius: 6px; border: 1px dashed var(--border-color);">
-                        <h4 style="font-size: 1rem; color: var(--text-muted);">CRM Workflows</h4>
-                        <p style="font-size: 0.85rem; margin-top: 0.25rem;">Managing pipeline updates and contact tracking.</p>
+                    
+                    <!-- Right Column: Visual Presentation Graphic -->
+                    <div>
+                        <img src="assets/images/case-study-04-dashboard.png" alt="Dynamic Search Dashboard Visualization" class="preview-graphic">
                     </div>
-                    <div style="background: var(--bg-surface); padding: 1.25rem; border-radius: 6px; border: 1px dashed var(--border-color);">
-                        <h4 style="font-size: 1rem; color: var(--text-muted);">Travel & Research</h4>
-                        <p style="font-size: 0.85rem; margin-top: 0.25rem;">Detailed itinerary planning and market research.</p>
-                    </div>
-                    <div style="background: var(--bg-surface); padding: 1.25rem; border-radius: 6px; border: 1px dashed var(--border-color);">
-                        <h4 style="font-size: 1rem; color: var(--text-muted);">AI & Automation</h4>
-                        <p style="font-size: 0.85rem; margin-top: 0.25rem;">Streamlining administrative tasks with modern digital tools.</p>
-                    </div>
+
                 </div>
-            </div>
+            </article>
 
         </div>
     </section>
