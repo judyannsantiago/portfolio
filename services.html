@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | Judy Ann Santiago</title>
+    <meta name="description" content="Administrative and operations support services offered by Judy Ann Santiago.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header class="site-header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                JUDY ANN SANTIAGO<span>.</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle Navigation">
+                <span class="hamburger"></span>
+            </button>
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Me</a></li>
+                    <li><a href="services.html" class="active">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="resume.html">Resume</a></li>
+                    <li><a href="contact.html" class="btn btn-outline">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="hero" style="padding: 3rem 0;">
+        <div class="container text-center">
+            <span class="badge">What I Do</span>
+            <h1 style="margin-top: 1rem;">Services & Support</h1>
+            <p style="max-width: 600px; margin: 1rem auto 0 auto;">
+                Practical administrative and operational help to simplify your everyday business tasks.
+            </p>
+        </div>
+    </section>
+
+    <!-- Detailed Services Section -->
+    <section class="services-overview" style="padding: 4rem 0;">
+        <div class="container">
+            <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+                
+                <!-- Service 1 -->
+                <div class="service-box" style="background: var(--bg-white);">
+                    <div class="service-icon">📥</div>
+                    <h3>Email & Inbox Management</h3>
+                    <p style="margin-bottom: 1rem;">Keep your inbox organized and prioritized so you only focus on messages that need your direct attention.</p>
+                    <ul style="list-style: none; padding: 0; font-size: 0.9rem;">
+                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+                            <span style="color: var(--accent-gold);">✓</span> Custom email labels and category filters
+                        </li>
+                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+                            <span style="color: var(--accent-gold);">✓</span> Daily inbox cleanup and priority flagging
+                        </li>
+                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+                            <span style="color: var(--accent-gold);">✓</span> Routine inquiry responses and follow-up tracking
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-box" style="background: var(--bg-white);">
+                    <div class="service-icon">📅</div>
+                    <h3>Calendar & Schedule Coordination</h3>
+                    <p style="margin-bottom: 1rem;">Protect your focus time and avoid double-bookings with structured calendar management.</p>
+                    <ul style="list-style: none; padding: 0; font-size: 0.9rem;">
+                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+                            <span style="color: var(--accent-gold);">✓</span> Strategic meeting scheduling and buffer time setup
+                        </li>
+                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+                            <span style="color: var(--accent-gold);">✓</span> Time-zone coordination across teams and clients
+                        </li>
+                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+                            <span style="color: var(--accent-gold);">✓</span> Reminders and calendar invite management
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-box" style="background: var(--bg-white);">
+                    <div class="service-icon">📊</div>
+                    <h3>Data Management & Google Sheets</h3>
+                    <p style="margin-bottom: 1rem;">Turn messy spreadsheet entries into clean, reliable tracking dashboards for your team.</p>
+                    <ul style="list-style: none; padding: 0; font-size: 0.9rem;">
+                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+                            <span style="color: var(--accent-gold);">✓</span> Data cleaning, formatting, and record organization
+                        </li>
+                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+                            <span style="color: var(--accent-gold);">✓</span> Dynamic search setups using formulas and VLOOKUPs
+                        </li>
+                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+                            <span style="color: var(--accent-gold);">✓</span> Visual summary dashboards and status reports
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-box" style="background: var(--bg-white);">
+                    <div class="service-icon">📁</div>
+                    <h3>File & Drive Organization</h3>
+                    <p style="margin-bottom: 1rem;">Establish clear folder hierarchies and file naming rules so your files are easy to find.</p>
+                    <ul style="list-style: none; padding: 0; font-size: 0.9rem;">
+                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+                            <span style="color: var(--accent-gold);">✓</span> Google Drive and cloud storage cleanup
+                        </li>
+                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+                            <span style="color: var(--accent-gold);">✓</span> Standardized file naming systems
+                        </li>
+                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+                            <span style="color: var(--accent-gold);">✓</span> Sharing permissions and folder access structure
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="service-box" style="background: var(--bg-white);">
+                    <div class="service-icon">📝</div>
+                    <h3>SOP Documentation & Research</h3>
+                    <p style="margin-bottom: 1rem;">Document routine tasks into simple guidelines so your business operations remain consistent.</p>
+                    <ul style="list-style: none; padding: 0; font-size: 0.9rem;">
+                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+                            <span style="color: var(--accent-gold);">✓</span> Step-by-step Standard Operating Procedures (SOPs)
+                        </li>
+                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+                            <span style="color: var(--accent-gold);">✓</span> Market and competitor research briefs
+                        </li>
+                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+                            <span style="color: var(--accent-gold);">✓</span> Travel itinerary planning and research
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="service-box" style="background: var(--bg-white);">
+                    <div class="service-icon">⚙️</div>
+                    <h3>CRM & General Admin Support</h3>
+                    <p style="margin-bottom: 1rem;">Reliable general support to keep your backend systems updated and running smoothly.</p>
+                    <ul style="list-style: none; padding: 0; font-size: 0.9rem;">
+                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+                            <span style="color: var(--accent-gold);">✓</span> Client profile updates and record maintenance
+                        </li>
+                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+                            <span style="color: var(--accent-gold);">✓</span> Customer support communication assistance
+                        </li>
+                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
+                            <span style="color: var(--accent-gold);">✓</span> Ad-hoc administrative tasks and workflow help
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Process Section -->
+    <section class="framework-section" style="background: var(--bg-surface); padding: 4rem 0;">
+        <div class="container">
+            <div class="section-title text-center">
+                <h2>How We Work Together</h2>
+                <p>A simple step-by-step approach to make working together seamless.</p>
+            </div>
+            <div class="framework-steps" style="margin-top: 2.5rem;">
+                <div class="step-card" style="background: #fff;">
+                    <div class="step-num">1</div>
+                    <h4>Initial Alignment</h4>
+                    <p>We review your current bottlenecks, tools, and priority goals.</p>
+                </div>
+                <div class="step-card" style="background: #fff;">
+                    <div class="step-num">2</div>
+                    <h4>System Setup</h4>
+                    <p>I organize your files, emails, calendars, or data structures.</p>
+                </div>
+                <div class="step-card" style="background: #fff;">
+                    <div class="step-num">3</div>
+                    <h4>Ongoing Support</h4>
+                    <p>Regular execution, active maintenance, and clear daily progress updates.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-banner text-center">
+        <div class="container">
+            <h2>Need Support with Your Daily Operations?</h2>
+            <p style="margin-bottom: 2rem;">Let us discuss how I can help free up your time.</p>
+            <a href="contact.html" class="btn btn-primary btn-large">Get In Touch</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">JUDY ANN SANTIAGO<span>.</span></a>
+                <p>Administrative VA & Operations Support Specialist.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="resume.html">Resume</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Get In Touch</h4>
+                <p>Email: judyann.santiago.work@gmail.com</p>
+                <p>Location: Philippines (Flexible & Available)</p>
+            </div>
+        </div>
+        <div class="footer-bottom text-center">
+            <p>&copy; 2026 Judy Ann Santiago. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
