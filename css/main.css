@@ -383,3 +383,18 @@ p {
 .footer-links ul { list-style: none; }
 .footer-links a { color: var(--border-color); text-decoration: none; }
 .footer-bottom { margin-top: 2rem; font-size: 0.85rem; color: #94A3B8; }
+}
+
+/* Custom Icon Formatting */
+.service-icon img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+    display: block;
+    transition: transform 0.25s ease;
+}
+
+.service-box:hover .service-icon img {
+    transform: scale(1.1);
+}
