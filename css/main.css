@@ -362,6 +362,19 @@ p {
     border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
+.footer-brand .logo {
+    color: var(--bg-white) !important;
+}
+
+.footer-brand .logo span {
+    color: var(--accent-gold) !important;
+}
+
+.footer-brand p {
+    color: var(--border-color) !important;
+    margin-top: 0.5rem;
+}
+
 .footer-links h4, .footer-contact h4 {
     font-family: var(--font-subheading);
     color: var(--accent-gold);
