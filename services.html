@@ -3,247 +3,240 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services | Judy Ann Santiago</title>
-    <meta name="description" content="Administrative and operations support services offered by Judy Ann Santiago.">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-    
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <title>Judy Ann Santiago - Admin & Backend Support Portfolio</title>
+    <style>
+        :root {
+            --bg-main: #f8fafc;
+            --bg-surface: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --primary: #0f766e;
+            --primary-light: #f0fdf4;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 6rem 0 4rem 0;
+            text-align: center;
+            background-color: var(--bg-surface);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero .badge {
+            display: inline-block;
+            background: var(--primary-light);
+            color: var(--primary);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 1.5rem;
+            max-width: 850px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 5rem 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        }
+
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .service-card h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-top: 0;
+            margin-bottom: 1.25rem;
+        }
+
+        .service-card ul {
+            margin: 0;
+            padding-left: 1.25rem;
+            color: var(--text-muted);
+        }
+
+        .service-card li {
+            margin-bottom: 0.6rem;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Header / Navigation -->
-    <header class="site-header">
-        <div class="container nav-container">
-            <a href="index.html" class="logo">
-                JUDY ANN SANTIAGO<span>.</span>
-            </a>
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle Navigation">
-                <span class="hamburger"></span>
-            </button>
-            <nav class="nav-menu" id="navMenu">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Me</a></li>
-                    <li><a href="services.html" class="active">Services</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="resume.html">Resume</a></li>
-                    <li><a href="contact.html" class="btn btn-outline">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Page Header -->
-    <section class="hero" style="padding: 3rem 0;">
-        <div class="container text-center">
-            <span class="badge">What I Do</span>
-            <h1 style="margin-top: 1rem;">Services & Support</h1>
-            <p style="max-width: 600px; margin: 1rem auto 0 auto;">
-                Practical administrative and operational help to simplify your everyday business tasks.
+    <!-- START: Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <span class="badge">ADMIN VA, CSR & BACKEND SUPPORT</span>
+            <h1>The backend partner you didn’t know you needed.</h1>
+            <p>
+                Hand over the data entry, inbox triage, customer support queues, and daily admin work to someone who actually loves the details so you can get back to building your business.
             </p>
         </div>
     </section>
+    <!-- END: Hero Section -->
 
-    <!-- Detailed Services Section -->
-    <section class="services-overview" style="padding: 4rem 0;">
+    <!-- START: Services Section -->
+    <section id="services" class="services-section">
         <div class="container">
-            <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
-                
-                <!-- Service 1 -->
-                <div class="service-box" style="background: var(--bg-white);">
+            <div class="services-grid">
+
+                <!-- Card 1: General Admin Support -->
+                <div class="service-card">
                     <div class="service-icon">
-                        <img src="assets/images/icon-inbox.png" alt="Email & Inbox Management">
+                        <img src="assets/images/icon-calendar.png" alt="General Admin Support Icon">
                     </div>
-                    <h3>Email & Inbox Management</h3>
-                    <p style="margin-bottom: 1rem;">Keep your inbox organized and prioritized so you only focus on messages that need your direct attention.</p>
-                    <ul style="list-style: none; padding: 0; font-size: 0.9rem;">
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Custom email labels and category filters
-                        </li>
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Daily inbox cleanup and priority flagging
-                        </li>
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Routine inquiry responses and follow-up tracking
-                        </li>
+                    <h3>General Admin Support</h3>
+                    <ul>
+                        <li>Executive & Personal Assistant Tasks</li>
+                        <li>Calendar Management & Appointment Setting</li>
+                        <li>Daily Task & Workflow Organization</li>
                     </ul>
                 </div>
 
-                <!-- Service 2 -->
-                <div class="service-box" style="background: var(--bg-white);">
+                <!-- Card 2: Customer Service & Support -->
+                <div class="service-card">
                     <div class="service-icon">
-                        <img src="assets/images/icon-calendar.png" alt="Calendar & Schedule Coordination">
+                        <img src="assets/images/icon-inbox.png" alt="Customer Service & Support Icon">
                     </div>
-                    <h3>Calendar & Schedule Coordination</h3>
-                    <p style="margin-bottom: 1rem;">Protect your focus time and avoid double-bookings with structured calendar management.</p>
-                    <ul style="list-style: none; padding: 0; font-size: 0.9rem;">
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Strategic meeting scheduling and buffer time setup
-                        </li>
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Time-zone coordination across teams and clients
-                        </li>
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Reminders and calendar invite management
-                        </li>
+                    <h3>Customer Service & Support</h3>
+                    <ul>
+                        <li>Frontline Inquiry & Ticket Resolution</li>
+                        <li>Email Triage & Support Queue Management</li>
+                        <li>Client Communication & Follow-Ups</li>
                     </ul>
                 </div>
 
-                <!-- Service 3 -->
-                <div class="service-box" style="background: var(--bg-white);">
+                <!-- Card 3: CRM & Data Entry -->
+                <div class="service-card">
                     <div class="service-icon">
-                        <img src="assets/images/icon-data.png" alt="Data Management & Google Sheets">
+                        <img src="assets/images/icon-crm.png" alt="CRM & Data Entry Icon">
                     </div>
-                    <h3>Data Management & Google Sheets</h3>
-                    <p style="margin-bottom: 1rem;">Turn messy spreadsheet entries into clean, reliable tracking dashboards for your team.</p>
-                    <ul style="list-style: none; padding: 0; font-size: 0.9rem;">
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Data cleaning, formatting, and record organization
-                        </li>
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Dynamic search setups using formulas and VLOOKUPs
-                        </li>
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Visual summary dashboards and status reports
-                        </li>
+                    <h3>CRM & Data Entry</h3>
+                    <ul>
+                        <li>Database Clean-Up & Record Updates</li>
+                        <li>Spreadsheet Formatting & VLOOKUP Automation</li>
+                        <li>CRM Pipeline & Contact Tracking</li>
                     </ul>
                 </div>
 
-                <!-- Service 4 -->
-                <div class="service-box" style="background: var(--bg-white);">
+                <!-- Card 4: Digital File Organization -->
+                <div class="service-card">
                     <div class="service-icon">
-                        <img src="assets/images/icon-folder.png" alt="File & Drive Organization">
+                        <img src="assets/images/icon-folder.png" alt="Digital File Organization Icon">
                     </div>
-                    <h3>File & Drive Organization</h3>
-                    <p style="margin-bottom: 1rem;">Establish clear folder hierarchies and file naming rules so your files are easy to find.</p>
-                    <ul style="list-style: none; padding: 0; font-size: 0.9rem;">
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Google Drive and cloud storage cleanup
-                        </li>
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Standardized file naming systems
-                        </li>
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Sharing permissions and folder access structure
-                        </li>
+                    <h3>Digital File Organization</h3>
+                    <ul>
+                        <li>Cloud Storage Hierarchy & Taxonomies</li>
+                        <li>File Naming Standardization</li>
+                        <li>Legacy Document Sorting & Clean-Up</li>
                     </ul>
                 </div>
 
-                <!-- Service 5 -->
-                <div class="service-box" style="background: var(--bg-white);">
+                <!-- Card 5: SOPs & General Research -->
+                <div class="service-card">
                     <div class="service-icon">
-                        <img src="assets/images/icon-sop.png" alt="SOP Documentation & Research">
+                        <img src="assets/images/icon-sop.png" alt="SOPs & General Research Icon">
                     </div>
-                    <h3>SOP Documentation & Research</h3>
-                    <p style="margin-bottom: 1rem;">Document routine tasks into simple guidelines so your business operations remain consistent.</p>
-                    <ul style="list-style: none; padding: 0; font-size: 0.9rem;">
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Step-by-step Standard Operating Procedures (SOPs)
-                        </li>
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Market and competitor research briefs
-                        </li>
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Travel itinerary planning and research
-                        </li>
+                    <h3>SOPs & General Research</h3>
+                    <ul>
+                        <li>Step-by-Step Process Documentation</li>
+                        <li>Web Research & Summarized Reports</li>
+                        <li>Knowledge Base & Canned Response Setup</li>
                     </ul>
                 </div>
 
-                <!-- Service 6 -->
-                <div class="service-box" style="background: var(--bg-white);">
+                <!-- Card 6: Backend Operations -->
+                <div class="service-card">
                     <div class="service-icon">
-                        <img src="assets/images/icon-crm.png" alt="CRM & General Admin Support">
+                        <img src="assets/images/icon-data.png" alt="Backend Operations Icon">
                     </div>
-                    <h3>CRM & General Admin Support</h3>
-                    <p style="margin-bottom: 1rem;">Reliable general support to keep your backend systems updated and running smoothly.</p>
-                    <ul style="list-style: none; padding: 0; font-size: 0.9rem;">
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Client profile updates and record maintenance
-                        </li>
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Customer support communication assistance
-                        </li>
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Ad-hoc administrative tasks and workflow help
-                        </li>
+                    <h3>Backend Operations</h3>
+                    <ul>
+                        <li>Routine Back-Office Task Execution</li>
+                        <li>Project Coordination Support</li>
+                        <li>Tailored Administrative Assistance</li>
                     </ul>
                 </div>
 
             </div>
         </div>
     </section>
+    <!-- END: Services Section -->
 
-    <!-- Work Process Section -->
-    <section class="framework-section" style="background: var(--bg-surface); padding: 4rem 0;">
-        <div class="container">
-            <div class="section-title text-center">
-                <h2>How We Work Together</h2>
-                <p>A simple step-by-step approach to make working together seamless.</p>
-            </div>
-            <div class="framework-steps" style="margin-top: 2.5rem;">
-                <div class="step-card" style="background: #fff;">
-                    <div class="step-num">1</div>
-                    <h4>Initial Alignment</h4>
-                    <p>We review your current bottlenecks, tools, and priority goals.</p>
-                </div>
-                <div class="step-card" style="background: #fff;">
-                    <div class="step-num">2</div>
-                    <h4>System Setup</h4>
-                    <p>I organize your files, emails, calendars, or data structures.</p>
-                </div>
-                <div class="step-card" style="background: #fff;">
-                    <div class="step-num">3</div>
-                    <h4>Ongoing Support</h4>
-                    <p>Regular execution, active maintenance, and clear daily progress updates.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="cta-banner text-center">
-        <div class="container">
-            <h2>Need Support with Your Daily Operations?</h2>
-            <p style="margin-bottom: 2rem;">Let us discuss how I can help free up your time.</p>
-            <a href="contact.html" class="btn btn-primary btn-large">Get In Touch</a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="container footer-content">
-            <div class="footer-brand">
-                <a href="index.html" class="logo">JUDY ANN SANTIAGO<span>.</span></a>
-                <p>Administrative VA & Operations Support Specialist.</p>
-            </div>
-            <div class="footer-links">
-                <h4>Navigation</h4>
-                <ul>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="resume.html">Resume</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-contact">
-                <h4>Get In Touch</h4>
-                <p>Email: judyann.santiago.work@gmail.com</p>
-                <p>Location: Philippines</p>
-            </div>
-        </div>
-        <div class="footer-bottom text-center">
-            <p>&copy; 2026 Judy Ann Santiago. All Rights Reserved.</p>
-        </div>
-    </footer>
-
-    <script src="js/main.js"></script>
 </body>
 </html>
