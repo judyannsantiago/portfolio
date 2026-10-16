@@ -29,10 +29,15 @@
     --transition-fast: 0.25s ease;
 }
 
-* {
+*, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 body {
@@ -278,27 +283,32 @@ p {
     margin-bottom: 3rem;
 }
 
-.services-grid {
+.services-grid, .industries-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
 }
 
-.service-box {
+.service-box, .industry-card {
     padding: 2rem;
     border: 1px solid var(--border-color);
     border-radius: 8px;
     transition: transform var(--transition-fast);
+    background: var(--bg-white);
 }
 
-.service-box:hover {
+.service-box:hover, .industry-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.05);
 }
 
-.service-icon {
-    font-size: 2rem;
+/* Custom Icon Formatting */
+.service-icon img, .industry-card img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
     margin-bottom: 1rem;
+    display: block;
 }
 
 /* Featured Case Studies */
@@ -382,19 +392,61 @@ p {
 
 .footer-links ul { list-style: none; }
 .footer-links a { color: var(--border-color); text-decoration: none; }
-.footer-bottom { margin-top: 2rem; font-size: 0.85rem; color: #94A3B8; }
-}
+.footer-bottom { margin-top: 2rem; font-size: 0.85rem; color: #94A3B8; text-align: center; }
 
-/* Custom Icon Formatting */
-.service-icon img {
-    width: 48px;
-    height: 48px;
-    object-fit: contain;
-    margin-bottom: 1rem;
-    display: block;
-    transition: transform 0.25s ease;
-}
 
-.service-box:hover .service-icon img {
-    transform: scale(1.1);
+/* ==========================================================================
+   RESPONSIVE MEDIA QUERIES (MOBILE & TABLET AUTO-ADJUST)
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+    .container {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+
+    h1 {
+        font-size: 2.3rem !important;
+    }
+
+    h2 {
+        font-size: 1.8rem !important;
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr !important;
+        gap: 2rem;
+    }
+
+    .hero-cta {
+        flex-direction: column !important;
+        width: 100%;
+    }
+
+    .hero-cta .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero-stats {
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+    }
+
+    .industries-grid,
+    .services-grid,
+    .framework-steps,
+    .case-study-list {
+        grid-template-columns: 1fr !important;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr !important;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    /* Mobile Navigation Menu Toggle Adjustments */
+    .nav-menu {
+        display: none; /* Handled by main.js toggle script */
+    }
 }
