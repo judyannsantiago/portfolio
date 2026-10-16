@@ -1,4 +1,161 @@
-<!-- Services Overview -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Judy Ann Santiago | ADMINISTRATIVE SUPPORT | CUSTOMER SUPPORT | BACK-OFFICE OPERATIONS</title>
+    <meta name="description" content="Your backend partner for data entry, inbox triage, customer support, and administrative execution.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header class="site-header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                JUDY ANN SANTIAGO<span>.</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle Navigation">
+                <span class="hamburger"></span>
+            </button>
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About Me</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="resume.html">Resume</a></li>
+                    <li><a href="contact.html" class="btn btn-outline">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container" style="max-width: 900px; text-align: center; padding: 80px 20px;">
+            <span class="badge" style="display: inline-block; margin-bottom: 20px;">ADMINISTRATIVE SUPPORT | CUSTOMER SUPPORT | BACK-OFFICE OPERATIONS</span>
+            <h1 style="font-size: 3rem; line-height: 1.2; margin-bottom: 24px;">THE BACKEND PARTNER YOUR BUSINESS NEEDS.</h1>
+            <p class="hero-subtitle" style="font-size: 1.15rem; line-height: 1.6; margin: 0 auto 35px auto; max-width: 750px;">
+                Hand over the data entry, customer support queues, and daily admin work to someone who actually loves the details so you can get back to building your business.
+            </p>
+            <div class="hero-cta" style="display: flex; justify-content: center; gap: 15px; margin-bottom: 50px;">
+                <a href="portfolio.html" class="btn btn-primary">View Case Studies</a>
+                <a href="contact.html" class="btn btn-secondary">Get In Touch</a>
+            </div>
+            <div class="hero-stats" style="display: flex; justify-content: center; gap: 50px; border-top: 1px solid #eaeaea; padding-top: 30px;">
+                <div class="stat-item">
+                    <span class="stat-number" style="display: block; font-size: 1.8rem; font-weight: bold;">100%</span>
+                    <span class="stat-label" style="font-size: 0.9rem; color: #666;">Detail Focused</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" style="display: block; font-size: 1.8rem; font-weight: bold;">Zero</span>
+                    <span class="stat-label" style="font-size: 0.9rem; color: #666;">Missed Deadlines</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sectors & Experience Sectors Section (Interactive Icon Cards) -->
+    <section class="industries-section" style="padding: 60px 0; background-color: #fcfcfc;">
+        <div class="container">
+            <div class="section-title text-center" style="margin-bottom: 40px;">
+                <h2>Sectors & Account Background</h2>
+                <p>Core operational experience across diverse customer support and administrative environments.</p>
+            </div>
+            
+            <div class="industries-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+                
+                <!-- Card 1: Retail & E-Commerce -->
+                <div class="industry-card" onclick="this.classList.toggle('active')" style="background: #ffffff; border: 1px solid #eaeaea; border-radius: 12px; padding: 25px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+                    <div style="width: 48px; height: 48px; margin-bottom: 15px;">
+                        <img src="assets/images/icon-ecommerce.png" alt="Retail & E-Commerce Icon" style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 12px;">Retail & E-Commerce</h3>
+                    <div class="industry-details" style="display: none; font-size: 0.88rem; color: #444; border-top: 1px solid #eee; padding-top: 12px; line-height: 1.5;">
+                        Managed frontline customer service queues for online retail and dropshipping accounts, handling order inquiries, shipping exceptions, and customer satisfaction resolutions.
+                    </div>
+                </div>
+
+                <!-- Card 2: Reservation & Booking -->
+                <div class="industry-card" onclick="this.classList.toggle('active')" style="background: #ffffff; border: 1px solid #eaeaea; border-radius: 12px; padding: 25px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+                    <div style="width: 48px; height: 48px; margin-bottom: 15px;">
+                        <img src="assets/images/icon-reservations.png" alt="Reservation & Booking Icon" style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 12px;">Reservation & Booking</h3>
+                    <div class="industry-details" style="display: none; font-size: 0.88rem; color: #444; border-top: 1px solid #eee; padding-top: 12px; line-height: 1.5;">
+                        Handled reservation specialist responsibilities for vehicle rental accounts, processing booking modifications, customer requests, and high-volume queue management.
+                    </div>
+                </div>
+
+                <!-- Card 3: EdTech & Billing -->
+                <div class="industry-card" onclick="this.classList.toggle('active')" style="background: #ffffff; border: 1px solid #eaeaea; border-radius: 12px; padding: 25px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+                    <div style="width: 48px; height: 48px; margin-bottom: 15px;">
+                        <img src="assets/images/icon-student-support.png" alt="EdTech & Student Support Icon" style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 12px;">EdTech & Student Support</h3>
+                    <div class="industry-details" style="display: none; font-size: 0.88rem; color: #444; border-top: 1px solid #eee; padding-top: 12px; line-height: 1.5;">
+                        Served as a student advocate and member of the billing team for online educational platforms, managing user accounts, support tickets, and financial inquiries.
+                    </div>
+                </div>
+
+                <!-- Card 4: Back-End Operations -->
+                <div class="industry-card" onclick="this.classList.toggle('active')" style="background: #ffffff; border: 1px solid #eaeaea; border-radius: 12px; padding: 25px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+                    <div style="width: 48px; height: 48px; margin-bottom: 15px;">
+                        <img src="assets/images/icon-admin.png" alt="Operations & Administration Icon" style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 12px;">Operations & Administration</h3>
+                    <div class="industry-details" style="display: none; font-size: 0.88rem; color: #444; border-top: 1px solid #eee; padding-top: 12px; line-height: 1.5;">
+                        Specialized in back-end operational support, customer queue sorting, data entry, ticket triage, and resolving account or billing exceptions with precision and minimal supervision.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Framework Section -->
+    <section class="framework-section">
+        <div class="container">
+            <div class="section-title text-center">
+                <h2>My Approach to Organized Work</h2>
+                <p>I approach administrative work with structure, clarity, and focus on practical solutions.</p>
+            </div>
+            <div class="framework-steps">
+                <div class="step-card">
+                    <div class="step-num">01</div>
+                    <h4>Understand</h4>
+                    <p>Identify core bottlenecks, friction points, and causes of delay.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">02</div>
+                    <h4>Organize</h4>
+                    <p>Sort, standardize, and structure incoming data and communications.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">03</div>
+                    <h4>Prioritize</h4>
+                    <p>Establish strict rules for urgency, impact, and time-blocking.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-num">04</div>
+                    <h4>Systemize</h4>
+                    <p>Implement SOPs, filters, and trackers to maintain long-term order.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
     <section class="services-overview">
         <div class="container">
             <div class="section-title text-center" style="margin-bottom: 40px;">
@@ -45,7 +202,6 @@
 
             </div>
             
-            <!-- Centered link back to services page -->
             <div style="text-align: center; margin-top: 35px;">
                 <a href="services.html" class="btn btn-secondary">View All Services &rarr;</a>
             </div>
@@ -69,3 +225,62 @@
             </div>
         </div>
     </section>
+
+    <!-- Contact Banner / Footer CTA -->
+    <section class="cta-banner">
+        <div class="container text-center">
+            <h2>Ready to Streamline Your Operations?</h2>
+            <p>Let me handle the behind-the-scenes details so you can focus on growing your business.</p>
+            <a href="contact.html" class="btn btn-primary btn-large">Let's Work Together</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">JUDY ANN SANTIAGO<span>.</span></a>
+                <p>Administrative & Operations Support Specialist.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="resume.html">Resume</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Get In Touch</h4>
+                <p>Email: judyann.santiago.work@gmail.com</p>
+                <p>Location: Philippines</p>
+            </div>
+        </div>
+        <div class="footer-bottom text-center">
+            <p>&copy; 2026 Judy Ann Santiago. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Quick Script for Click-to-Reveal Interaction -->
+    <script>
+        document.querySelectorAll('.industry-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const details = this.querySelector('.industry-details');
+                if (details.style.display === 'block') {
+                    details.style.display = 'none';
+                    this.style.borderColor = '#eaeaea';
+                    this.style.boxShadow = '0 4px 6px rgba(0,0,0,0.02)';
+                } else {
+                    details.style.display = 'block';
+                    this.style.borderColor = '#002147';
+                    this.style.boxShadow = '0 10px 20px rgba(0,0,0,0.08)';
+                }
+            });
+        });
+    </script>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
