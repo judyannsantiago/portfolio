@@ -347,6 +347,57 @@ p {
     font-size: 0.85rem;
 }
 
+/* ==========================================================================
+   REMOTE WORK SETUP
+   ========================================================================== */
+.remote-setup {
+    padding: 5rem 0;
+    background: var(--bg-white);
+}
+
+.setup-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.25rem;
+    margin-top: 3rem;
+}
+
+.setup-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem 1.25rem;
+    text-align: center;
+    transition: border-color var(--transition-fast),
+                box-shadow var(--transition-fast),
+                transform var(--transition-fast),
+                background var(--transition-fast);
+}
+
+.setup-card:hover {
+    background: var(--bg-white);
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 18px rgba(197, 168, 128, 0.35);
+    transform: translateY(-3px);
+}
+
+.setup-icon {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    margin: 0 auto 1rem;
+    display: block;
+}
+
+.setup-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.4rem;
+}
+
+.setup-card p {
+    font-size: 0.9rem;
+}
+
 /* CTA Banner */
 .cta-banner {
     background: var(--primary-navy);
