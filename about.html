@@ -31,37 +31,6 @@
             z-index: 1100;
         }
 
-        /* Header with soft floating shapes */
-        .ab-hero { position: relative; overflow: hidden; }
-        .ab-hero .container { position: relative; z-index: 1; }
-        .ab-hero::before,
-        .ab-hero::after {
-            content: "";
-            position: absolute;
-            border-radius: 50%;
-            pointer-events: none;
-        }
-        .ab-hero::before {
-            width: 260px;
-            height: 260px;
-            top: -90px;
-            right: 8%;
-            border: 2px solid rgba(197, 168, 128, 0.55);
-            animation: ab-float 9s ease-in-out infinite;
-        }
-        .ab-hero::after {
-            width: 120px;
-            height: 120px;
-            bottom: -40px;
-            left: 6%;
-            background: rgba(197, 168, 128, 0.22);
-            animation: ab-float 11s ease-in-out infinite reverse;
-        }
-        @keyframes ab-float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(14px); }
-        }
-
         /* Main section */
         .ab-main { padding: 70px 0; }
         .ab-grid {
@@ -101,27 +70,6 @@
             transition: background-size 0.9s ease 0.5s;
         }
         .js .ab-reveal:not(.is-visible) .ab-mark { background-size: 0% 100%; }
-
-        /* Pull quote (taken from the bio) */
-        .ab-quote {
-            margin: 30px 0;
-            padding: 4px 0 4px 24px;
-            border-left: 4px solid var(--accent-gold);
-            font-family: var(--font-heading);
-            font-size: 2rem;
-            line-height: 1.2;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--primary-navy);
-        }
-        .ab-quote::before {
-            content: "\201C";
-            display: block;
-            font-size: 3.2rem;
-            line-height: 0.6;
-            margin-bottom: 0.5rem;
-            color: var(--accent-gold);
-        }
 
         /* Photo with gold frame and dot pattern */
         .ab-photo { position: relative; align-self: center; }
@@ -172,7 +120,6 @@
         .js .ab-reveal.is-visible { opacity: 1; transform: none; }
 
         @media (prefers-reduced-motion: reduce) {
-            .ab-hero::before, .ab-hero::after { animation: none; }
             .js .ab-reveal { opacity: 1; transform: none; transition: none; }
             .ab-mark { transition: none; }
             .ab-photo img, .ab-photo::before { transition: none; }
@@ -183,10 +130,8 @@
             .ab-main { padding: 50px 0; }
             .ab-grid { grid-template-columns: 1fr; gap: 3rem; }
             .ab-text p { text-align: left; }
-            .ab-quote { font-size: 1.5rem; }
             .ab-photo::before { inset: 10px -8px -10px 8px; }
             .ab-photo::after { top: -20px; left: -12px; width: 90px; height: 90px; }
-            .ab-hero::before { width: 180px; height: 180px; right: -40px; }
         }
     </style>
 </head>
@@ -217,7 +162,7 @@
     </header>
 
     <!-- Page Header / Hero -->
-    <section class="page-header ab-hero">
+    <section class="page-header">
         <div class="container">
             <span class="badge">About Me</span>
             <h1>The Person Behind the Systems</h1>
@@ -234,9 +179,6 @@
                 <p>
                     I’m a remote support and operations specialist in the Philippines. In four years I’ve worked on very different accounts: online retail, car rental brands, an education platform, and now billing escalations. Each had its own rules, its own way of talking to customers, and its own idea of a good ticket, so I’ve gotten used to <mark class="ab-mark">picking up a new setup fast</mark> and not needing someone beside me while I learn it.
                 </p>
-
-                <blockquote class="ab-quote">Most of it is detective work.</blockquote>
-
                 <p>
                     At Tier 3, I get the cases Tier 1 couldn’t close. Most of it is <mark class="ab-mark">detective work</mark>: going through what happened on the account, finding where it went wrong, and either fixing it or explaining the next steps clearly. Then I write it up so the next person can see <mark class="ab-mark">exactly what happened and what was done</mark>. When Tier 1 queues back up, I step in and help clear the chat, email and phone queues so SLAs are met and customers get the support they need faster.
                 </p>
