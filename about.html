@@ -5,18 +5,194 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Me | Judy Ann Santiago</title>
     <meta name="description" content="Learn more about Judy Ann Santiago, Operations Support Specialist & Administrative VA.">
-    
+    <script>document.documentElement.classList.add('js');</script>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-    
+
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/responsive.css">
+
+    <style>
+        /* ===== About page design ===== */
+
+        /* Gold reading-progress bar at the top of the screen */
+        .ab-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0;
+            background: var(--accent-gold);
+            z-index: 1100;
+        }
+
+        /* Header with soft floating shapes */
+        .ab-hero { position: relative; overflow: hidden; }
+        .ab-hero .container { position: relative; z-index: 1; }
+        .ab-hero::before,
+        .ab-hero::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .ab-hero::before {
+            width: 260px;
+            height: 260px;
+            top: -90px;
+            right: 8%;
+            border: 2px solid rgba(197, 168, 128, 0.55);
+            animation: ab-float 9s ease-in-out infinite;
+        }
+        .ab-hero::after {
+            width: 120px;
+            height: 120px;
+            bottom: -40px;
+            left: 6%;
+            background: rgba(197, 168, 128, 0.22);
+            animation: ab-float 11s ease-in-out infinite reverse;
+        }
+        @keyframes ab-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(14px); }
+        }
+
+        /* Main section */
+        .ab-main { padding: 70px 0; }
+        .ab-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .ab-text h2 {
+            position: relative;
+            margin-bottom: 22px;
+            padding-bottom: 14px;
+        }
+        .ab-text h2::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 56px;
+            height: 3px;
+            background: var(--accent-gold);
+            border-radius: 3px;
+        }
+        .ab-text p {
+            text-align: justify;
+            text-justify: inter-word;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        /* Highlighter marks that draw themselves in */
+        .ab-mark {
+            color: inherit;
+            padding: 0 2px;
+            background: linear-gradient(transparent 58%, rgba(197, 168, 128, 0.45) 58%) no-repeat 0 0 / 100% 100%;
+            transition: background-size 0.9s ease 0.5s;
+        }
+        .js .ab-reveal:not(.is-visible) .ab-mark { background-size: 0% 100%; }
+
+        /* Pull quote (taken from the bio) */
+        .ab-quote {
+            margin: 30px 0;
+            padding: 4px 0 4px 24px;
+            border-left: 4px solid var(--accent-gold);
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            line-height: 1.2;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--primary-navy);
+        }
+        .ab-quote::before {
+            content: "\201C";
+            display: block;
+            font-size: 3.2rem;
+            line-height: 0.6;
+            margin-bottom: 0.5rem;
+            color: var(--accent-gold);
+        }
+
+        /* Photo with gold frame and dot pattern */
+        .ab-photo { position: relative; align-self: center; }
+        .ab-photo::before {
+            content: "";
+            position: absolute;
+            inset: 18px -18px -18px 18px;
+            border: 2px solid var(--accent-gold);
+            border-radius: 12px;
+            z-index: 0;
+            transition: transform 0.4s ease;
+        }
+        .ab-photo::after {
+            content: "";
+            position: absolute;
+            top: -34px;
+            left: -34px;
+            width: 130px;
+            height: 130px;
+            background: radial-gradient(var(--accent-gold) 2px, transparent 2px) 0 0 / 16px 16px;
+            opacity: 0.7;
+            z-index: 0;
+        }
+        .ab-photo img {
+            position: relative;
+            z-index: 1;
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.15);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .ab-photo:hover img {
+            transform: translateY(-5px);
+            box-shadow: 0 22px 45px -8px rgba(0, 0, 0, 0.2);
+        }
+        .ab-photo:hover::before { transform: translate(-6px, -6px); }
+
+        /* Fade in on scroll (only when JavaScript is running) */
+        .js .ab-reveal {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+            transition-delay: var(--d, 0s);
+        }
+        .js .ab-reveal.ab-from-right { transform: translateX(32px); }
+        .js .ab-reveal.is-visible { opacity: 1; transform: none; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .ab-hero::before, .ab-hero::after { animation: none; }
+            .js .ab-reveal { opacity: 1; transform: none; transition: none; }
+            .ab-mark { transition: none; }
+            .ab-photo img, .ab-photo::before { transition: none; }
+            .ab-photo:hover img, .ab-photo:hover::before { transform: none; }
+        }
+
+        @media screen and (max-width: 768px) {
+            .ab-main { padding: 50px 0; }
+            .ab-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .ab-text p { text-align: left; }
+            .ab-quote { font-size: 1.5rem; }
+            .ab-photo::before { inset: 10px -8px -10px 8px; }
+            .ab-photo::after { top: -20px; left: -12px; width: 90px; height: 90px; }
+            .ab-hero::before { width: 180px; height: 180px; right: -40px; }
+        }
+    </style>
 </head>
 <body>
+
+    <div class="ab-progress" id="abProgress"></div>
 
     <!-- Header / Navigation -->
     <header class="site-header">
@@ -41,7 +217,7 @@
     </header>
 
     <!-- Page Header / Hero -->
-    <section class="page-header">
+    <section class="page-header ab-hero">
         <div class="container">
             <span class="badge">About Me</span>
             <h1>The Person Behind the Systems</h1>
@@ -50,23 +226,24 @@
     </section>
 
     <!-- About Main Content Section -->
-    <section class="about-main-section" style="padding: 60px 0;">
-        <div class="container" style="display: grid; grid-template-columns: 1fr 1.1fr; gap: 50px; align-items: center;">
-            
-            <!-- Left Side: Bio Text with Justified Alignment -->
-            <div class="about-text-content">
-                <h2 style="margin-bottom: 20px;">Hi there, I’m Judy</h2>
-                <p style="text-align: justify; text-justify: inter-word; line-height: 1.7; margin-bottom: 16px;">
-                    I’m a remote support and operations specialist in the Philippines. In four years I’ve worked on very different accounts: online retail, car rental brands, an education platform, and now billing escalations. Each had its own rules, its own way of talking to customers, and its own idea of a good ticket, so I’ve gotten used to picking up a new setup fast and not needing someone beside me while I learn it.
+    <section class="ab-main">
+        <div class="container ab-grid">
+
+            <div class="ab-text ab-reveal">
+                <h2>Hi there, I’m Judy</h2>
+                <p>
+                    I’m a remote support and operations specialist in the Philippines. In four years I’ve worked on very different accounts: online retail, car rental brands, an education platform, and now billing escalations. Each had its own rules, its own way of talking to customers, and its own idea of a good ticket, so I’ve gotten used to <mark class="ab-mark">picking up a new setup fast</mark> and not needing someone beside me while I learn it.
                 </p>
-                <p style="text-align: justify; text-justify: inter-word; line-height: 1.7; margin-bottom: 16px;">
-                    At Tier 3, I get the cases Tier 1 couldn’t close. Most of it is detective work: going through what happened on the account, finding where it went wrong, and either fixing it or explaining the next steps clearly. Then I write it up so the next person can see exactly what happened and what was done. When Tier 1 queues back up, I step in and help clear the chat, email and phone queues so SLAs are met and customers get the support they need faster.
+
+                <blockquote class="ab-quote">Most of it is detective work.</blockquote>
+
+                <p>
+                    At Tier 3, I get the cases Tier 1 couldn’t close. Most of it is <mark class="ab-mark">detective work</mark>: going through what happened on the account, finding where it went wrong, and either fixing it or explaining the next steps clearly. Then I write it up so the next person can see <mark class="ab-mark">exactly what happened and what was done</mark>. When Tier 1 queues back up, I step in and help clear the chat, email and phone queues so SLAs are met and customers get the support they need faster.
                 </p>
             </div>
 
-            <!-- Right Side: Professional Workspace Photo -->
-            <div class="about-image-wrapper" style="text-align: center; align-self: center;">
-                <img src="./assets/images/hero-workspace.png" alt="Judy Ann Santiago Workspace" style="width: 100%; height: 100%; min-height: 100%; border-radius: 12px; box-shadow: 0 15px 35px -5px rgba(0,0,0,0.15); object-fit: cover;">
+            <div class="ab-photo ab-reveal ab-from-right" style="--d: 0.15s;">
+                <img src="./assets/images/hero-workspace.png" alt="Judy Ann Santiago Workspace">
             </div>
 
         </div>
@@ -110,6 +287,35 @@
         </div>
     </footer>
 
+    <script>
+        (function () {
+            // Reading-progress bar
+            var bar = document.getElementById('abProgress');
+            function onScroll() {
+                var h = document.documentElement;
+                var max = h.scrollHeight - h.clientHeight;
+                bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+
+            // Fade elements in as they scroll into view
+            var els = document.querySelectorAll('.ab-reveal');
+            if (!('IntersectionObserver' in window)) {
+                els.forEach(function (el) { el.classList.add('is-visible'); });
+                return;
+            }
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        io.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            els.forEach(function (el) { io.observe(el); });
+        })();
+    </script>
     <script src="js/main.js"></script>
 </body>
 </html>
