@@ -31,6 +31,45 @@
             z-index: 1100;
         }
 
+        /* Navy page header */
+        .ab-hero {
+            position: relative;
+            overflow: hidden;
+            background: var(--primary-navy);
+            padding: 64px 0 70px;
+        }
+        .ab-hero .container { position: relative; z-index: 1; }
+        .ab-hero h1 { color: var(--bg-white); }
+        .ab-hero .badge {
+            display: inline-block;
+            margin-bottom: 18px;
+            background: rgba(197, 168, 128, 0.18);
+            color: var(--accent-gold);
+        }
+        .ab-hero-line {
+            width: 0;
+            height: 4px;
+            margin-top: 22px;
+            background: var(--accent-gold);
+            border-radius: 4px;
+            animation: ab-draw 1s ease 0.4s forwards;
+        }
+        @keyframes ab-draw { to { width: 96px; } }
+
+        /* Faint gold dots on the right side of the header */
+        .ab-hero::after {
+            content: "";
+            position: absolute;
+            right: 6%;
+            top: 50%;
+            width: 220px;
+            height: 150px;
+            transform: translateY(-50%);
+            background: radial-gradient(var(--accent-gold) 2px, transparent 2px) 0 0 / 18px 18px;
+            opacity: 0.35;
+            pointer-events: none;
+        }
+
         /* Main section */
         .ab-main { padding: 70px 0; }
         .ab-grid {
@@ -120,6 +159,7 @@
         .js .ab-reveal.is-visible { opacity: 1; transform: none; }
 
         @media (prefers-reduced-motion: reduce) {
+            .ab-hero-line { animation: none; width: 96px; }
             .js .ab-reveal { opacity: 1; transform: none; transition: none; }
             .ab-mark { transition: none; }
             .ab-photo img, .ab-photo::before { transition: none; }
@@ -127,6 +167,8 @@
         }
 
         @media screen and (max-width: 768px) {
+            .ab-hero { padding: 48px 0 52px; }
+            .ab-hero::after { display: none; }
             .ab-main { padding: 50px 0; }
             .ab-grid { grid-template-columns: 1fr; gap: 3rem; }
             .ab-text p { text-align: left; }
@@ -162,11 +204,11 @@
     </header>
 
     <!-- Page Header / Hero -->
-    <section class="page-header">
+    <section class="page-header ab-hero">
         <div class="container">
             <span class="badge">About Me</span>
             <h1>The Person Behind the Systems</h1>
-            <p class="subtitle">Process-minded, organized, and focused on keeping everyday operations running smoothly.</p>
+            <div class="ab-hero-line"></div>
         </div>
     </section>
 
@@ -175,7 +217,7 @@
         <div class="container ab-grid">
 
             <div class="ab-text ab-reveal">
-                <h2>Hi there, I’m Judy</h2>
+                <h2>Hi there, this is Judy</h2>
                 <p>
                     I’m a remote support and operations specialist in the Philippines. In four years I’ve worked on very different accounts: online retail, car rental brands, an education platform, and now billing escalations. Each had its own rules, its own way of talking to customers, and its own idea of a good ticket, so I’ve gotten used to <mark class="ab-mark">picking up a new setup fast</mark> and not needing someone beside me while I learn it.
                 </p>
