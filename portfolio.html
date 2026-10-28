@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio & Case Studies | Judy Ann Santiago</title>
     <meta name="description" content="Explore real-world case studies in inbox management, calendar coordination, and data organization by Judy Ann Santiago.">
+    <script>document.documentElement.classList.add('js');</script>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,83 +16,463 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/responsive.css">
-    
+
     <style>
-        .portfolio-card {
-            background: #ffffff;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 2.5rem;
-            margin-bottom: 3.5rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        /* ===== Portfolio page design ===== */
+
+        /* Gold reading-progress bar */
+        .pf-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0;
+            background: var(--accent-gold);
+            z-index: 1100;
         }
-        
-        .portfolio-grid {
+
+        /* ---------- Hero (navy) ---------- */
+        .pf-hero {
+            position: relative;
+            overflow: hidden;
+            background: var(--primary-navy);
+            padding: 5.5rem 0 7.5rem;
+            text-align: center;
+        }
+        .pf-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 82% 20%, rgba(197, 168, 128, 0.22), transparent 45%),
+                radial-gradient(circle at 8% 90%, rgba(197, 168, 128, 0.12), transparent 40%);
+            pointer-events: none;
+        }
+        .pf-hero .container {
+            position: relative;
+            z-index: 2;
+            max-width: 820px;
+            padding: 0 20px;
+        }
+        .pf-shape { position: absolute; pointer-events: none; z-index: 1; }
+        .pf-shape.s1 {
+            width: 300px;
+            height: 300px;
+            top: -100px;
+            right: 7%;
+            border-radius: 50%;
+            border: 2px solid rgba(197, 168, 128, 0.45);
+            animation: pf-float 9s ease-in-out infinite;
+        }
+        .pf-shape.s2 {
+            width: 130px;
+            height: 130px;
+            bottom: 90px;
+            left: 6%;
+            border-radius: 50%;
+            background: rgba(197, 168, 128, 0.16);
+            animation: pf-float 11s ease-in-out infinite reverse;
+        }
+        .pf-shape.s3 {
+            width: 200px;
+            height: 130px;
+            right: 10%;
+            bottom: 100px;
+            background: radial-gradient(var(--accent-gold) 2px, transparent 2px) 0 0 / 18px 18px;
+            opacity: 0.35;
+        }
+        .pf-shape.s4 {
+            width: 64px;
+            height: 64px;
+            top: 26%;
+            left: 13%;
+            border-radius: 50%;
+            border: 2px solid rgba(197, 168, 128, 0.35);
+            animation: pf-float 7s ease-in-out infinite;
+        }
+        @keyframes pf-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(16px); }
+        }
+        .pf-hero .badge {
+            display: inline-block;
+            background: rgba(197, 168, 128, 0.14);
+            border: 1px solid rgba(197, 168, 128, 0.5);
+            color: var(--accent-gold);
+        }
+        .pf-hero h1 {
+            margin: 1.1rem 0 1rem;
+            color: var(--bg-white);
+        }
+        .pf-gold { color: var(--accent-gold); }
+        .pf-hero p {
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.12rem;
+            line-height: 1.6;
+            color: rgba(248, 250, 252, 0.82);
+        }
+        .pf-wave {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -1px;
+            line-height: 0;
+            z-index: 1;
+        }
+        .pf-wave svg { display: block; width: 100%; height: 60px; }
+        .pf-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: pf-up 0.8s ease forwards;
+            animation-delay: var(--d, 0s);
+        }
+        @keyframes pf-up { to { opacity: 1; transform: none; } }
+
+        /* ---------- Case studies ---------- */
+        .pf-main {
+            position: relative;
+            overflow: hidden;
+            padding: 3rem 0 5.5rem;
+            background: var(--bg-surface);
+        }
+        .pf-main::before {
+            content: "";
+            position: absolute;
+            left: -140px;
+            top: 38%;
+            width: 340px;
+            height: 340px;
+            border-radius: 50%;
+            border: 2px solid rgba(197, 168, 128, 0.4);
+            pointer-events: none;
+        }
+        .pf-main::after {
+            content: "";
+            position: absolute;
+            right: 2%;
+            top: 62%;
+            width: 190px;
+            height: 130px;
+            background: radial-gradient(var(--accent-gold) 2px, transparent 2px) 0 0 / 18px 18px;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+        .pf-main .container { position: relative; z-index: 1; }
+
+        .pf-card {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 3.5rem;
+            padding: 2.75rem 2.5rem 2.5rem;
+            background: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            box-shadow: 0 12px 36px rgba(10, 25, 47, 0.06);
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+        }
+        .pf-card:last-child { margin-bottom: 0; }
+        .pf-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-gold), rgba(197, 168, 128, 0.25));
+        }
+        .pf-card:hover {
+            border-color: rgba(197, 168, 128, 0.7);
+            box-shadow: 0 20px 50px rgba(10, 25, 47, 0.1);
+        }
+        .pf-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 2.5rem;
-            align-items: center; /* Vertically aligns text and graphic */
+            gap: 3rem;
+            align-items: center;
         }
-        
-        @media (max-width: 992px) {
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
+
+        /* Heading block */
+        .pf-tag {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 999px;
+            background: rgba(197, 168, 128, 0.2);
+            font-family: var(--font-subheading);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--primary-navy);
         }
-        
-        .section-icon-header {
+        .pf-title {
+            margin: 0.7rem 0 0.1rem;
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            color: var(--primary-navy);
+            text-transform: uppercase;
+        }
+        .pf-sub {
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #a8815e;
+        }
+        .pf-motto {
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+
+        /* Scenario / Problem / Approach / Result blocks */
+        .pf-block {
+            padding: 1.2rem 0;
+            border-top: 1px solid #EAE0D5;
+        }
+        .pf-block:last-child { padding-bottom: 0; }
+        .pf-block-head {
             display: flex;
             align-items: center;
             gap: 0.85rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.6rem;
         }
-        
-        .custom-icon {
-            width: 38px;
-            height: 38px;
-            object-fit: contain;
+        .pf-sec-icon {
             flex-shrink: 0;
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: rgba(197, 168, 128, 0.2);
+            transition: background var(--transition-fast), transform 0.3s ease;
+        }
+        .pf-sec-icon img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
             display: block;
         }
-        
-        .results-box-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-            gap: 1rem;
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid #EAE0D5;
+        .pf-block:hover .pf-sec-icon {
+            background: rgba(197, 168, 128, 0.38);
+            transform: scale(1.06);
         }
-        
-        .result-item {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            font-size: 0.9rem;
-            font-weight: 600;
+        .pf-block-head h4 {
+            margin: 0;
+            font-size: 0.95rem;
+            font-weight: 700;
             color: var(--primary-navy);
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
         }
-        
-        .preview-graphic-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
+        .pf-block p,
+        .pf-block ul { margin-left: calc(42px + 0.85rem); }
+        .pf-block p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #4a5568;
+        }
+        .pf-block ul {
+            list-style: none;
+            padding: 0;
+        }
+        .pf-block li {
+            position: relative;
+            margin-bottom: 0.4rem;
+            padding-left: 1.1rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #4a5568;
+        }
+        .pf-block li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.55em;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent-gold);
         }
 
-        .preview-graphic {
+        /* Icons */
+        .pf-i {
+            width: 18px;
+            height: 18px;
+            fill: none;
+            stroke: var(--primary-navy);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .pf-ico {
+            flex-shrink: 0;
+            width: 34px;
+            height: 34px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: rgba(197, 168, 128, 0.25);
+            transition: background var(--transition-fast), transform 0.3s ease;
+        }
+
+        /* Result chips */
+        .pf-results {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 0.75rem;
+            margin-top: 1.1rem;
+        }
+        .pf-result {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            padding: 0.6rem 0.8rem;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            line-height: 1.3;
+            color: var(--primary-navy);
+            transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+        }
+        .pf-result:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 8px 18px rgba(10, 25, 47, 0.07);
+        }
+        .pf-result:hover .pf-ico { background: var(--accent-gold); transform: scale(1.08); }
+
+        /* Data source box + tool list (Dynamic Search) */
+        .pf-source {
+            margin-bottom: 1.5rem;
+            padding: 1.2rem 1.3rem;
+            border-radius: 10px;
+            background: var(--primary-navy);
+            border-left: 4px solid var(--accent-gold);
+        }
+        .pf-source strong {
+            display: block;
+            margin-bottom: 0.3rem;
+            letter-spacing: 0.5px;
+            color: var(--accent-gold);
+        }
+        .pf-source p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+        }
+        .pf-tools { list-style: none; padding: 0; margin: 0; }
+        .pf-tools li {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            margin-bottom: 0.7rem;
+            padding: 0.55rem 0.8rem;
+            border-radius: 10px;
+            font-size: 0.92rem;
+            color: #4a5568;
+            transition: transform var(--transition-fast), background var(--transition-fast);
+        }
+        .pf-tools li:hover {
+            transform: translateX(5px);
+            background: var(--bg-surface);
+        }
+        .pf-tools li:hover .pf-ico { background: var(--accent-gold); transform: scale(1.08); }
+
+        /* Visual */
+        .pf-visual { position: relative; }
+        .pf-visual::before {
+            content: "";
+            position: absolute;
+            inset: 16px -16px -16px 16px;
+            border: 2px solid var(--accent-gold);
+            border-radius: 12px;
+            opacity: 0.8;
+            transition: transform 0.4s ease;
+        }
+        .pf-visual:hover::before { transform: translate(-6px, -6px); }
+        .pf-visual img {
+            position: relative;
+            z-index: 1;
+            display: block;
             width: 100%;
             height: auto;
-            max-height: 100%;
             border-radius: 8px;
             border: 1px solid #e2e8f0;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-            display: block;
+            background: var(--bg-white);
+            box-shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
             object-fit: contain;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .pf-visual:hover img {
+            transform: translateY(-5px);
+            box-shadow: 0 22px 44px rgba(0, 0, 0, 0.16);
+        }
+
+        .site-footer { border-top: 3px solid var(--accent-gold); }
+
+        /* Fade in on scroll (only when JavaScript is running) */
+        .js .pf-reveal {
+            opacity: 0;
+            transform: translateY(26px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .js .pf-reveal.is-visible { opacity: 1; transform: none; }
+
+        @media screen and (min-width: 993px) {
+            .pf-flip .pf-visual { order: -1; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .pf-shape { animation: none !important; }
+            .pf-in { opacity: 1; transform: none; animation: none; }
+            .js .pf-reveal { opacity: 1; transform: none; transition: none; }
+            .pf-visual img, .pf-visual::before, .pf-result, .pf-tools li, .pf-ico, .pf-sec-icon { transition: none; }
+            .pf-visual:hover img, .pf-visual:hover::before, .pf-result:hover, .pf-tools li:hover { transform: none; }
+        }
+
+        @media (max-width: 992px) {
+            .pf-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .pf-visual { margin-right: 14px; }
+        }
+
+        @media screen and (max-width: 768px) {
+            .pf-hero { padding: 4rem 0 5.5rem; }
+            .pf-shape.s1 { width: 200px; height: 200px; right: -60px; top: -70px; }
+            .pf-shape.s2, .pf-shape.s3, .pf-shape.s4 { display: none; }
+            .pf-wave svg { height: 36px; }
+            .pf-main { padding: 2rem 0 3.5rem; }
+            .pf-main::after { display: none; }
+            .pf-card { padding: 2rem 1.35rem 1.75rem; margin-bottom: 2.5rem; }
+            .pf-title { font-size: 1.8rem; }
+            .pf-block p, .pf-block ul { margin-left: 0; }
+            .pf-results { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
 <body>
+
+    <!-- Icon set used by the result chips and the tool list -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+        <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4L17 12H5"/></symbol>
+        <symbol id="i-mail-check" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/><path d="M9 17l2 2 4-4" /></symbol>
+        <symbol id="i-calendar-check" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="M9 15l2 2 4-4"/></symbol>
+        <symbol id="i-hourglass" viewBox="0 0 24 24"><path d="M6 3h12M6 21h12"/><path d="M7 3c0 5 3 6 5 9-2 3-5 4-5 9"/><path d="M17 3c0 5-3 6-5 9 2 3 5 4 5 9"/></symbol>
+        <symbol id="i-trend" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></symbol>
+        <symbol id="i-layout" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 10v10"/></symbol>
+        <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></symbol>
+        <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/></symbol>
+        <symbol id="i-clipboard" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="M9 13l2 2 4-4"/></symbol>
+        <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 3h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol>
+        <symbol id="i-chart" viewBox="0 0 24 24"><path d="M6 20v-5M12 20V9M18 20V4"/></symbol>
+        <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></symbol>
+        <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><circle cx="12" cy="15" r="1.3"/></symbol>
+        <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+    </svg>
+
+    <div class="pf-progress" id="pfProgress"></div>
 
     <!-- Header / Navigation -->
     <header class="site-header">
@@ -116,259 +497,262 @@
     </header>
 
     <!-- Page Header -->
-    <section class="hero" style="padding: 3rem 0;">
-        <div class="container text-center">
-            <span class="badge">Case Studies</span>
-            <h1 style="margin-top: 1rem;">Work Examples</h1>
-            <p style="max-width: 600px; margin: 1rem auto 0 auto;">
+    <section class="pf-hero">
+        <span class="pf-shape s1" aria-hidden="true"></span>
+        <span class="pf-shape s2" aria-hidden="true"></span>
+        <span class="pf-shape s3" aria-hidden="true"></span>
+        <span class="pf-shape s4" aria-hidden="true"></span>
+
+        <div class="container">
+            <span class="badge pf-in" style="--d: 0.05s;">Case Studies</span>
+            <h1 class="pf-in" style="--d: 0.15s;">Work <span class="pf-gold">Examples</span></h1>
+            <p class="pf-in" style="--d: 0.3s;">
                 Real operational challenges solved with organized systems and clear workflows.
             </p>
+        </div>
+
+        <div class="pf-wave" aria-hidden="true">
+            <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,32 C240,64 480,0 720,24 C960,48 1200,60 1440,20 L1440,60 L0,60 Z" fill="#F8FAFC"/>
+            </svg>
         </div>
     </section>
 
     <!-- Case Studies Section -->
-    <section class="framework-section" style="padding: 3rem 0;">
+    <section class="pf-main">
         <div class="container">
-            
+
             <!-- CASE STUDY 01: INBOX MANAGEMENT -->
-            <article class="portfolio-card">
-                <div class="portfolio-grid">
-                    
+            <article class="pf-card pf-reveal">
+                <div class="pf-grid">
+
                     <!-- Left Column: Details -->
                     <div>
-                        <span class="case-tag" style="color: var(--text-muted); font-size: 0.85rem; letter-spacing: 1px; font-weight: 700;">CASE STUDY 01</span>
-                        <h2 style="font-size: 2.2rem; color: var(--primary-navy); margin: 0.3rem 0 0.1rem 0; font-family: var(--font-heading); text-transform: uppercase;">Inbox Management</h2>
-                        <h4 style="color: #a8815e; font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem;">SYSTEM FOR A BUSY EXECUTIVE</h4>
-                        <p style="font-style: italic; color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem;">Organized. Prioritized. Nothing missed.</p>
-                        
-                        <div style="border-top: 1px solid #EAE0D5; padding-top: 1.2rem; margin-bottom: 1.2rem;">
-                            <div class="section-icon-header">
-                                <img src="assets/images/icon-scenario.png" alt="Scenario Icon" class="custom-icon">
-                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem; font-weight: 700;">The Scenario</h4>
+                        <span class="pf-tag">CASE STUDY 01</span>
+                        <h2 class="pf-title">Inbox Management</h2>
+                        <h4 class="pf-sub">SYSTEM FOR A BUSY EXECUTIVE</h4>
+                        <p class="pf-motto">Organized. Prioritized. Nothing missed.</p>
+
+                        <div class="pf-block">
+                            <div class="pf-block-head">
+                                <span class="pf-sec-icon"><img src="assets/images/icon-scenario.png" alt="Scenario Icon"></span>
+                                <h4>The Scenario</h4>
                             </div>
-                            <p style="font-size: 0.9rem; margin-left: 3rem; color: #4a5568;">The client receives 50+ emails daily, leading to missed messages, delayed responses, and difficulty prioritizing tasks.</p>
+                            <p>The client receives 50+ emails daily, leading to missed messages, delayed responses, and difficulty prioritizing tasks.</p>
                         </div>
 
-                        <div style="border-top: 1px solid #EAE0D5; padding-top: 1.2rem; margin-bottom: 1.2rem;">
-                            <div class="section-icon-header">
-                                <img src="assets/images/icon-problem.png" alt="Problem Icon" class="custom-icon">
-                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem; font-weight: 700;">The Problem</h4>
+                        <div class="pf-block">
+                            <div class="pf-block-head">
+                                <span class="pf-sec-icon"><img src="assets/images/icon-problem.png" alt="Problem Icon"></span>
+                                <h4>The Problem</h4>
                             </div>
-                            <ul style="font-size: 0.9rem; margin-left: 3rem; padding: 0; color: #4a5568; list-style-type: disc;">
-                                <li style="margin-bottom: 0.3rem;">Important emails get buried</li>
-                                <li style="margin-bottom: 0.3rem;">No clear categorization</li>
-                                <li style="margin-bottom: 0.3rem;">Delayed responses</li>
-                                <li style="margin-bottom: 0.3rem;">Inbox clutter affecting productivity</li>
+                            <ul>
+                                <li>Important emails get buried</li>
+                                <li>No clear categorization</li>
+                                <li>Delayed responses</li>
+                                <li>Inbox clutter affecting productivity</li>
                             </ul>
                         </div>
 
-                        <div style="border-top: 1px solid #EAE0D5; padding-top: 1.2rem; margin-bottom: 1.2rem;">
-                            <div class="section-icon-header">
-                                <img src="assets/images/icon-approach.png" alt="Approach Icon" class="custom-icon">
-                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem; font-weight: 700;">My Approach</h4>
+                        <div class="pf-block">
+                            <div class="pf-block-head">
+                                <span class="pf-sec-icon"><img src="assets/images/icon-approach.png" alt="Approach Icon"></span>
+                                <h4>My Approach</h4>
                             </div>
-                            <ul style="font-size: 0.9rem; margin-left: 3rem; padding: 0; color: #4a5568; list-style-type: disc;">
-                                <li style="margin-bottom: 0.3rem;">Reviewed email types and common senders</li>
-                                <li style="margin-bottom: 0.3rem;">Created a labeling system based on priority and category</li>
-                                <li style="margin-bottom: 0.3rem;">Set up filters to automatically organize incoming emails</li>
-                                <li style="margin-bottom: 0.3rem;">Flagged urgent messages for immediate attention</li>
+                            <ul>
+                                <li>Reviewed email types and common senders</li>
+                                <li>Created a labeling system based on priority and category</li>
+                                <li>Set up filters to automatically organize incoming emails</li>
+                                <li>Flagged urgent messages for immediate attention</li>
                             </ul>
                         </div>
 
-                        <div style="border-top: 1px solid #EAE0D5; padding-top: 1.2rem;">
-                            <div class="section-icon-header">
-                                <img src="assets/images/icon-result.png" alt="Result Icon" class="custom-icon">
-                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem; font-weight: 700;">The Result</h4>
+                        <div class="pf-block">
+                            <div class="pf-block-head">
+                                <span class="pf-sec-icon"><img src="assets/images/icon-result.png" alt="Result Icon"></span>
+                                <h4>The Result</h4>
                             </div>
-                            <p style="font-size: 0.9rem; margin-left: 3rem; color: #4a5568; margin-bottom: 1rem;">Emails are now sorted automatically, reducing clutter and making it easier to focus on priority tasks.</p>
-                            
-                            <div class="results-box-grid">
-                                <div class="result-item">🕒 <span>Faster response time</span></div>
-                                <div class="result-item">☑️ <span>Clear prioritization</span></div>
-                                <div class="result-item">✉️ <span>Zero missed emails</span></div>
+                            <p>Emails are now sorted automatically, reducing clutter and making it easier to focus on priority tasks.</p>
+
+                            <div class="pf-results">
+                                <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-clock"/></svg></span><span>Faster response time</span></div>
+                                <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-flag"/></svg></span><span>Clear prioritization</span></div>
+                                <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-mail-check"/></svg></span><span>Zero missed emails</span></div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Right Column: Visual Presentation Graphic -->
-                    <div class="preview-graphic-wrapper">
-                        <img src="assets/images/case-study-01-inbox.png" alt="Inbox Management Case Study Visualization" class="preview-graphic">
+                    <div class="pf-visual">
+                        <img src="assets/images/case-study-01-inbox.png" alt="Inbox Management Case Study Visualization">
                     </div>
 
                 </div>
             </article>
 
             <!-- CASE STUDY 02: CALENDAR MANAGEMENT -->
-            <article class="portfolio-card">
-                <div class="portfolio-grid">
-                    
+            <article class="pf-card pf-flip pf-reveal">
+                <div class="pf-grid">
+
                     <!-- Left Column: Details -->
                     <div>
-                        <span class="case-tag" style="color: var(--text-muted); font-size: 0.85rem; letter-spacing: 1px; font-weight: 700;">CASE STUDY 02</span>
-                        <h2 style="font-size: 2.2rem; color: var(--primary-navy); margin: 0.3rem 0 0.1rem 0; font-family: var(--font-heading); text-transform: uppercase;">Calendar Management</h2>
-                        <h4 style="color: #a8815e; font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem;">& SCHEDULING SYSTEM</h4>
-                        <p style="font-style: italic; color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem;">Structured schedule. Better focus. More done.</p>
-                        
-                        <div style="border-top: 1px solid #EAE0D5; padding-top: 1.2rem; margin-bottom: 1.2rem;">
-                            <div class="section-icon-header">
-                                <img src="assets/images/icon-scenario.png" alt="Scenario Icon" class="custom-icon">
-                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem; font-weight: 700;">The Scenario</h4>
+                        <span class="pf-tag">CASE STUDY 02</span>
+                        <h2 class="pf-title">Calendar Management</h2>
+                        <h4 class="pf-sub">&amp; SCHEDULING SYSTEM</h4>
+                        <p class="pf-motto">Structured schedule. Better focus. More done.</p>
+
+                        <div class="pf-block">
+                            <div class="pf-block-head">
+                                <span class="pf-sec-icon"><img src="assets/images/icon-scenario.png" alt="Scenario Icon"></span>
+                                <h4>The Scenario</h4>
                             </div>
-                            <p style="font-size: 0.9rem; margin-left: 3rem; color: #4a5568;">The client manages multiple meetings daily, leading to scheduling conflicts, missed appointments, and lack of focused work time.</p>
+                            <p>The client manages multiple meetings daily, leading to scheduling conflicts, missed appointments, and lack of focused work time.</p>
                         </div>
 
-                        <div style="border-top: 1px solid #EAE0D5; padding-top: 1.2rem; margin-bottom: 1.2rem;">
-                            <div class="section-icon-header">
-                                <img src="assets/images/icon-problem.png" alt="Problem Icon" class="custom-icon">
-                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem; font-weight: 700;">The Problem</h4>
+                        <div class="pf-block">
+                            <div class="pf-block-head">
+                                <span class="pf-sec-icon"><img src="assets/images/icon-problem.png" alt="Problem Icon"></span>
+                                <h4>The Problem</h4>
                             </div>
-                            <ul style="font-size: 0.9rem; margin-left: 3rem; padding: 0; color: #4a5568; list-style-type: disc;">
-                                <li style="margin-bottom: 0.3rem;">Overlapping meetings</li>
-                                <li style="margin-bottom: 0.3rem;">No buffer time between calls</li>
-                                <li style="margin-bottom: 0.3rem;">Missed or double-booked appointments</li>
-                                <li style="margin-bottom: 0.3rem;">No dedicated focus time</li>
+                            <ul>
+                                <li>Overlapping meetings</li>
+                                <li>No buffer time between calls</li>
+                                <li>Missed or double-booked appointments</li>
+                                <li>No dedicated focus time</li>
                             </ul>
                         </div>
 
-                        <div style="border-top: 1px solid #EAE0D5; padding-top: 1.2rem; margin-bottom: 1.2rem;">
-                            <div class="section-icon-header">
-                                <img src="assets/images/icon-approach.png" alt="Approach Icon" class="custom-icon">
-                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem; font-weight: 700;">My Approach</h4>
+                        <div class="pf-block">
+                            <div class="pf-block-head">
+                                <span class="pf-sec-icon"><img src="assets/images/icon-approach.png" alt="Approach Icon"></span>
+                                <h4>My Approach</h4>
                             </div>
-                            <ul style="font-size: 0.9rem; margin-left: 3rem; padding: 0; color: #4a5568; list-style-type: disc;">
-                                <li style="margin-bottom: 0.3rem;">Reviewed existing schedule and meeting patterns</li>
-                                <li style="margin-bottom: 0.3rem;">Identified conflicts and time gaps</li>
-                                <li style="margin-bottom: 0.3rem;">Reorganized calendar with clear time blocks</li>
-                                <li style="margin-bottom: 0.3rem;">Added buffer time between meetings</li>
-                                <li style="margin-bottom: 0.3rem;">Prioritized high-impact tasks and focus hours</li>
+                            <ul>
+                                <li>Reviewed existing schedule and meeting patterns</li>
+                                <li>Identified conflicts and time gaps</li>
+                                <li>Reorganized calendar with clear time blocks</li>
+                                <li>Added buffer time between meetings</li>
+                                <li>Prioritized high-impact tasks and focus hours</li>
                             </ul>
                         </div>
 
-                        <div style="border-top: 1px solid #EAE0D5; padding-top: 1.2rem;">
-                            <div class="section-icon-header">
-                                <img src="assets/images/icon-result.png" alt="Result Icon" class="custom-icon">
-                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem; font-weight: 700;">The Result</h4>
+                        <div class="pf-block">
+                            <div class="pf-block-head">
+                                <span class="pf-sec-icon"><img src="assets/images/icon-result.png" alt="Result Icon"></span>
+                                <h4>The Result</h4>
                             </div>
-                            <div class="results-box-grid">
-                                <div class="result-item">📅 <span>No scheduling conflicts</span></div>
-                                <div class="result-item">🕒 <span>Better time management</span></div>
-                                <div class="result-item">📈 <span>Increased productivity</span></div>
-                                <div class="result-item">☑️ <span>Clear daily structure</span></div>
+                            <div class="pf-results">
+                                <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-calendar-check"/></svg></span><span>No scheduling conflicts</span></div>
+                                <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-hourglass"/></svg></span><span>Better time management</span></div>
+                                <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-trend"/></svg></span><span>Increased productivity</span></div>
+                                <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-layout"/></svg></span><span>Clear daily structure</span></div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Right Column: Visual Presentation Graphic -->
-                    <div class="preview-graphic-wrapper">
-                        <img src="assets/images/case-study-02-calendar.png" alt="Calendar Management Case Study Visualization" class="preview-graphic">
+                    <div class="pf-visual">
+                        <img src="assets/images/case-study-02-calendar.png" alt="Calendar Management Case Study Visualization">
                     </div>
 
                 </div>
             </article>
 
             <!-- CASE STUDY 03: DATA MANAGEMENT -->
-            <article class="portfolio-card">
-                <div class="portfolio-grid">
-                    
+            <article class="pf-card pf-reveal">
+                <div class="pf-grid">
+
                     <!-- Left Column: Details -->
                     <div>
-                        <span class="case-tag" style="color: var(--text-muted); font-size: 0.85rem; letter-spacing: 1px; font-weight: 700;">CASE STUDY 03</span>
-                        <h2 style="font-size: 2.2rem; color: var(--primary-navy); margin: 0.3rem 0 0.1rem 0; font-family: var(--font-heading); text-transform: uppercase;">Data Management</h2>
-                        <h4 style="color: #a8815e; font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem;">& TRACKING SYSTEM</h4>
-                        <p style="font-style: italic; color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem;">Organized Data. Clear tracking. Better decisions.</p>
-                        
-                        <div style="border-top: 1px solid #EAE0D5; padding-top: 1.2rem; margin-bottom: 1.2rem;">
-                            <div class="section-icon-header">
-                                <img src="assets/images/icon-scenario.png" alt="Scenario Icon" class="custom-icon">
-                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem; font-weight: 700;">The Scenario</h4>
+                        <span class="pf-tag">CASE STUDY 03</span>
+                        <h2 class="pf-title">Data Management</h2>
+                        <h4 class="pf-sub">&amp; TRACKING SYSTEM</h4>
+                        <p class="pf-motto">Organized Data. Clear tracking. Better decisions.</p>
+
+                        <div class="pf-block">
+                            <div class="pf-block-head">
+                                <span class="pf-sec-icon"><img src="assets/images/icon-scenario.png" alt="Scenario Icon"></span>
+                                <h4>The Scenario</h4>
                             </div>
-                            <p style="font-size: 0.9rem; margin-left: 3rem; color: #4a5568;">The client manages multiple records manually, resulting in inconsistent data, difficulty tracking updates, and time-consuming searches.</p>
+                            <p>The client manages multiple records manually, resulting in inconsistent data, difficulty tracking updates, and time-consuming searches.</p>
                         </div>
 
-                        <div style="border-top: 1px solid #EAE0D5; padding-top: 1.2rem; margin-bottom: 1.2rem;">
-                            <div class="section-icon-header">
-                                <img src="assets/images/icon-problem.png" alt="Problem Icon" class="custom-icon">
-                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem; font-weight: 700;">The Problem</h4>
+                        <div class="pf-block">
+                            <div class="pf-block-head">
+                                <span class="pf-sec-icon"><img src="assets/images/icon-problem.png" alt="Problem Icon"></span>
+                                <h4>The Problem</h4>
                             </div>
-                            <ul style="font-size: 0.9rem; margin-left: 3rem; padding: 0; color: #4a5568; list-style-type: disc;">
-                                <li style="margin-bottom: 0.3rem;">Disorganized data entries</li>
-                                <li style="margin-bottom: 0.3rem;">Missing or incomplete information</li>
-                                <li style="margin-bottom: 0.3rem;">Difficult to track updates</li>
-                                <li style="margin-bottom: 0.3rem;">Time wasted searching for records</li>
+                            <ul>
+                                <li>Disorganized data entries</li>
+                                <li>Missing or incomplete information</li>
+                                <li>Difficult to track updates</li>
+                                <li>Time wasted searching for records</li>
                             </ul>
                         </div>
 
-                        <div style="border-top: 1px solid #EAE0D5; padding-top: 1.2rem; margin-bottom: 1.2rem;">
-                            <div class="section-icon-header">
-                                <img src="assets/images/icon-approach.png" alt="Approach Icon" class="custom-icon">
-                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem; font-weight: 700;">My Approach</h4>
+                        <div class="pf-block">
+                            <div class="pf-block-head">
+                                <span class="pf-sec-icon"><img src="assets/images/icon-approach.png" alt="Approach Icon"></span>
+                                <h4>My Approach</h4>
                             </div>
-                            <ul style="font-size: 0.9rem; margin-left: 3rem; padding: 0; color: #4a5568; list-style-type: disc;">
-                                <li style="margin-bottom: 0.3rem;">Reviewed existing data structure</li>
-                                <li style="margin-bottom: 0.3rem;">Cleaned and standardized entries</li>
-                                <li style="margin-bottom: 0.3rem;">Created a structured tracking system</li>
-                                <li style="margin-bottom: 0.3rem;">Added clear categories and fields</li>
-                                <li style="margin-bottom: 0.3rem;">Ensured consistency across all records</li>
+                            <ul>
+                                <li>Reviewed existing data structure</li>
+                                <li>Cleaned and standardized entries</li>
+                                <li>Created a structured tracking system</li>
+                                <li>Added clear categories and fields</li>
+                                <li>Ensured consistency across all records</li>
                             </ul>
                         </div>
 
-                        <div style="border-top: 1px solid #EAE0D5; padding-top: 1.2rem;">
-                            <div class="section-icon-header">
-                                <img src="assets/images/icon-result.png" alt="Result Icon" class="custom-icon">
-                                <h4 style="margin: 0; color: var(--primary-navy); text-transform: uppercase; font-size: 0.95rem; font-weight: 700;">The Result</h4>
+                        <div class="pf-block">
+                            <div class="pf-block-head">
+                                <span class="pf-sec-icon"><img src="assets/images/icon-result.png" alt="Result Icon"></span>
+                                <h4>The Result</h4>
                             </div>
-                            <div class="results-box-grid">
-                                <div class="result-item">⏱️ <span>Faster data access</span></div>
-                                <div class="result-item">🎯 <span>Reduced errors</span></div>
-                                <div class="result-item">📋 <span>Clear tracking progress</span></div>
-                                <div class="result-item">📁 <span>Better organization</span></div>
+                            <div class="pf-results">
+                                <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-bolt"/></svg></span><span>Faster data access</span></div>
+                                <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-target"/></svg></span><span>Reduced errors</span></div>
+                                <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-clipboard"/></svg></span><span>Clear tracking progress</span></div>
+                                <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-folder"/></svg></span><span>Better organization</span></div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Right Column: Visual Presentation Graphic -->
-                    <div class="preview-graphic-wrapper">
-                        <img src="assets/images/case-study-03-data.png" alt="Data Management Case Study Visualization" class="preview-graphic">
+                    <div class="pf-visual">
+                        <img src="assets/images/case-study-03-data.png" alt="Data Management Case Study Visualization">
                     </div>
 
                 </div>
             </article>
 
             <!-- CASE STUDY 03 - PART 02: DYNAMIC SEARCH -->
-            <article class="portfolio-card">
-                <div class="portfolio-grid">
-                    
+            <article class="pf-card pf-flip pf-reveal">
+                <div class="pf-grid">
+
                     <!-- Left Column: Details -->
                     <div>
-                        <span class="case-tag" style="color: var(--text-muted); font-size: 0.85rem; letter-spacing: 1px; font-weight: 700;">CASE STUDY 03 - PART 02</span>
-                        <h2 style="font-size: 2.2rem; color: var(--primary-navy); margin: 0.3rem 0 0.1rem 0; font-family: var(--font-heading); text-transform: uppercase;">Dynamic Search</h2>
-                        <h4 style="color: #a8815e; font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem;">& INTERACTIVE INSIGHTS</h4>
-                        <p style="font-style: italic; color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem;">Smart retrieval. Automated summaries. Effortless access.</p>
-                        
-                        <div style="background: var(--primary-navy); color: #fff; padding: 1.2rem; border-radius: 8px; margin-bottom: 1.5rem;">
-                            <strong style="color: var(--accent-gold); display: block; margin-bottom: 0.3rem;">DATA SOURCE</strong>
-                            <p style="margin: 0; font-size: 0.85rem; color: #cbd5e1;">This analysis is based on the data tracker from Case Study 03. (7 Client Records)</p>
+                        <span class="pf-tag">CASE STUDY 03 - PART 02</span>
+                        <h2 class="pf-title">Dynamic Search</h2>
+                        <h4 class="pf-sub">&amp; INTERACTIVE INSIGHTS</h4>
+                        <p class="pf-motto">Smart retrieval. Automated summaries. Effortless access.</p>
+
+                        <div class="pf-source">
+                            <strong>DATA SOURCE</strong>
+                            <p>This analysis is based on the data tracker from Case Study 03. (7 Client Records)</p>
                         </div>
 
-                        <ul style="list-style: none; padding: 0; font-size: 0.9rem;">
-                            <li style="margin-bottom: 0.8rem; display: flex; align-items: flex-start; gap: 0.75rem;">
-                                <span style="color: var(--accent-gold); font-weight: bold;">📊</span> Quickly summarize data using Pivot Tables
-                            </li>
-                            <li style="margin-bottom: 0.8rem; display: flex; align-items: flex-start; gap: 0.75rem;">
-                                <span style="color: var(--accent-gold); font-weight: bold;">🔍</span> Look up specific information instantly with VLOOKUP
-                            </li>
-                            <li style="margin-bottom: 0.8rem; display: flex; align-items: flex-start; gap: 0.75rem;">
-                                <span style="color: var(--accent-gold); font-weight: bold;">📅</span> Track time and follow-ups with simple formulas
-                            </li>
-                            <li style="margin-bottom: 0.8rem; display: flex; align-items: flex-start; gap: 0.75rem;">
-                                <span style="color: var(--accent-gold); font-weight: bold;">☑️</span> Better visibility leads to better decisions
-                            </li>
+                        <ul class="pf-tools">
+                            <li><span class="pf-ico"><svg class="pf-i"><use href="#i-chart"/></svg></span><span>Quickly summarize data using Pivot Tables</span></li>
+                            <li><span class="pf-ico"><svg class="pf-i"><use href="#i-search"/></svg></span><span>Look up specific information instantly with VLOOKUP</span></li>
+                            <li><span class="pf-ico"><svg class="pf-i"><use href="#i-calendar"/></svg></span><span>Track time and follow-ups with simple formulas</span></li>
+                            <li><span class="pf-ico"><svg class="pf-i"><use href="#i-eye"/></svg></span><span>Better visibility leads to better decisions</span></li>
                         </ul>
                     </div>
-                    
+
                     <!-- Right Column: Visual Presentation Graphic -->
-                    <div class="preview-graphic-wrapper">
-                        <img src="assets/images/case-study-04-dashboard.png" alt="Dynamic Search Dashboard Visualization" class="preview-graphic">
+                    <div class="pf-visual">
+                        <img src="assets/images/case-study-04-dashboard.png" alt="Dynamic Search Dashboard Visualization">
                     </div>
 
                 </div>
@@ -382,7 +766,7 @@
         <div class="container footer-content">
             <div class="footer-brand">
                 <a href="index.html" class="logo">JUDY ANN SANTIAGO<span>.</span></a>
-                <p>Administrative & Operations Support Specialist.</p>
+                <p>Administrative &amp; Operations Support Specialist.</p>
             </div>
             <div class="footer-links">
                 <h4>Navigation</h4>
@@ -404,6 +788,40 @@
             <p>&copy; 2026 Judy Ann Santiago. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <script>
+        (function () {
+            // Reading-progress bar
+            var bar = document.getElementById('pfProgress');
+            function onScroll() {
+                var h = document.documentElement;
+                var max = h.scrollHeight - h.clientHeight;
+                bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+
+            // Fade each case study in as it scrolls into view
+            var els = document.querySelectorAll('.pf-reveal');
+            if (!('IntersectionObserver' in window)) {
+                els.forEach(function (el) { el.classList.add('is-visible'); });
+                return;
+            }
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (!entry.isIntersecting) return;
+                    var el = entry.target;
+                    el.classList.add('is-visible');
+                    io.unobserve(el);
+                    // Hand the card back to its normal hover styles once it has appeared
+                    setTimeout(function () {
+                        el.classList.remove('pf-reveal', 'is-visible');
+                    }, 900);
+                });
+            }, { threshold: 0.08 });
+            els.forEach(function (el) { io.observe(el); });
+        })();
+    </script>
 
     <script src="js/main.js"></script>
 </body>
