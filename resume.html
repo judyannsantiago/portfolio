@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resume & Experience | Judy Ann Santiago</title>
+    <script>document.documentElement.classList.add('js');</script>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,8 +13,429 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/responsive.css">
+
+    <style>
+        /* ===== Resume page design ===== */
+
+        /* Gold reading-progress bar */
+        .rs-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0;
+            background: var(--accent-gold);
+            z-index: 1100;
+        }
+
+        /* ---------- Hero (navy) ---------- */
+        .rs-hero {
+            position: relative;
+            overflow: hidden;
+            background: var(--primary-navy);
+            padding: 5.5rem 0 7.5rem;
+            text-align: center;
+        }
+        .rs-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 82% 20%, rgba(197, 168, 128, 0.22), transparent 45%),
+                radial-gradient(circle at 8% 90%, rgba(197, 168, 128, 0.12), transparent 40%);
+            pointer-events: none;
+        }
+        .rs-hero .container {
+            position: relative;
+            z-index: 2;
+            max-width: 820px;
+            padding: 0 20px;
+        }
+        .rs-shape { position: absolute; pointer-events: none; z-index: 1; }
+        .rs-shape.s1 {
+            width: 300px;
+            height: 300px;
+            top: -100px;
+            right: 7%;
+            border-radius: 50%;
+            border: 2px solid rgba(197, 168, 128, 0.45);
+            animation: rs-float 9s ease-in-out infinite;
+        }
+        .rs-shape.s2 {
+            width: 130px;
+            height: 130px;
+            bottom: 90px;
+            left: 6%;
+            border-radius: 50%;
+            background: rgba(197, 168, 128, 0.16);
+            animation: rs-float 11s ease-in-out infinite reverse;
+        }
+        .rs-shape.s3 {
+            width: 200px;
+            height: 130px;
+            right: 10%;
+            bottom: 100px;
+            background: radial-gradient(var(--accent-gold) 2px, transparent 2px) 0 0 / 18px 18px;
+            opacity: 0.35;
+        }
+        .rs-shape.s4 {
+            width: 64px;
+            height: 64px;
+            top: 26%;
+            left: 13%;
+            border-radius: 50%;
+            border: 2px solid rgba(197, 168, 128, 0.35);
+            animation: rs-float 7s ease-in-out infinite;
+        }
+        @keyframes rs-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(16px); }
+        }
+
+        .rs-hero .badge {
+            display: inline-block;
+            background: rgba(197, 168, 128, 0.14);
+            border: 1px solid rgba(197, 168, 128, 0.5);
+            color: var(--accent-gold);
+        }
+        .rs-hero h1 {
+            margin: 1.1rem 0 1rem;
+            color: var(--bg-white);
+        }
+        .rs-gold { color: var(--accent-gold); }
+        .rs-hero p {
+            max-width: 650px;
+            margin: 0 auto 2.2rem;
+            font-size: 1.12rem;
+            line-height: 1.6;
+            color: rgba(248, 250, 252, 0.82);
+        }
+        .rs-hero .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--accent-gold);
+            border-color: var(--accent-gold);
+            color: var(--primary-navy);
+        }
+        .rs-hero .btn-primary:hover {
+            background: var(--accent-gold-hover);
+            border-color: var(--accent-gold-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px rgba(197, 168, 128, 0.35);
+        }
+        .rs-wave {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -1px;
+            line-height: 0;
+            z-index: 1;
+        }
+        .rs-wave svg { display: block; width: 100%; height: 60px; }
+
+        .rs-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: rs-up 0.8s ease forwards;
+            animation-delay: var(--d, 0s);
+        }
+        @keyframes rs-up { to { opacity: 1; transform: none; } }
+
+        /* ---------- Experience timeline ---------- */
+        .rs-exp {
+            position: relative;
+            overflow: hidden;
+            padding: 3rem 0 5rem;
+            background: var(--bg-surface);
+        }
+        .rs-exp::before {
+            content: "";
+            position: absolute;
+            right: -130px;
+            bottom: -130px;
+            width: 360px;
+            height: 360px;
+            border-radius: 50%;
+            border: 2px solid rgba(197, 168, 128, 0.5);
+            pointer-events: none;
+        }
+        .rs-exp::after {
+            content: "";
+            position: absolute;
+            right: 3%;
+            top: 50px;
+            width: 190px;
+            height: 130px;
+            background: radial-gradient(var(--accent-gold) 2px, transparent 2px) 0 0 / 18px 18px;
+            opacity: 0.45;
+            pointer-events: none;
+        }
+        .rs-exp .container { position: relative; z-index: 1; }
+
+        .rs-heading {
+            position: relative;
+            margin-bottom: 2.5rem;
+            padding-bottom: 14px;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+        }
+        .rs-heading::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 56px;
+            height: 3px;
+            background: var(--accent-gold);
+            border-radius: 3px;
+        }
+
+        .rs-timeline {
+            position: relative;
+            list-style: none;
+            margin: 0;
+            padding: 0 0 0 3rem;
+        }
+        .rs-timeline::before {
+            content: "";
+            position: absolute;
+            left: 10px;
+            top: 14px;
+            bottom: 14px;
+            width: 2px;
+            background: linear-gradient(var(--accent-gold), rgba(197, 168, 128, 0.25));
+            transform-origin: top;
+            transition: transform 1.4s ease 0.2s;
+        }
+        .js .rs-timeline::before { transform: scaleY(0); }
+        .js .rs-timeline.drawn::before { transform: scaleY(1); }
+
+        .rs-item { position: relative; margin-bottom: 1.5rem; }
+        .rs-item:last-child { margin-bottom: 0; }
+        .rs-dot {
+            position: absolute;
+            left: -3rem;
+            top: 1.7rem;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--bg-white);
+            border: 4px solid var(--accent-gold);
+            transition: background var(--transition-fast), transform 0.3s ease;
+        }
+        .rs-item:hover .rs-dot {
+            background: var(--accent-gold);
+            transform: scale(1.2);
+        }
+        .rs-now .rs-dot {
+            background: var(--accent-gold);
+            animation: rs-pulse 2s ease-in-out infinite;
+        }
+        @keyframes rs-pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(197, 168, 128, 0.6); }
+            50% { box-shadow: 0 0 0 9px rgba(197, 168, 128, 0); }
+        }
+
+        .rs-card {
+            position: relative;
+            overflow: hidden;
+            padding: 1.75rem 1.75rem 1.5rem;
+            background: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+        }
+        .rs-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent-gold);
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.4s ease;
+        }
+        .rs-item:hover .rs-card {
+            transform: translateX(6px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 14px 32px rgba(10, 25, 47, 0.09);
+        }
+        .rs-item:hover .rs-card::before { transform: scaleY(1); }
+
+        .rs-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+        .rs-head h3 {
+            font-size: 1.25rem;
+            color: var(--primary-navy);
+        }
+        .rs-company {
+            margin: 0.2rem 0 0;
+            font-weight: 600;
+            color: var(--accent-gold-hover);
+        }
+        .rs-date {
+            flex-shrink: 0;
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            background: rgba(197, 168, 128, 0.18);
+            font-family: var(--font-subheading);
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+            white-space: nowrap;
+        }
+        .rs-now .rs-date {
+            background: var(--primary-navy);
+            color: var(--accent-gold);
+        }
+        .rs-desc {
+            margin-top: 0.9rem;
+            font-size: 0.95rem;
+            line-height: 1.65;
+            color: var(--text-muted);
+        }
+
+        /* ---------- Skills and certifications ---------- */
+        .rs-extra {
+            padding: 5rem 0;
+            background: var(--bg-white);
+        }
+        .rs-extra-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+            gap: 2rem;
+        }
+        .rs-box {
+            position: relative;
+            overflow: hidden;
+            padding: 2.25rem 2rem 1.75rem;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+        }
+        .rs-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-gold), rgba(197, 168, 128, 0.25));
+        }
+        .rs-box::after {
+            content: "";
+            position: absolute;
+            right: -50px;
+            bottom: -50px;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: rgba(197, 168, 128, 0.14);
+            pointer-events: none;
+        }
+        .rs-box:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 14px 32px rgba(10, 25, 47, 0.08);
+        }
+        .rs-box > * { position: relative; z-index: 1; }
+        .rs-box h3 {
+            position: relative;
+            margin-bottom: 1.4rem;
+            padding-bottom: 12px;
+            color: var(--primary-navy);
+        }
+        .rs-box h3::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 44px;
+            height: 3px;
+            background: var(--accent-gold);
+            border-radius: 3px;
+        }
+        .rs-list { list-style: none; padding: 0; margin: 0; }
+        .rs-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+            line-height: 1.45;
+            color: var(--text-muted);
+            transition: transform var(--transition-fast), color var(--transition-fast);
+        }
+        .rs-list li:last-child { margin-bottom: 0; }
+        .rs-list li:hover {
+            transform: translateX(5px);
+            color: var(--text-primary);
+        }
+        .rs-mark {
+            flex-shrink: 0;
+            width: 26px;
+            height: 26px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: rgba(197, 168, 128, 0.25);
+            color: var(--primary-navy);
+            font-size: 0.75rem;
+            line-height: 1;
+            transition: background var(--transition-fast), transform 0.3s ease;
+        }
+        .rs-list li:hover .rs-mark {
+            background: var(--accent-gold);
+            transform: scale(1.12);
+        }
+
+        .site-footer { border-top: 3px solid var(--accent-gold); }
+
+        /* Fade in on scroll (only when JavaScript is running) */
+        .js .rs-reveal {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            transition-delay: var(--d, 0s);
+        }
+        .js .rs-reveal.is-visible { opacity: 1; transform: none; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .rs-shape, .rs-now .rs-dot { animation: none !important; }
+            .rs-in { opacity: 1; transform: none; animation: none; }
+            .js .rs-reveal { opacity: 1; transform: none; transition: none; }
+            .js .rs-timeline::before { transform: none; transition: none; }
+            .rs-card, .rs-card::before, .rs-dot, .rs-box, .rs-list li, .rs-mark { transition: none; }
+            .rs-item:hover .rs-card, .rs-box:hover, .rs-list li:hover { transform: none; }
+        }
+
+        @media screen and (max-width: 768px) {
+            .rs-hero { padding: 4rem 0 5.5rem; }
+            .rs-shape.s1 { width: 200px; height: 200px; right: -60px; top: -70px; }
+            .rs-shape.s2, .rs-shape.s3, .rs-shape.s4 { display: none; }
+            .rs-wave svg { height: 36px; }
+            .rs-exp { padding: 2rem 0 3.5rem; }
+            .rs-exp::after { display: none; }
+            .rs-timeline { padding-left: 2.25rem; }
+            .rs-timeline::before { left: 8px; }
+            .rs-dot { left: -2.25rem; width: 18px; height: 18px; top: 1.75rem; border-width: 3px; }
+            .rs-card { padding: 1.4rem 1.25rem 1.25rem; }
+            .rs-extra { padding: 3.5rem 0; }
+        }
+    </style>
 </head>
 <body>
+
+    <div class="rs-progress" id="rsProgress"></div>
 
     <header class="site-header">
         <div class="container nav-container">
@@ -34,117 +456,153 @@
         </div>
     </header>
 
-    <section class="hero" style="padding: 3.5rem 0 2rem 0;">
-        <div class="container text-center">
-            <span class="badge">Professional Background</span>
-            <h1 style="margin-top: 0.5rem;">Work Experience</h1>
-            <p style="max-width: 650px; margin: 1rem auto 2rem auto;">
+    <section class="rs-hero">
+        <span class="rs-shape s1" aria-hidden="true"></span>
+        <span class="rs-shape s2" aria-hidden="true"></span>
+        <span class="rs-shape s3" aria-hidden="true"></span>
+        <span class="rs-shape s4" aria-hidden="true"></span>
+
+        <div class="container">
+            <span class="badge rs-in" style="--d: 0.05s;">Professional Background</span>
+            <h1 class="rs-in" style="--d: 0.15s;">Work <span class="rs-gold">Experience</span></h1>
+            <p class="rs-in" style="--d: 0.3s;">
                  Experienced administrative and operations professional managing complex accounts, corporate escalations, and process-driven workflows.
             </p>
             
-            <a href="contact.html?ref=resume-request" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem;">
-                 Request Official Resume
-            </a>
+            <div class="rs-in" style="--d: 0.45s;">
+                <a href="contact.html?ref=resume-request" class="btn btn-primary">
+                     Request Official Resume
+                </a>
+            </div>
+        </div>
+
+        <div class="rs-wave" aria-hidden="true">
+            <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,32 C240,64 480,0 720,24 C960,48 1200,60 1440,20 L1440,60 L0,60 Z" fill="#F8FAFC"/>
+            </svg>
         </div>
     </section>
 
-    <section class="framework-section" style="padding: 2rem 0 4rem 0;">
+    <section class="rs-exp">
         <div class="container">
             
-            <h2 style="font-size: 1.8rem; margin-bottom: 1.5rem; text-transform: uppercase;">Experience Overview</h2>
+            <h2 class="rs-heading rs-reveal">Experience Overview</h2>
 
-            <div class="case-study-card" style="margin-bottom: 1.5rem; background: #fff;">
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem;">
-                    <div>
-                        <h3 style="font-size: 1.25rem; color: var(--primary-navy);">Billing Vendor Assistant - Tier 3 (Corporate Escalations)</h3>
-                        <p style="color: var(--accent-gold); font-weight: 600; margin: 0.2rem 0;">IntouchCX | Remote</p>
+            <ol class="rs-timeline" id="rsTimeline" data-stagger>
+
+                <li class="rs-item rs-now">
+                    <span class="rs-dot" aria-hidden="true"></span>
+                    <div class="rs-card">
+                        <div class="rs-head">
+                            <div>
+                                <h3>Billing Vendor Assistant - Tier 3 (Corporate Escalations)</h3>
+                                <p class="rs-company">IntouchCX | Remote</p>
+                            </div>
+                            <span class="rs-date">Sep 2025 - Present</span>
+                        </div>
+                        <p class="rs-desc">
+                            Managed complex billing disputes, refunds, and corporate subscription escalations as the final point of resolution while producing audit-ready documentation and collaborating with Legal, Operations, and US support teams.
+                        </p>
                     </div>
-                    <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted); background: var(--bg-surface); padding: 0.3rem 0.75rem; border-radius: 4px;">Sep 2025 - Present</span>
-                </div>
-                <p style="margin-top: 0.8rem; font-size: 0.95rem; color: var(--text-muted);">
-                    Managed complex billing disputes, refunds, and corporate subscription escalations as the final point of resolution while producing audit-ready documentation and collaborating with Legal, Operations, and US support teams.
-                </p>
-            </div>
+                </li>
 
-            <div class="case-study-card" style="margin-bottom: 1.5rem; background: #fff;">
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem;">
-                    <div>
-                        <h3 style="font-size: 1.25rem; color: var(--primary-navy);">Billing Vendor Assistant - Tier 2 (Corporate Escalations)</h3>
-                        <p style="color: var(--accent-gold); font-weight: 600; margin: 0.2rem 0;">IntouchCX | Remote</p>
+                <li class="rs-item">
+                    <span class="rs-dot" aria-hidden="true"></span>
+                    <div class="rs-card">
+                        <div class="rs-head">
+                            <div>
+                                <h3>Billing Vendor Assistant - Tier 2 (Corporate Escalations)</h3>
+                                <p class="rs-company">IntouchCX | Remote</p>
+                            </div>
+                            <span class="rs-date">Apr 2024 - Sep 2025</span>
+                        </div>
+                        <p class="rs-desc">
+                            Supported Tier 1 agents with escalation guidance and account insights while conducting detailed account reviews to ensure strict accuracy and compliance standards.
+                        </p>
                     </div>
-                    <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted); background: var(--bg-surface); padding: 0.3rem 0.75rem; border-radius: 4px;">Apr 2024 - Sep 2025</span>
-                </div>
-                <p style="margin-top: 0.8rem; font-size: 0.95rem; color: var(--text-muted);">
-                    Supported Tier 1 agents with escalation guidance and account insights while conducting detailed account reviews to ensure strict accuracy and compliance standards.
-                </p>
-            </div>
+                </li>
 
-            <div class="case-study-card" style="margin-bottom: 1.5rem; background: #fff;">
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem;">
-                    <div>
-                        <h3 style="font-size: 1.25rem; color: var(--primary-navy);">Student Advocate</h3>
-                        <p style="color: var(--accent-gold); font-weight: 600; margin: 0.2rem 0;">IntouchCX | Remote</p>
+                <li class="rs-item">
+                    <span class="rs-dot" aria-hidden="true"></span>
+                    <div class="rs-card">
+                        <div class="rs-head">
+                            <div>
+                                <h3>Student Advocate</h3>
+                                <p class="rs-company">IntouchCX | Remote</p>
+                            </div>
+                            <span class="rs-date">Sep 2023 - Mar 2024</span>
+                        </div>
+                        <p class="rs-desc">
+                            Handled high-volume multi-channel inquiries via phone, chat, email, and social media while thoroughly documenting account activities for seamless internal tracking.
+                        </p>
                     </div>
-                    <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted); background: var(--bg-surface); padding: 0.3rem 0.75rem; border-radius: 4px;">Sep 2023 - Mar 2024</span>
-                </div>
-                <p style="margin-top: 0.8rem; font-size: 0.95rem; color: var(--text-muted);">
-                    Handled high-volume multi-channel inquiries via phone, chat, email, and social media while thoroughly documenting account activities for seamless internal tracking.
-                </p>
-            </div>
+                </li>
 
-            <div class="case-study-card" style="margin-bottom: 1.5rem; background: #fff;">
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem;">
-                    <div>
-                        <h3 style="font-size: 1.25rem; color: var(--primary-navy);">Reservation Support Specialist</h3>
-                        <p style="color: var(--accent-gold); font-weight: 600; margin: 0.2rem 0;">Concentrix | Remote</p>
+                <li class="rs-item">
+                    <span class="rs-dot" aria-hidden="true"></span>
+                    <div class="rs-card">
+                        <div class="rs-head">
+                            <div>
+                                <h3>Reservation Support Specialist</h3>
+                                <p class="rs-company">Concentrix | Remote</p>
+                            </div>
+                            <span class="rs-date">Jan 2023 - Aug 2023</span>
+                        </div>
+                        <p class="rs-desc">
+                            Managed reservation modifications, cancellations, and branch communications for top international car rental brands while maintaining detailed records to optimize operational tracking.
+                        </p>
                     </div>
-                    <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted); background: var(--bg-surface); padding: 0.3rem 0.75rem; border-radius: 4px;">Jan 2023 - Aug 2023</span>
-                </div>
-                <p style="margin-top: 0.8rem; font-size: 0.95rem; color: var(--text-muted);">
-                    Managed reservation modifications, cancellations, and branch communications for top international car rental brands while maintaining detailed records to optimize operational tracking.
-                </p>
-            </div>
+                </li>
 
-            <div class="case-study-card" style="margin-bottom: 3rem; background: #fff;">
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem;">
-                    <div>
-                        <h3 style="font-size: 1.25rem; color: var(--primary-navy);">Customer Service Specialist (Seasonal)</h3>
-                        <p style="color: var(--accent-gold); font-weight: 600; margin: 0.2rem 0;">Concentrix</p>
+                <li class="rs-item">
+                    <span class="rs-dot" aria-hidden="true"></span>
+                    <div class="rs-card">
+                        <div class="rs-head">
+                            <div>
+                                <h3>Customer Service Specialist (Seasonal)</h3>
+                                <p class="rs-company">Concentrix</p>
+                            </div>
+                            <span class="rs-date">Sep 2022 - Jan 2023</span>
+                        </div>
+                        <p class="rs-desc">
+                            Handled payments, refunds, and logistics verification for a major US retail account with high accuracy and attention to process compliance.
+                        </p>
                     </div>
-                    <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted); background: var(--bg-surface); padding: 0.3rem 0.75rem; border-radius: 4px;">Sep 2022 - Jan 2023</span>
-                </div>
-                <p style="margin-top: 0.8rem; font-size: 0.95rem; color: var(--text-muted);">
-                    Handled payments, refunds, and logistics verification for a major US retail account with high accuracy and attention to process compliance.
-                </p>
-            </div>
+                </li>
 
-         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+            </ol>
+
+        </div>
+    </section>
+
+    <section class="rs-extra">
+        <div class="container">
+            <div class="rs-extra-grid" data-stagger>
                 
-                <div class="step-card" style="background: #fff;">
-                    <h3 style="margin-bottom: 1rem; color: var(--primary-navy);">Key Skills</h3>
-                    <ul style="list-style: none; padding: 0; font-size: 0.95rem; color: var(--text-muted);">
-                        <li style="margin-bottom: 0.5rem;">✔ Workflow & Case Coordination</li>
-                        <li style="margin-bottom: 0.5rem;">✔ Scheduling & Task Prioritization</li>
-                        <li style="margin-bottom: 0.5rem;">✔ Documentation & Record Management</li>
-                        <li style="margin-bottom: 0.5rem;">✔ Cross-Team Communication</li>
-                        <li style="margin-bottom: 0.5rem;">✔ Account & Escalation Handling</li>
-                        <li style="margin-bottom: 0.5rem;">✔ Email & Ticket Management</li>
+                <div class="rs-box">
+                    <h3>Key Skills</h3>
+                    <ul class="rs-list">
+                        <li><span class="rs-mark">✔</span> Workflow &amp; Case Coordination</li>
+                        <li><span class="rs-mark">✔</span> Scheduling &amp; Task Prioritization</li>
+                        <li><span class="rs-mark">✔</span> Documentation &amp; Record Management</li>
+                        <li><span class="rs-mark">✔</span> Cross-Team Communication</li>
+                        <li><span class="rs-mark">✔</span> Account &amp; Escalation Handling</li>
+                        <li><span class="rs-mark">✔</span> Email &amp; Ticket Management</li>
                     </ul>
                 </div>
 
-                <div class="step-card" style="background: #fff;">
-                    <h3 style="margin-bottom: 1rem; color: var(--primary-navy);">Certifications</h3>
-                    <ul style="list-style: none; padding: 0; font-size: 0.95rem; color: var(--text-muted);">
-                        <li style="margin-bottom: 0.5rem;">🎓 Gorgias Academy - Customer Support Fundamentals</li>
-                        <li style="margin-bottom: 0.5rem;">🎓 QuickBooks Certification</li>
-                        <li style="margin-bottom: 0.5rem;">🎓 Google Project Management</li>
-                        <li style="margin-bottom: 0.5rem;">🎓 Google Docs Ultimate Course</li>
-                        <li style="margin-bottom: 0.5rem;">🎓 Adobe Creative Cloud 2022 Ultimate Course</li>
+                <div class="rs-box">
+                    <h3>Certifications</h3>
+                    <ul class="rs-list">
+                        <li><span class="rs-mark">🎓</span> Gorgias Academy - Customer Support Fundamentals</li>
+                        <li><span class="rs-mark">🎓</span> QuickBooks Certification</li>
+                        <li><span class="rs-mark">🎓</span> Google Project Management</li>
+                        <li><span class="rs-mark">🎓</span> Google Docs Ultimate Course</li>
+                        <li><span class="rs-mark">🎓</span> Adobe Creative Cloud 2022 Ultimate Course</li>
                     </ul>
                 </div>
 
             </div>
-
         </div>
     </section>
 
@@ -152,7 +610,7 @@
         <div class="container footer-content">
             <div class="footer-brand">
                 <a href="index.html" class="logo">JUDY ANN SANTIAGO<span>.</span></a>
-                <p>Administrative & Operations Support Specialist.</p>
+                <p>Administrative &amp; Operations Support Specialist.</p>
             </div>
             <div class="footer-links">
                 <h4>Navigation</h4>
@@ -174,6 +632,63 @@
             <p>&copy; 2026 Judy Ann Santiago. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <script>
+        (function () {
+            // Reading-progress bar
+            var bar = document.getElementById('rsProgress');
+            function onScroll() {
+                var h = document.documentElement;
+                var max = h.scrollHeight - h.clientHeight;
+                bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+
+            // Stagger the items inside each group
+            document.querySelectorAll('[data-stagger]').forEach(function (group) {
+                Array.prototype.forEach.call(group.children, function (el, i) {
+                    el.classList.add('rs-reveal');
+                    el.style.setProperty('--d', (i * 0.1) + 's');
+                });
+            });
+
+            // Fade elements in as they scroll into view
+            var els = document.querySelectorAll('.rs-reveal');
+            var timeline = document.getElementById('rsTimeline');
+            if (!('IntersectionObserver' in window)) {
+                els.forEach(function (el) { el.classList.add('is-visible'); });
+                if (timeline) timeline.classList.add('drawn');
+            } else {
+                var io = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (!entry.isIntersecting) return;
+                        var el = entry.target;
+                        el.classList.add('is-visible');
+                        io.unobserve(el);
+                        // Hand the element back to its normal hover styles once it has appeared
+                        var delay = (parseFloat(el.style.getPropertyValue('--d')) || 0) * 1000;
+                        setTimeout(function () {
+                            el.classList.remove('rs-reveal', 'is-visible');
+                            el.style.removeProperty('--d');
+                        }, 900 + delay);
+                    });
+                }, { threshold: 0.12 });
+                els.forEach(function (el) { io.observe(el); });
+
+                // Draw the line down the timeline
+                if (timeline) {
+                    var lo = new IntersectionObserver(function (entries) {
+                        if (entries[0].isIntersecting) {
+                            timeline.classList.add('drawn');
+                            lo.disconnect();
+                        }
+                    }, { threshold: 0.1 });
+                    lo.observe(timeline);
+                }
+            }
+        })();
+    </script>
 
     <script src="js/main.js"></script>
 </body>
