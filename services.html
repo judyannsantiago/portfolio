@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services | Judy Ann Santiago</title>
     <meta name="description" content="Administrative and operations support services offered by Judy Ann Santiago.">
+    <script>document.documentElement.classList.add('js');</script>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,8 +16,403 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/responsive.css">
+
+    <style>
+        /* ===== Services page design ===== */
+
+        /* Gold reading-progress bar */
+        .sv-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0;
+            background: var(--accent-gold);
+            z-index: 1100;
+        }
+
+        /* Section headings: gold underline */
+        .sv-sec .section-title { margin-bottom: 3rem; }
+        .sv-sec .section-title h2 {
+            position: relative;
+            padding-bottom: 16px;
+            margin-bottom: 0.9rem;
+        }
+        .sv-sec .section-title h2::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 56px;
+            height: 3px;
+            margin-left: -28px;
+            background: var(--accent-gold);
+            border-radius: 3px;
+        }
+
+        /* ---------- Hero (navy) ---------- */
+        .sv-hero {
+            position: relative;
+            overflow: hidden;
+            background: var(--primary-navy);
+            padding: 5.5rem 0 7rem;
+            text-align: center;
+        }
+        .sv-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 82% 20%, rgba(197, 168, 128, 0.22), transparent 45%),
+                radial-gradient(circle at 8% 90%, rgba(197, 168, 128, 0.12), transparent 40%);
+            pointer-events: none;
+        }
+        .sv-hero .container {
+            position: relative;
+            z-index: 2;
+            max-width: 820px;
+            padding: 0 20px;
+        }
+        .sv-shape { position: absolute; pointer-events: none; z-index: 1; }
+        .sv-shape.s1 {
+            width: 300px;
+            height: 300px;
+            top: -100px;
+            right: 7%;
+            border-radius: 50%;
+            border: 2px solid rgba(197, 168, 128, 0.45);
+            animation: sv-float 9s ease-in-out infinite;
+        }
+        .sv-shape.s2 {
+            width: 130px;
+            height: 130px;
+            bottom: 80px;
+            left: 6%;
+            border-radius: 50%;
+            background: rgba(197, 168, 128, 0.16);
+            animation: sv-float 11s ease-in-out infinite reverse;
+        }
+        .sv-shape.s3 {
+            width: 200px;
+            height: 130px;
+            right: 10%;
+            bottom: 100px;
+            background: radial-gradient(var(--accent-gold) 2px, transparent 2px) 0 0 / 18px 18px;
+            opacity: 0.35;
+        }
+        .sv-shape.s4 {
+            width: 64px;
+            height: 64px;
+            top: 26%;
+            left: 13%;
+            border-radius: 50%;
+            border: 2px solid rgba(197, 168, 128, 0.35);
+            animation: sv-float 7s ease-in-out infinite;
+        }
+        @keyframes sv-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(16px); }
+        }
+
+        .sv-hero .badge {
+            display: inline-block;
+            background: rgba(197, 168, 128, 0.14);
+            border: 1px solid rgba(197, 168, 128, 0.5);
+            color: var(--accent-gold);
+        }
+        .sv-hero h1 {
+            margin: 1.1rem 0 1rem;
+            color: var(--bg-white);
+        }
+        .sv-gold { color: var(--accent-gold); }
+        .sv-hero p {
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.12rem;
+            line-height: 1.6;
+            color: rgba(248, 250, 252, 0.82);
+        }
+        .sv-wave {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -1px;
+            line-height: 0;
+            z-index: 1;
+        }
+        .sv-wave svg { display: block; width: 100%; height: 60px; }
+
+        .sv-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: sv-up 0.8s ease forwards;
+            animation-delay: var(--d, 0s);
+        }
+        @keyframes sv-up { to { opacity: 1; transform: none; } }
+
+        /* ---------- Services ---------- */
+        .sv-services {
+            padding: 5rem 0;
+            background: var(--bg-surface);
+        }
+        .sv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+            gap: 1.75rem;
+        }
+
+        .sv-card {
+            --ty: 0px;
+            position: relative;
+            overflow: hidden;
+            padding: 2rem 1.75rem 1.5rem;
+            background: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            transform: perspective(900px) translateY(var(--ty)) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+            transition: transform 0.2s ease-out, box-shadow var(--transition-fast), border-color var(--transition-fast);
+        }
+        .sv-card:hover {
+            --ty: -6px;
+            border-color: var(--accent-gold);
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.09);
+        }
+        /* gold bar that grows along the top on hover */
+        .sv-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 4px;
+            background: var(--accent-gold);
+            transition: width 0.4s ease;
+            z-index: 2;
+        }
+        .sv-card:hover::before { width: 100%; }
+        /* big faded number in the corner */
+        .sv-card::after {
+            content: attr(data-num);
+            position: absolute;
+            top: 0.6rem;
+            right: 1.25rem;
+            font-family: var(--font-heading);
+            font-size: 4.2rem;
+            line-height: 1;
+            color: rgba(197, 168, 128, 0.2);
+            transition: color var(--transition-fast), transform 0.4s ease;
+            pointer-events: none;
+        }
+        .sv-card:hover::after {
+            color: rgba(197, 168, 128, 0.42);
+            transform: translateY(-4px) scale(1.06);
+        }
+        /* soft light that follows the cursor */
+        .sv-glow {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle 190px at var(--mx, 50%) var(--my, 50%), rgba(197, 168, 128, 0.2), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        .sv-card:hover .sv-glow { opacity: 1; }
+        .sv-card > *:not(.sv-glow) { position: relative; z-index: 1; }
+
+        .sv-icon {
+            width: 68px;
+            height: 68px;
+            display: grid;
+            place-items: center;
+            margin-bottom: 1.1rem;
+            border-radius: 50%;
+            background: rgba(197, 168, 128, 0.16);
+            transition: background var(--transition-fast), transform 0.4s ease;
+        }
+        .sv-icon img {
+            width: 38px;
+            height: 38px;
+            object-fit: contain;
+        }
+        .sv-card:hover .sv-icon {
+            background: rgba(197, 168, 128, 0.32);
+            transform: rotate(-8deg) scale(1.05);
+        }
+        .sv-card h3 { margin-bottom: 0.5rem; }
+        .sv-card > p { margin-bottom: 1.1rem; }
+
+        .sv-list { list-style: none; padding: 0; margin: 0; }
+        .sv-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            margin-bottom: 0.55rem;
+            font-size: 0.92rem;
+            line-height: 1.45;
+        }
+        .sv-check {
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+            display: grid;
+            place-items: center;
+            margin-top: 1px;
+            border-radius: 50%;
+            background: rgba(197, 168, 128, 0.22);
+            color: var(--primary-navy);
+            font-size: 0.7rem;
+            font-weight: 700;
+            transition: background var(--transition-fast), transform 0.3s ease;
+        }
+        .sv-card:hover .sv-check {
+            background: var(--accent-gold);
+            transform: scale(1.12);
+        }
+        .sv-card:hover .sv-list li:nth-child(2) .sv-check { transition-delay: 0.08s; }
+        .sv-card:hover .sv-list li:nth-child(3) .sv-check { transition-delay: 0.16s; }
+
+        /* ---------- Process ---------- */
+        .sv-process {
+            padding: 5rem 0;
+            background: var(--bg-white);
+        }
+        .sv-steps {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .sv-steps::before {
+            content: "";
+            position: absolute;
+            top: 28px;
+            left: 16.66%;
+            right: 16.66%;
+            border-top: 2px dashed var(--accent-gold);
+            transform-origin: left;
+            transition: transform 1.2s ease 0.3s;
+        }
+        .js .sv-steps::before { transform: scaleX(0); }
+        .js .sv-steps.drawn::before { transform: scaleX(1); }
+
+        .sv-step {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            transition: transform var(--transition-fast);
+        }
+        .sv-step:hover { transform: translateY(-5px); }
+        .sv-step-num {
+            position: relative;
+            z-index: 2;
+            width: 56px;
+            height: 56px;
+            display: grid;
+            place-items: center;
+            margin: 0 auto -28px;
+            border: 4px solid var(--bg-white);
+            border-radius: 50%;
+            background: var(--primary-navy);
+            color: var(--accent-gold);
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            box-shadow: 0 6px 14px rgba(10, 25, 47, 0.2);
+            transition: background var(--transition-fast), color var(--transition-fast);
+        }
+        .sv-step:hover .sv-step-num {
+            background: var(--accent-gold);
+            color: var(--primary-navy);
+        }
+        .sv-step-card {
+            height: 100%;
+            padding: 3.2rem 1.5rem 1.75rem;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+        }
+        .sv-step:hover .sv-step-card {
+            border-color: var(--accent-gold);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+        }
+        .sv-step-card h4 { margin-bottom: 0.4rem; }
+
+        /* ---------- CTA banner ---------- */
+        .cta-banner { position: relative; overflow: hidden; }
+        .cta-banner::before {
+            content: "";
+            position: absolute;
+            top: -120px;
+            left: -100px;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            border: 2px solid rgba(197, 168, 128, 0.3);
+            pointer-events: none;
+        }
+        .cta-banner::after {
+            content: "";
+            position: absolute;
+            right: 6%;
+            bottom: 30px;
+            width: 200px;
+            height: 130px;
+            background: radial-gradient(var(--accent-gold) 2px, transparent 2px) 0 0 / 18px 18px;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        .cta-banner .container { position: relative; z-index: 1; }
+        .cta-banner .btn-primary {
+            background: var(--accent-gold);
+            border-color: var(--accent-gold);
+            color: var(--primary-navy);
+        }
+        .cta-banner .btn-primary:hover {
+            background: var(--accent-gold-hover);
+            border-color: var(--accent-gold-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px rgba(197, 168, 128, 0.3);
+        }
+
+        .site-footer { border-top: 3px solid var(--accent-gold); }
+
+        /* Fade in on scroll (only when JavaScript is running) */
+        .js .sv-reveal {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            transition-delay: var(--d, 0s);
+        }
+        .js .sv-reveal.is-visible { opacity: 1; transform: none; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .sv-shape { animation: none !important; }
+            .sv-in { opacity: 1; transform: none; animation: none; }
+            .js .sv-reveal { opacity: 1; transform: none; transition: none; }
+            .sv-card, .sv-icon, .sv-check, .sv-step, .sv-card::before, .sv-card::after { transition: none; }
+            .sv-card:hover { --ty: 0px; }
+            .js .sv-steps::before { transform: none; transition: none; }
+        }
+
+        @media screen and (max-width: 768px) {
+            .sv-hero { padding: 4rem 0 5.5rem; }
+            .sv-shape.s1 { width: 200px; height: 200px; right: -60px; top: -70px; }
+            .sv-shape.s2, .sv-shape.s3, .sv-shape.s4 { display: none; }
+            .sv-wave svg { height: 36px; }
+            .sv-services, .sv-process { padding: 3.5rem 0; }
+            .sv-grid { grid-template-columns: 1fr; }
+            .sv-steps { grid-template-columns: 1fr; gap: 2.25rem; }
+            .sv-steps::before { display: none; }
+            .cta-banner::after { display: none; }
+        }
+    </style>
 </head>
 <body>
+
+    <div class="sv-progress" id="svProgress"></div>
 
     <!-- Header / Navigation -->
     <header class="site-header">
@@ -41,138 +437,119 @@
     </header>
 
     <!-- Page Header -->
-    <section class="hero" style="padding: 3rem 0;">
-        <div class="container text-center">
-            <span class="badge">What I Do</span>
-            <h1 style="margin-top: 1rem;">Services & Support</h1>
-            <p style="max-width: 600px; margin: 1rem auto 0 auto;">
+    <section class="sv-hero">
+        <span class="sv-shape s1" aria-hidden="true"></span>
+        <span class="sv-shape s2" aria-hidden="true"></span>
+        <span class="sv-shape s3" aria-hidden="true"></span>
+        <span class="sv-shape s4" aria-hidden="true"></span>
+
+        <div class="container">
+            <span class="badge sv-in" style="--d: 0.05s;">What I Do</span>
+            <h1 class="sv-in" style="--d: 0.15s;">Services <span class="sv-gold">&amp; Support</span></h1>
+            <p class="sv-in" style="--d: 0.3s;">
                 Practical administrative and operational help to simplify your everyday business tasks.
             </p>
+        </div>
+
+        <div class="sv-wave" aria-hidden="true">
+            <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,32 C240,64 480,0 720,24 C960,48 1200,60 1440,20 L1440,60 L0,60 Z" fill="#F8FAFC"/>
+            </svg>
         </div>
     </section>
 
     <!-- Detailed Services Section -->
-    <section class="services-overview" style="padding: 4rem 0;">
+    <section class="sv-services">
         <div class="container">
-            <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
-                
+            <div class="sv-grid" data-stagger>
+
                 <!-- Service 1 -->
-                <div class="service-box" style="background: var(--bg-white);">
-                    <div class="service-icon">
+                <div class="sv-card" data-num="01">
+                    <span class="sv-glow" aria-hidden="true"></span>
+                    <div class="sv-icon">
                         <img src="assets/images/icon-calendar.png" alt="General Admin Support Icon">
                     </div>
                     <h3>General Admin Support</h3>
-                    <p style="margin-bottom: 1rem;">Reliable administrative assistance to keep your daily operations structured and efficient.</p>
-                    <ul style="list-style: none; padding: 0; font-size: 0.9rem;">
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Executive & Personal Assistant Tasks
-                        </li>
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Calendar Management & Appointment Setting
-                        </li>
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Daily Task & Workflow Organization
-                        </li>
+                    <p>Reliable administrative assistance to keep your daily operations structured and efficient.</p>
+                    <ul class="sv-list">
+                        <li><span class="sv-check">✓</span> Executive &amp; Personal Assistant Tasks</li>
+                        <li><span class="sv-check">✓</span> Calendar Management &amp; Appointment Setting</li>
+                        <li><span class="sv-check">✓</span> Daily Task &amp; Workflow Organization</li>
                     </ul>
                 </div>
 
                 <!-- Service 2 -->
-                <div class="service-box" style="background: var(--bg-white);">
-                    <div class="service-icon">
-                        <img src="assets/images/icon-inbox.png" alt="Customer Service & Support Icon">
+                <div class="sv-card" data-num="02">
+                    <span class="sv-glow" aria-hidden="true"></span>
+                    <div class="sv-icon">
+                        <img src="assets/images/icon-inbox.png" alt="Customer Service &amp; Support Icon">
                     </div>
-                    <h3>Customer Service & Support</h3>
-                    <p style="margin-bottom: 1rem;">Professional frontline assistance to keep your clients satisfied and your support queues clear.</p>
-                    <ul style="list-style: none; padding: 0; font-size: 0.9rem;">
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Frontline Inquiry & Ticket Resolution
-                        </li>
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Email Triage & Support Queue Management
-                        </li>
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Client Communication & Follow-Ups
-                        </li>
+                    <h3>Customer Service &amp; Support</h3>
+                    <p>Professional frontline assistance to keep your clients satisfied and your support queues clear.</p>
+                    <ul class="sv-list">
+                        <li><span class="sv-check">✓</span> Frontline Inquiry &amp; Ticket Resolution</li>
+                        <li><span class="sv-check">✓</span> Email Triage &amp; Support Queue Management</li>
+                        <li><span class="sv-check">✓</span> Client Communication &amp; Follow-Ups</li>
                     </ul>
                 </div>
 
                 <!-- Service 3 -->
-                <div class="service-box" style="background: var(--bg-white);">
-                    <div class="service-icon">
-                        <img src="assets/images/icon-crm.png" alt="CRM & Data Entry Icon">
+                <div class="sv-card" data-num="03">
+                    <span class="sv-glow" aria-hidden="true"></span>
+                    <div class="sv-icon">
+                        <img src="assets/images/icon-crm.png" alt="CRM &amp; Data Entry Icon">
                     </div>
-                    <h3>CRM & Data Entry</h3>
-                    <p style="margin-bottom: 1rem;">Accurate record management and spreadsheet organization for your business data.</p>
-                    <ul style="list-style: none; padding: 0; font-size: 0.9rem;">
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Database Clean-Up & Record Updates
-                        </li>
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Spreadsheet Formatting & VLOOKUP Automation
-                        </li>
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> CRM Pipeline & Contact Tracking
-                        </li>
+                    <h3>CRM &amp; Data Entry</h3>
+                    <p>Accurate record management and spreadsheet organization for your business data.</p>
+                    <ul class="sv-list">
+                        <li><span class="sv-check">✓</span> Database Clean-Up &amp; Record Updates</li>
+                        <li><span class="sv-check">✓</span> Spreadsheet Formatting &amp; VLOOKUP Automation</li>
+                        <li><span class="sv-check">✓</span> CRM Pipeline &amp; Contact Tracking</li>
                     </ul>
                 </div>
 
                 <!-- Service 4 -->
-                <div class="service-box" style="background: var(--bg-white);">
-                    <div class="service-icon">
+                <div class="sv-card" data-num="04">
+                    <span class="sv-glow" aria-hidden="true"></span>
+                    <div class="sv-icon">
                         <img src="assets/images/icon-folder.png" alt="Digital File Organization Icon">
                     </div>
                     <h3>Digital File Organization</h3>
-                    <p style="margin-bottom: 1rem;">Establish clear folder structures and naming conventions for your cloud storage.</p>
-                    <ul style="list-style: none; padding: 0; font-size: 0.9rem;">
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Cloud Storage Hierarchy & Taxonomies
-                        </li>
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> File Naming Standardization
-                        </li>
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Legacy Document Sorting & Clean-Up
-                        </li>
+                    <p>Establish clear folder structures and naming conventions for your cloud storage.</p>
+                    <ul class="sv-list">
+                        <li><span class="sv-check">✓</span> Cloud Storage Hierarchy &amp; Taxonomies</li>
+                        <li><span class="sv-check">✓</span> File Naming Standardization</li>
+                        <li><span class="sv-check">✓</span> Legacy Document Sorting &amp; Clean-Up</li>
                     </ul>
                 </div>
 
                 <!-- Service 5 -->
-                <div class="service-box" style="background: var(--bg-white);">
-                    <div class="service-icon">
-                        <img src="assets/images/icon-sop.png" alt="SOPs & General Research Icon">
+                <div class="sv-card" data-num="05">
+                    <span class="sv-glow" aria-hidden="true"></span>
+                    <div class="sv-icon">
+                        <img src="assets/images/icon-sop.png" alt="SOPs &amp; General Research Icon">
                     </div>
-                    <h3>SOPs & General Research</h3>
-                    <p style="margin-bottom: 1rem;">Document routine workflows and gather clear insights to support your operations.</p>
-                    <ul style="list-style: none; padding: 0; font-size: 0.9rem;">
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Step-by-Step Process Documentation
-                        </li>
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Web Research & Summarized Reports
-                        </li>
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Knowledge Base & Canned Response Setup
-                        </li>
+                    <h3>SOPs &amp; General Research</h3>
+                    <p>Document routine workflows and gather clear insights to support your operations.</p>
+                    <ul class="sv-list">
+                        <li><span class="sv-check">✓</span> Step-by-Step Process Documentation</li>
+                        <li><span class="sv-check">✓</span> Web Research &amp; Summarized Reports</li>
+                        <li><span class="sv-check">✓</span> Knowledge Base &amp; Canned Response Setup</li>
                     </ul>
                 </div>
 
                 <!-- Service 6 -->
-                <div class="service-box" style="background: var(--bg-white);">
-                    <div class="service-icon">
+                <div class="sv-card" data-num="06">
+                    <span class="sv-glow" aria-hidden="true"></span>
+                    <div class="sv-icon">
                         <img src="assets/images/icon-data.png" alt="Backend Operations Icon">
                     </div>
                     <h3>Backend Operations</h3>
-                    <p style="margin-bottom: 1rem;">Dependable back-office execution to keep your business systems moving forward.</p>
-                    <ul style="list-style: none; padding: 0; font-size: 0.9rem;">
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Routine Back-Office Task Execution
-                        </li>
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Project Coordination Support
-                        </li>
-                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem;">
-                            <span style="color: var(--accent-gold);">✓</span> Tailored Administrative Assistance
-                        </li>
+                    <p>Dependable back-office execution to keep your business systems moving forward.</p>
+                    <ul class="sv-list">
+                        <li><span class="sv-check">✓</span> Routine Back-Office Task Execution</li>
+                        <li><span class="sv-check">✓</span> Project Coordination Support</li>
+                        <li><span class="sv-check">✓</span> Tailored Administrative Assistance</li>
                     </ul>
                 </div>
 
@@ -181,27 +558,33 @@
     </section>
 
     <!-- Work Process Section -->
-    <section class="framework-section" style="background: var(--bg-surface); padding: 4rem 0;">
+    <section class="sv-process sv-sec">
         <div class="container">
-            <div class="section-title text-center">
+            <div class="section-title text-center sv-reveal">
                 <h2>How We Work Together</h2>
                 <p>A simple step-by-step approach to make working together seamless.</p>
             </div>
-            <div class="framework-steps" style="margin-top: 2.5rem;">
-                <div class="step-card" style="background: #fff;">
-                    <div class="step-num">1</div>
-                    <h4>Initial Alignment</h4>
-                    <p>We discuss your current needs, priorities, tools, and workflow.</p>
+            <div class="sv-steps" id="svSteps" data-stagger>
+                <div class="sv-step">
+                    <div class="sv-step-num">1</div>
+                    <div class="sv-step-card">
+                        <h4>Initial Alignment</h4>
+                        <p>We discuss your current needs, priorities, tools, and workflow.</p>
+                    </div>
                 </div>
-                <div class="step-card" style="background: #fff;">
-                    <div class="step-num">2</div>
-                    <h4>System Setup</h4>
-                    <p>I help organize files, information, task lists, and day-to-day workflows.</p>
+                <div class="sv-step">
+                    <div class="sv-step-num">2</div>
+                    <div class="sv-step-card">
+                        <h4>System Setup</h4>
+                        <p>I help organize files, information, task lists, and day-to-day workflows.</p>
+                    </div>
                 </div>
-                <div class="step-card" style="background: #fff;">
-                    <div class="step-num">3</div>
-                    <h4>Ongoing Support</h4>
-                    <p>I handle assigned tasks, keep information organized, and provide clear progress updates.</p>
+                <div class="sv-step">
+                    <div class="sv-step-num">3</div>
+                    <div class="sv-step-card">
+                        <h4>Ongoing Support</h4>
+                        <p>I handle assigned tasks, keep information organized, and provide clear progress updates.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -221,7 +604,7 @@
         <div class="container footer-content">
             <div class="footer-brand">
                 <a href="index.html" class="logo">JUDY ANN SANTIAGO<span>.</span></a>
-                <p>Administrative & Operations Support Specialist.</p>
+                <p>Administrative &amp; Operations Support Specialist.</p>
             </div>
             <div class="footer-links">
                 <h4>Navigation</h4>
@@ -243,6 +626,85 @@
             <p>&copy; 2026 Judy Ann Santiago. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <script>
+        (function () {
+            var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            // Reading-progress bar
+            var bar = document.getElementById('svProgress');
+            function onScroll() {
+                var h = document.documentElement;
+                var max = h.scrollHeight - h.clientHeight;
+                bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+
+            // Stagger the items inside each group
+            document.querySelectorAll('[data-stagger]').forEach(function (group) {
+                Array.prototype.forEach.call(group.children, function (el, i) {
+                    el.classList.add('sv-reveal');
+                    el.style.setProperty('--d', (i * 0.08) + 's');
+                });
+            });
+
+            // Fade elements in as they scroll into view
+            var els = document.querySelectorAll('.sv-reveal');
+            var steps = document.getElementById('svSteps');
+            if (!('IntersectionObserver' in window)) {
+                els.forEach(function (el) { el.classList.add('is-visible'); });
+                if (steps) steps.classList.add('drawn');
+            } else {
+                var io = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (!entry.isIntersecting) return;
+                        var el = entry.target;
+                        el.classList.add('is-visible');
+                        io.unobserve(el);
+                        // Hand the element back to its normal hover styles once it has appeared
+                        var delay = (parseFloat(el.style.getPropertyValue('--d')) || 0) * 1000;
+                        setTimeout(function () {
+                            el.classList.remove('sv-reveal', 'is-visible');
+                            el.style.removeProperty('--d');
+                        }, 900 + delay);
+                    });
+                }, { threshold: 0.12 });
+                els.forEach(function (el) { io.observe(el); });
+
+                // Draw the dashed line between the three steps
+                if (steps) {
+                    var lo = new IntersectionObserver(function (entries) {
+                        if (entries[0].isIntersecting) {
+                            steps.classList.add('drawn');
+                            lo.disconnect();
+                        }
+                    }, { threshold: 0.3 });
+                    lo.observe(steps);
+                }
+            }
+
+            // Tilt and cursor light on the service cards (mouse only)
+            var canHover = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+            if (canHover && !reduce) {
+                document.querySelectorAll('.sv-card').forEach(function (card) {
+                    card.addEventListener('mousemove', function (e) {
+                        var r = card.getBoundingClientRect();
+                        var x = e.clientX - r.left;
+                        var y = e.clientY - r.top;
+                        card.style.setProperty('--mx', x + 'px');
+                        card.style.setProperty('--my', y + 'px');
+                        card.style.setProperty('--ry', (((x / r.width) - 0.5) * 8) + 'deg');
+                        card.style.setProperty('--rx', ((-((y / r.height) - 0.5)) * 6) + 'deg');
+                    });
+                    card.addEventListener('mouseleave', function () {
+                        card.style.removeProperty('--rx');
+                        card.style.removeProperty('--ry');
+                    });
+                });
+            }
+        })();
+    </script>
 
     <script src="js/main.js"></script>
 </body>
