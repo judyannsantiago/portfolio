@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact & Inquiries | Judy Ann Santiago</title>
+    <script>document.documentElement.classList.add('js');</script>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,8 +15,317 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/responsive.css">
+
+    <style>
+        /* ===== Contact page design ===== */
+
+        /* Gold reading-progress bar */
+        .ct-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0;
+            background: var(--accent-gold);
+            z-index: 1100;
+        }
+
+        /* ---------- Hero (navy) ---------- */
+        .ct-hero {
+            position: relative;
+            overflow: hidden;
+            background: var(--primary-navy);
+            padding: 5.5rem 0 10rem;
+            text-align: center;
+        }
+        .ct-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 82% 20%, rgba(197, 168, 128, 0.22), transparent 45%),
+                radial-gradient(circle at 8% 90%, rgba(197, 168, 128, 0.12), transparent 40%);
+            pointer-events: none;
+        }
+        .ct-hero .container {
+            position: relative;
+            z-index: 2;
+            max-width: 820px;
+            padding: 0 20px;
+        }
+        .ct-shape { position: absolute; pointer-events: none; z-index: 1; }
+        .ct-shape.s1 {
+            width: 300px;
+            height: 300px;
+            top: -100px;
+            right: 7%;
+            border-radius: 50%;
+            border: 2px solid rgba(197, 168, 128, 0.45);
+            animation: ct-float 9s ease-in-out infinite;
+        }
+        .ct-shape.s2 {
+            width: 130px;
+            height: 130px;
+            bottom: 130px;
+            left: 6%;
+            border-radius: 50%;
+            background: rgba(197, 168, 128, 0.16);
+            animation: ct-float 11s ease-in-out infinite reverse;
+        }
+        .ct-shape.s3 {
+            width: 200px;
+            height: 130px;
+            right: 10%;
+            bottom: 150px;
+            background: radial-gradient(var(--accent-gold) 2px, transparent 2px) 0 0 / 18px 18px;
+            opacity: 0.35;
+        }
+        .ct-shape.s4 {
+            width: 64px;
+            height: 64px;
+            top: 26%;
+            left: 13%;
+            border-radius: 50%;
+            border: 2px solid rgba(197, 168, 128, 0.35);
+            animation: ct-float 7s ease-in-out infinite;
+        }
+        @keyframes ct-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(16px); }
+        }
+        .ct-hero .badge {
+            display: inline-block;
+            background: rgba(197, 168, 128, 0.14);
+            border: 1px solid rgba(197, 168, 128, 0.5);
+            color: var(--accent-gold);
+        }
+        .ct-hero h1 {
+            margin: 1.1rem 0 1rem;
+            color: var(--bg-white);
+        }
+        .ct-gold { color: var(--accent-gold); }
+        .ct-hero p {
+            max-width: 650px;
+            margin: 0 auto;
+            font-size: 1.12rem;
+            line-height: 1.6;
+            color: rgba(248, 250, 252, 0.82);
+        }
+        .ct-wave {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -1px;
+            line-height: 0;
+            z-index: 1;
+        }
+        .ct-wave svg { display: block; width: 100%; height: 60px; }
+        .ct-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: ct-up 0.8s ease forwards;
+            animation-delay: var(--d, 0s);
+        }
+        @keyframes ct-up { to { opacity: 1; transform: none; } }
+
+        /* ---------- Form section ---------- */
+        .ct-main {
+            position: relative;
+            z-index: 3;
+            overflow-x: clip;
+            padding: 0 0 6rem;
+            background: var(--bg-surface);
+        }
+        .ct-main::before {
+            content: "";
+            position: absolute;
+            left: -140px;
+            bottom: -120px;
+            width: 340px;
+            height: 340px;
+            border-radius: 50%;
+            border: 2px solid rgba(197, 168, 128, 0.45);
+            pointer-events: none;
+        }
+        .ct-main::after {
+            content: "";
+            position: absolute;
+            right: 4%;
+            top: 150px;
+            width: 190px;
+            height: 130px;
+            background: radial-gradient(var(--accent-gold) 2px, transparent 2px) 0 0 / 18px 18px;
+            opacity: 0.45;
+            pointer-events: none;
+        }
+
+        .ct-card {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            margin: -5.5rem auto 0;
+            padding: 4rem 2.75rem 2.5rem;
+            background: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            box-shadow: 0 24px 60px rgba(10, 25, 47, 0.14);
+        }
+        .ct-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            border-radius: 16px 16px 0 0;
+            background: linear-gradient(90deg, var(--accent-gold), rgba(197, 168, 128, 0.25));
+        }
+
+        /* Envelope badge on the top edge of the card */
+        .ct-badge {
+            position: absolute;
+            top: -34px;
+            left: 50%;
+            width: 68px;
+            height: 68px;
+            margin-left: -34px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: var(--primary-navy);
+            border: 5px solid var(--bg-white);
+            box-shadow: 0 10px 24px rgba(10, 25, 47, 0.25);
+            animation: ct-bob 4s ease-in-out infinite;
+        }
+        .ct-badge svg {
+            width: 28px;
+            height: 28px;
+            fill: none;
+            stroke: var(--accent-gold);
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        @keyframes ct-bob {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        /* Form fields */
+        .ct-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        .ct-field { margin-bottom: 1.5rem; }
+        .ct-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary-navy);
+            transition: color var(--transition-fast);
+        }
+        .ct-field:focus-within .ct-label { color: var(--accent-gold-hover); }
+
+        .ct-input {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            background: var(--bg-surface);
+            font-family: inherit;
+            font-size: 0.98rem;
+            color: var(--text-primary);
+            transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+        }
+        .ct-input:hover { border-color: var(--accent-gold); }
+        .ct-input:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            background: var(--bg-white);
+            box-shadow: 0 0 0 4px rgba(197, 168, 128, 0.28);
+        }
+        textarea.ct-input { resize: vertical; min-height: 140px; line-height: 1.6; }
+
+        select.ct-input {
+            appearance: none;
+            -webkit-appearance: none;
+            padding-right: 2.75rem;
+            cursor: pointer;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%230A192F' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1.1rem center;
+        }
+
+        /* Send button */
+        .ct-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            width: 100%;
+            padding: 0.95rem;
+            font-size: 1rem;
+            font-weight: 600;
+            overflow: hidden;
+            transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+        }
+        .ct-btn:hover {
+            background: var(--accent-gold);
+            border-color: var(--accent-gold);
+            color: var(--primary-navy);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 26px rgba(197, 168, 128, 0.4);
+        }
+        .ct-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: transform 0.35s ease;
+        }
+        .ct-btn:hover svg { transform: translate(4px, -3px); }
+        .ct-btn:focus-visible {
+            outline: 3px solid var(--accent-gold);
+            outline-offset: 3px;
+        }
+
+        .site-footer { border-top: 3px solid var(--accent-gold); }
+
+        /* Card fades in (only when JavaScript is running) */
+        .js .ct-reveal {
+            opacity: 0;
+            transform: translateY(26px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .js .ct-reveal.is-visible { opacity: 1; transform: none; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .ct-shape, .ct-badge { animation: none !important; }
+            .ct-in { opacity: 1; transform: none; animation: none; }
+            .js .ct-reveal { opacity: 1; transform: none; transition: none; }
+            .ct-btn, .ct-btn svg, .ct-input { transition: none; }
+            .ct-btn:hover, .ct-btn:hover svg { transform: none; }
+        }
+
+        @media screen and (max-width: 768px) {
+            .ct-hero { padding: 4rem 0 8rem; }
+            .ct-shape.s1 { width: 200px; height: 200px; right: -60px; top: -70px; }
+            .ct-shape.s2, .ct-shape.s3, .ct-shape.s4 { display: none; }
+            .ct-wave svg { height: 36px; }
+            .ct-main { padding-bottom: 4rem; }
+            .ct-main::after { display: none; }
+            .ct-card { margin-top: -4.5rem; padding: 3.5rem 1.35rem 1.75rem; }
+            .ct-row { grid-template-columns: 1fr; gap: 0; }
+        }
+    </style>
 </head>
 <body>
+
+    <div class="ct-progress" id="ctProgress"></div>
 
     <!-- Header / Navigation -->
     <header class="site-header">
@@ -37,47 +347,70 @@
         </div>
     </header>
 
-    <!-- Contact Section -->
-    <section class="hero" style="padding: 3.5rem 0 4rem 0;">
-        <div class="container">
-            <div class="section-title text-center">
-                <span class="badge">Get In Touch</span>
-                <h1 style="margin-top: 0.5rem;">Let's Work Together</h1>
-                <p style="max-width: 650px; margin: 1rem auto 2rem auto;">
-                    Have an operational bottleneck or need a reliable backend partner? Fill out the form below or send a message directly.
-                </p>
-            </div>
+    <!-- Page Header -->
+    <section class="ct-hero">
+        <span class="ct-shape s1" aria-hidden="true"></span>
+        <span class="ct-shape s2" aria-hidden="true"></span>
+        <span class="ct-shape s3" aria-hidden="true"></span>
+        <span class="ct-shape s4" aria-hidden="true"></span>
 
-            <div class="contact-grid" style="max-width: 700px; margin: 0 auto; background: #fff; padding: 2.5rem; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);">
-                
+        <div class="container">
+            <span class="badge ct-in" style="--d: 0.05s;">Get In Touch</span>
+            <h1 class="ct-in" style="--d: 0.15s;">Let's Work <span class="ct-gold">Together</span></h1>
+            <p class="ct-in" style="--d: 0.3s;">
+                Have an operational bottleneck or need a reliable backend partner? Fill out the form below or send a message directly.
+            </p>
+        </div>
+
+        <div class="ct-wave" aria-hidden="true">
+            <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,32 C240,64 480,0 720,24 C960,48 1200,60 1440,20 L1440,60 L0,60 Z" fill="#F8FAFC"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="ct-main">
+        <div class="container">
+            <div class="ct-card ct-reveal">
+
+                <span class="ct-badge" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+                </span>
+
                 <!-- Formspree Contact Form -->
                 <form action="https://formspree.io/f/xjgnejdj" method="POST">
-                    
-                    <div style="margin-bottom: 1.5rem;">
-                        <label for="name" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--primary-navy);">Your Name</label>
-                        <input type="text" id="name" name="name" required style="width: 100%; padding: 0.75rem; border: 1px solid #cbd5e1; border-radius: 6px; font-family: inherit;">
+
+                    <div class="ct-row">
+                        <div class="ct-field">
+                            <label for="name" class="ct-label">Your Name</label>
+                            <input type="text" id="name" name="name" class="ct-input" required>
+                        </div>
+
+                        <div class="ct-field">
+                            <label for="email" class="ct-label">Email Address</label>
+                            <input type="email" id="email" name="email" class="ct-input" required>
+                        </div>
                     </div>
 
-                    <div style="margin-bottom: 1.5rem;">
-                        <label for="email" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--primary-navy);">Email Address</label>
-                        <input type="email" id="email" name="email" required style="width: 100%; padding: 0.75rem; border: 1px solid #cbd5e1; border-radius: 6px; font-family: inherit;">
-                    </div>
-
-                    <div style="margin-bottom: 1.5rem;">
-                        <label for="inquiry-type" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--primary-navy);">Nature of Inquiry</label>
-                        <select id="inquiry-type" name="inquiry_type" style="width: 100%; padding: 0.75rem; border: 1px solid #cbd5e1; border-radius: 6px; font-family: inherit; background: #fff;">
+                    <div class="ct-field">
+                        <label for="inquiry-type" class="ct-label">Nature of Inquiry</label>
+                        <select id="inquiry-type" name="inquiry_type" class="ct-input">
                             <option value="general">General Project / Administrative Support</option>
                             <option value="resume-request">Request Official Resume Access</option>
                             <option value="contract">Full-Time / Contract Opportunity</option>
                         </select>
                     </div>
 
-                    <div style="margin-bottom: 1.5rem;">
-                        <label for="message" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--primary-navy);">Message / Details</label>
-                        <textarea id="message" name="message" rows="5" required style="width: 100%; padding: 0.75rem; border: 1px solid #cbd5e1; border-radius: 6px; font-family: inherit;"></textarea>
+                    <div class="ct-field">
+                        <label for="message" class="ct-label">Message / Details</label>
+                        <textarea id="message" name="message" rows="5" class="ct-input" required></textarea>
                     </div>
 
-                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.85rem; font-weight: 600; justify-content: center;">Send Message</button>
+                    <button type="submit" class="btn btn-primary ct-btn">
+                        Send Message
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4z"/></svg>
+                    </button>
                 </form>
 
             </div>
@@ -89,7 +422,7 @@
         <div class="container footer-content">
             <div class="footer-brand">
                 <a href="index.html" class="logo">JUDY ANN SANTIAGO<span>.</span></a>
-                <p>Administrative & Operations Support Specialist.</p>
+                <p>Administrative &amp; Operations Support Specialist.</p>
             </div>
             <div class="footer-links">
                 <h4>Navigation</h4>
@@ -111,6 +444,44 @@
             <p>&copy; 2026 Judy Ann Santiago. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <script>
+        (function () {
+            // Reading-progress bar
+            var bar = document.getElementById('ctProgress');
+            function onScroll() {
+                var h = document.documentElement;
+                var max = h.scrollHeight - h.clientHeight;
+                bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+
+            // Pre-select the inquiry type when arriving from the "Request Official Resume" buttons
+            try {
+                var ref = new URLSearchParams(window.location.search).get('ref');
+                var select = document.getElementById('inquiry-type');
+                if (ref === 'resume-request' && select) select.value = 'resume-request';
+            } catch (e) {}
+
+            // Fade the form card in
+            var els = document.querySelectorAll('.ct-reveal');
+            if (!('IntersectionObserver' in window)) {
+                els.forEach(function (el) { el.classList.add('is-visible'); });
+                return;
+            }
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (!entry.isIntersecting) return;
+                    var el = entry.target;
+                    el.classList.add('is-visible');
+                    io.unobserve(el);
+                    setTimeout(function () { el.classList.remove('ct-reveal', 'is-visible'); }, 900);
+                });
+            }, { threshold: 0.05 });
+            els.forEach(function (el) { io.observe(el); });
+        })();
+    </script>
 
     <script src="js/main.js"></script>
 </body>
