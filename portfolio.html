@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio & Case Studies | Judy Ann Santiago</title>
-    <meta name="description" content="Explore real-world case studies in inbox management, calendar coordination, and data organization by Judy Ann Santiago.">
+    <meta name="description" content="Sample projects in inbox management, shift scheduling, data cleanup, and reporting by Judy Ann Santiago.">
     <script>document.documentElement.classList.add('js');</script>
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-    
+
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/components.css">
@@ -20,7 +20,6 @@
     <style>
         /* ===== Portfolio page design ===== */
 
-        /* Gold reading-progress bar */
         .pf-progress {
             position: fixed;
             top: 0;
@@ -56,38 +55,23 @@
         }
         .pf-shape { position: absolute; pointer-events: none; z-index: 1; }
         .pf-shape.s1 {
-            width: 300px;
-            height: 300px;
-            top: -100px;
-            right: 7%;
-            border-radius: 50%;
-            border: 2px solid rgba(197, 168, 128, 0.45);
+            width: 300px; height: 300px; top: -100px; right: 7%;
+            border-radius: 50%; border: 2px solid rgba(197, 168, 128, 0.45);
             animation: pf-float 9s ease-in-out infinite;
         }
         .pf-shape.s2 {
-            width: 130px;
-            height: 130px;
-            bottom: 90px;
-            left: 6%;
-            border-radius: 50%;
-            background: rgba(197, 168, 128, 0.16);
+            width: 130px; height: 130px; bottom: 90px; left: 6%;
+            border-radius: 50%; background: rgba(197, 168, 128, 0.16);
             animation: pf-float 11s ease-in-out infinite reverse;
         }
         .pf-shape.s3 {
-            width: 200px;
-            height: 130px;
-            right: 10%;
-            bottom: 100px;
+            width: 200px; height: 130px; right: 10%; bottom: 100px;
             background: radial-gradient(var(--accent-gold) 2px, transparent 2px) 0 0 / 18px 18px;
             opacity: 0.35;
         }
         .pf-shape.s4 {
-            width: 64px;
-            height: 64px;
-            top: 26%;
-            left: 13%;
-            border-radius: 50%;
-            border: 2px solid rgba(197, 168, 128, 0.35);
+            width: 64px; height: 64px; top: 26%; left: 13%;
+            border-radius: 50%; border: 2px solid rgba(197, 168, 128, 0.35);
             animation: pf-float 7s ease-in-out infinite;
         }
         @keyframes pf-float {
@@ -100,26 +84,16 @@
             border: 1px solid rgba(197, 168, 128, 0.5);
             color: var(--accent-gold);
         }
-        .pf-hero h1 {
-            margin: 1.1rem 0 1rem;
-            color: var(--bg-white);
-        }
+        .pf-hero h1 { margin: 1.1rem 0 1rem; color: var(--bg-white); }
         .pf-gold { color: var(--accent-gold); }
         .pf-hero p {
-            max-width: 600px;
+            max-width: 620px;
             margin: 0 auto;
             font-size: 1.12rem;
             line-height: 1.6;
             color: rgba(248, 250, 252, 0.82);
         }
-        .pf-wave {
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: -1px;
-            line-height: 0;
-            z-index: 1;
-        }
+        .pf-wave { position: absolute; left: 0; right: 0; bottom: -1px; line-height: 0; z-index: 1; }
         .pf-wave svg { display: block; width: 100%; height: 60px; }
         .pf-in {
             opacity: 0;
@@ -139,10 +113,8 @@
         .pf-main::before {
             content: "";
             position: absolute;
-            left: -140px;
-            top: 38%;
-            width: 340px;
-            height: 340px;
+            left: -140px; top: 38%;
+            width: 340px; height: 340px;
             border-radius: 50%;
             border: 2px solid rgba(197, 168, 128, 0.4);
             pointer-events: none;
@@ -150,10 +122,8 @@
         .pf-main::after {
             content: "";
             position: absolute;
-            right: 2%;
-            top: 62%;
-            width: 190px;
-            height: 130px;
+            right: 2%; top: 62%;
+            width: 190px; height: 130px;
             background: radial-gradient(var(--accent-gold) 2px, transparent 2px) 0 0 / 18px 18px;
             opacity: 0.4;
             pointer-events: none;
@@ -169,16 +139,14 @@
             border: 1px solid var(--border-color);
             border-radius: 16px;
             box-shadow: 0 12px 36px rgba(10, 25, 47, 0.06);
-            transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+            transition: box-shadow var(--transition-fast), border-color var(--transition-fast);
         }
         .pf-card:last-child { margin-bottom: 0; }
         .pf-card::before {
             content: "";
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
+            top: 0; left: 0;
+            width: 100%; height: 5px;
             background: linear-gradient(90deg, var(--accent-gold), rgba(197, 168, 128, 0.25));
         }
         .pf-card:hover {
@@ -192,7 +160,6 @@
             align-items: center;
         }
 
-        /* Heading block */
         .pf-tag {
             display: inline-block;
             padding: 0.3rem 0.8rem;
@@ -211,51 +178,23 @@
             color: var(--primary-navy);
             text-transform: uppercase;
         }
-        .pf-sub {
-            margin-bottom: 0.5rem;
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: #a8815e;
-        }
-        .pf-motto {
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
-            font-style: italic;
-            color: var(--text-muted);
-        }
+        .pf-sub { margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #a8815e; }
+        .pf-motto { margin-bottom: 1.5rem; font-size: 0.95rem; font-style: italic; color: var(--text-muted); }
 
-        /* Scenario / Problem / Approach / Result blocks */
-        .pf-block {
-            padding: 1.2rem 0;
-            border-top: 1px solid #EAE0D5;
-        }
+        /* Long layout (Case Study 01) */
+        .pf-block { padding: 1.2rem 0; border-top: 1px solid #EAE0D5; }
         .pf-block:last-child { padding-bottom: 0; }
-        .pf-block-head {
-            display: flex;
-            align-items: center;
-            gap: 0.85rem;
-            margin-bottom: 0.6rem;
-        }
+        .pf-block-head { display: flex; align-items: center; gap: 0.85rem; margin-bottom: 0.6rem; }
         .pf-sec-icon {
             flex-shrink: 0;
-            width: 42px;
-            height: 42px;
-            display: grid;
-            place-items: center;
+            width: 42px; height: 42px;
+            display: grid; place-items: center;
             border-radius: 50%;
             background: rgba(197, 168, 128, 0.2);
             transition: background var(--transition-fast), transform 0.3s ease;
         }
-        .pf-sec-icon img {
-            width: 24px;
-            height: 24px;
-            object-fit: contain;
-            display: block;
-        }
-        .pf-block:hover .pf-sec-icon {
-            background: rgba(197, 168, 128, 0.38);
-            transform: scale(1.06);
-        }
+        .pf-sec-icon img { width: 24px; height: 24px; object-fit: contain; display: block; }
+        .pf-block:hover .pf-sec-icon { background: rgba(197, 168, 128, 0.38); transform: scale(1.06); }
         .pf-block-head h4 {
             margin: 0;
             font-size: 0.95rem;
@@ -264,17 +203,9 @@
             text-transform: uppercase;
             letter-spacing: 0.4px;
         }
-        .pf-block p,
-        .pf-block ul { margin-left: calc(42px + 0.85rem); }
-        .pf-block p {
-            font-size: 0.9rem;
-            line-height: 1.6;
-            color: #4a5568;
-        }
-        .pf-block ul {
-            list-style: none;
-            padding: 0;
-        }
+        .pf-block p, .pf-block ul { margin-left: calc(42px + 0.85rem); }
+        .pf-block p { font-size: 0.9rem; line-height: 1.6; color: #4a5568; }
+        .pf-block ul { list-style: none; padding: 0; }
         .pf-block li {
             position: relative;
             margin-bottom: 0.4rem;
@@ -286,18 +217,81 @@
         .pf-block li::before {
             content: "";
             position: absolute;
-            left: 0;
-            top: 0.55em;
-            width: 6px;
-            height: 6px;
+            left: 0; top: 0.55em;
+            width: 6px; height: 6px;
             border-radius: 50%;
             background: var(--accent-gold);
         }
 
-        /* Icons */
+        /* Short layout (Case Studies 02 to 04) */
+        .pf-summary { margin: 0 0 1.1rem; font-size: 1rem; line-height: 1.55; color: var(--text-primary); }
+        .pf-do-title {
+            margin: 0 0 0.5rem;
+            font-family: var(--font-subheading);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--primary-navy);
+        }
+        .pf-do { list-style: none; padding: 0; margin: 0 0 1.1rem; }
+        .pf-do li {
+            position: relative;
+            padding-left: 1.1rem;
+            margin-bottom: 0.45rem;
+            font-size: 0.92rem;
+            line-height: 1.5;
+            color: #4a5568;
+        }
+        .pf-do li::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 0.55em;
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--accent-gold);
+        }
+        .pf-skills { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0 0 1.1rem; padding: 0; list-style: none; }
+        .pf-skills li {
+            padding: 0.25rem 0.7rem;
+            border-radius: 999px;
+            background: rgba(197, 168, 128, 0.2);
+            font-family: var(--font-subheading);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--primary-navy);
+        }
+        .pf-data { margin: 0.9rem 0 1.1rem; font-size: 0.8rem; font-style: italic; color: var(--text-muted); }
+        .pf-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.2rem;
+            border: 2px solid var(--primary-navy);
+            border-radius: 6px;
+            background: var(--primary-navy);
+            color: var(--accent-gold);
+            font-family: var(--font-subheading);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+        }
+        .pf-btn:hover {
+            background: var(--accent-gold);
+            border-color: var(--accent-gold);
+            color: var(--primary-navy);
+            transform: translateY(-2px);
+        }
+        .pf-btn svg {
+            width: 16px; height: 16px;
+            fill: none; stroke: currentColor; stroke-width: 2;
+            stroke-linecap: round; stroke-linejoin: round;
+        }
+
+        /* Icons and result chips */
         .pf-i {
-            width: 18px;
-            height: 18px;
+            width: 18px; height: 18px;
             fill: none;
             stroke: var(--primary-navy);
             stroke-width: 2;
@@ -306,19 +300,15 @@
         }
         .pf-ico {
             flex-shrink: 0;
-            width: 34px;
-            height: 34px;
-            display: grid;
-            place-items: center;
+            width: 34px; height: 34px;
+            display: grid; place-items: center;
             border-radius: 50%;
             background: rgba(197, 168, 128, 0.25);
             transition: background var(--transition-fast), transform 0.3s ease;
         }
-
-        /* Result chips */
         .pf-results {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
             gap: 0.75rem;
             margin-top: 1.1rem;
         }
@@ -343,44 +333,7 @@
         }
         .pf-result:hover .pf-ico { background: var(--accent-gold); transform: scale(1.08); }
 
-        /* Data source box + tool list (Dynamic Search) */
-        .pf-source {
-            margin-bottom: 1.5rem;
-            padding: 1.2rem 1.3rem;
-            border-radius: 10px;
-            background: var(--primary-navy);
-            border-left: 4px solid var(--accent-gold);
-        }
-        .pf-source strong {
-            display: block;
-            margin-bottom: 0.3rem;
-            letter-spacing: 0.5px;
-            color: var(--accent-gold);
-        }
-        .pf-source p {
-            margin: 0;
-            font-size: 0.85rem;
-            color: #cbd5e1;
-        }
-        .pf-tools { list-style: none; padding: 0; margin: 0; }
-        .pf-tools li {
-            display: flex;
-            align-items: center;
-            gap: 0.85rem;
-            margin-bottom: 0.7rem;
-            padding: 0.55rem 0.8rem;
-            border-radius: 10px;
-            font-size: 0.92rem;
-            color: #4a5568;
-            transition: transform var(--transition-fast), background var(--transition-fast);
-        }
-        .pf-tools li:hover {
-            transform: translateX(5px);
-            background: var(--bg-surface);
-        }
-        .pf-tools li:hover .pf-ico { background: var(--accent-gold); transform: scale(1.08); }
-
-        /* Visual */
+        /* Screenshot frames */
         .pf-visual { position: relative; }
         .pf-visual::before {
             content: "";
@@ -392,27 +345,80 @@
             transition: transform 0.4s ease;
         }
         .pf-visual:hover::before { transform: translate(-6px, -6px); }
-        .pf-visual img {
+        .pf-win {
             position: relative;
             z-index: 1;
-            display: block;
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
+            overflow: hidden;
             border: 1px solid #e2e8f0;
+            border-radius: 10px;
             background: var(--bg-white);
             box-shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
-            object-fit: contain;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
-        .pf-visual:hover img {
-            transform: translateY(-5px);
-            box-shadow: 0 22px 44px rgba(0, 0, 0, 0.16);
+        .pf-win-bar {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 12px;
+            background: #f1f5f9;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 0.72rem;
+            color: var(--text-muted);
         }
+        .pf-win-bar i { width: 9px; height: 9px; border-radius: 50%; background: #cbd5e1; display: inline-block; }
+        .pf-win-bar span { margin-left: 6px; }
+        .pf-win img { display: block; width: 100%; height: auto; cursor: zoom-in; }
+        .pf-pair { position: relative; z-index: 1; display: grid; gap: 1.25rem; }
+        .pf-cap {
+            margin: 0 0 0.4rem;
+            font-family: var(--font-subheading);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+        .pf-thumbs {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 8px;
+            margin-top: 14px;
+        }
+        .pf-thumb {
+            padding: 5px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--bg-white);
+            font: inherit;
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            text-align: center;
+            cursor: pointer;
+            transition: border-color var(--transition-fast), color var(--transition-fast), box-shadow var(--transition-fast);
+        }
+        .pf-thumb img { display: block; width: 100%; height: auto; margin-bottom: 4px; border-radius: 4px; }
+        .pf-thumb:hover, .pf-thumb.active { border-color: var(--accent-gold); color: var(--primary-navy); }
+        .pf-thumb.active { box-shadow: 0 0 0 2px rgba(197, 168, 128, 0.4); }
+        .pf-thumb:focus-visible, .pf-btn:focus-visible { outline: 3px solid var(--accent-gold); outline-offset: 2px; }
+
+        /* Click-to-enlarge */
+        .pf-lightbox {
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background: rgba(10, 25, 47, 0.88);
+            z-index: 2000;
+            cursor: zoom-out;
+        }
+        .pf-lightbox.open { display: flex; }
+        .pf-lightbox img { max-width: 100%; max-height: 100%; border-radius: 8px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); }
 
         .site-footer { border-top: 3px solid var(--accent-gold); }
 
-        /* Fade in on scroll (only when JavaScript is running) */
         .js .pf-reveal {
             opacity: 0;
             transform: translateY(26px);
@@ -428,8 +434,8 @@
             .pf-shape { animation: none !important; }
             .pf-in { opacity: 1; transform: none; animation: none; }
             .js .pf-reveal { opacity: 1; transform: none; transition: none; }
-            .pf-visual img, .pf-visual::before, .pf-result, .pf-tools li, .pf-ico, .pf-sec-icon { transition: none; }
-            .pf-visual:hover img, .pf-visual:hover::before, .pf-result:hover, .pf-tools li:hover { transform: none; }
+            .pf-result, .pf-ico, .pf-sec-icon, .pf-visual::before, .pf-btn { transition: none; }
+            .pf-result:hover, .pf-btn:hover, .pf-visual:hover::before { transform: none; }
         }
 
         @media (max-width: 992px) {
@@ -453,23 +459,20 @@
 </head>
 <body>
 
-    <!-- Icon set used by the result chips and the tool list -->
+    <!-- Icon set used by the result chips and button -->
     <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
         <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
         <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4L17 12H5"/></symbol>
-        <symbol id="i-mail-check" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/><path d="M9 17l2 2 4-4" /></symbol>
+        <symbol id="i-mail-check" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/><path d="M9 17l2 2 4-4"/></symbol>
         <symbol id="i-calendar-check" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="M9 15l2 2 4-4"/></symbol>
-        <symbol id="i-hourglass" viewBox="0 0 24 24"><path d="M6 3h12M6 21h12"/><path d="M7 3c0 5 3 6 5 9-2 3-5 4-5 9"/><path d="M17 3c0 5-3 6-5 9 2 3 5 4 5 9"/></symbol>
-        <symbol id="i-trend" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></symbol>
-        <symbol id="i-layout" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 10v10"/></symbol>
         <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></symbol>
         <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/></symbol>
         <symbol id="i-clipboard" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="M9 13l2 2 4-4"/></symbol>
         <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 3h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol>
         <symbol id="i-chart" viewBox="0 0 24 24"><path d="M6 20v-5M12 20V9M18 20V4"/></symbol>
         <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></symbol>
-        <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><circle cx="12" cy="15" r="1.3"/></symbol>
         <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+        <symbol id="i-link" viewBox="0 0 24 24"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></symbol>
     </svg>
 
     <div class="pf-progress" id="pfProgress"></div>
@@ -507,7 +510,7 @@
             <span class="badge pf-in" style="--d: 0.05s;">Case Studies</span>
             <h1 class="pf-in" style="--d: 0.15s;">Work <span class="pf-gold">Examples</span></h1>
             <p class="pf-in" style="--d: 0.3s;">
-                Real operational challenges solved with organized systems and clear workflows.
+                Sample projects built with fictional data to show how I organize schedules, records, and reports.
             </p>
         </div>
 
@@ -526,9 +529,8 @@
             <article class="pf-card pf-reveal">
                 <div class="pf-grid">
 
-                    <!-- Left Column: Details -->
                     <div>
-                        <span class="pf-tag">CASE STUDY 01</span>
+                        <span class="pf-tag">CASE STUDY 01 | SAMPLE PROJECT</span>
                         <h2 class="pf-title">Inbox Management</h2>
                         <h4 class="pf-sub">SYSTEM FOR A BUSY EXECUTIVE</h4>
                         <p class="pf-motto">Organized. Prioritized. Nothing missed.</p>
@@ -582,177 +584,173 @@
                         </div>
                     </div>
 
-                    <!-- Right Column: Visual Presentation Graphic -->
                     <div class="pf-visual">
-                        <img src="assets/images/case-study-01-inbox.png" alt="Inbox Management Case Study Visualization">
+                        <div class="pf-win">
+                            <div class="pf-win-bar"><i></i><i></i><i></i><span>Inbox system</span></div>
+                            <img src="assets/images/case-study-01-inbox.png" alt="Inbox Management Case Study Visualization">
+                        </div>
                     </div>
 
                 </div>
             </article>
 
-            <!-- CASE STUDY 02: CALENDAR MANAGEMENT -->
-            <article class="pf-card pf-flip pf-reveal">
-                <div class="pf-grid">
-
-                    <!-- Left Column: Details -->
-                    <div>
-                        <span class="pf-tag">CASE STUDY 02</span>
-                        <h2 class="pf-title">Calendar Management</h2>
-                        <h4 class="pf-sub">&amp; SCHEDULING SYSTEM</h4>
-                        <p class="pf-motto">Structured schedule. Better focus. More done.</p>
-
-                        <div class="pf-block">
-                            <div class="pf-block-head">
-                                <span class="pf-sec-icon"><img src="assets/images/icon-scenario.png" alt="Scenario Icon"></span>
-                                <h4>The Scenario</h4>
-                            </div>
-                            <p>The client manages multiple meetings daily, leading to scheduling conflicts, missed appointments, and lack of focused work time.</p>
-                        </div>
-
-                        <div class="pf-block">
-                            <div class="pf-block-head">
-                                <span class="pf-sec-icon"><img src="assets/images/icon-problem.png" alt="Problem Icon"></span>
-                                <h4>The Problem</h4>
-                            </div>
-                            <ul>
-                                <li>Overlapping meetings</li>
-                                <li>No buffer time between calls</li>
-                                <li>Missed or double-booked appointments</li>
-                                <li>No dedicated focus time</li>
-                            </ul>
-                        </div>
-
-                        <div class="pf-block">
-                            <div class="pf-block-head">
-                                <span class="pf-sec-icon"><img src="assets/images/icon-approach.png" alt="Approach Icon"></span>
-                                <h4>My Approach</h4>
-                            </div>
-                            <ul>
-                                <li>Reviewed existing schedule and meeting patterns</li>
-                                <li>Identified conflicts and time gaps</li>
-                                <li>Reorganized calendar with clear time blocks</li>
-                                <li>Added buffer time between meetings</li>
-                                <li>Prioritized high-impact tasks and focus hours</li>
-                            </ul>
-                        </div>
-
-                        <div class="pf-block">
-                            <div class="pf-block-head">
-                                <span class="pf-sec-icon"><img src="assets/images/icon-result.png" alt="Result Icon"></span>
-                                <h4>The Result</h4>
-                            </div>
-                            <div class="pf-results">
-                                <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-calendar-check"/></svg></span><span>No scheduling conflicts</span></div>
-                                <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-hourglass"/></svg></span><span>Better time management</span></div>
-                                <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-trend"/></svg></span><span>Increased productivity</span></div>
-                                <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-layout"/></svg></span><span>Clear daily structure</span></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Right Column: Visual Presentation Graphic -->
-                    <div class="pf-visual">
-                        <img src="assets/images/case-study-02-calendar.png" alt="Calendar Management Case Study Visualization">
-                    </div>
-
-                </div>
-            </article>
-
-            <!-- CASE STUDY 03: DATA MANAGEMENT -->
+            <!-- CASE STUDY 02: SHIFT COVERAGE -->
             <article class="pf-card pf-reveal">
                 <div class="pf-grid">
 
-                    <!-- Left Column: Details -->
                     <div>
-                        <span class="pf-tag">CASE STUDY 03</span>
-                        <h2 class="pf-title">Data Management</h2>
-                        <h4 class="pf-sub">&amp; TRACKING SYSTEM</h4>
-                        <p class="pf-motto">Organized Data. Clear tracking. Better decisions.</p>
+                        <span class="pf-tag">CASE STUDY 02 | SAMPLE PROJECT</span>
+                        <h2 class="pf-title">Shift Coverage</h2>
+                        <h4 class="pf-sub">&amp; CALL-OUT REPLACEMENT</h4>
+                        <p class="pf-summary">When a caregiver calls out, find a replacement fast and keep the client informed.</p>
 
-                        <div class="pf-block">
-                            <div class="pf-block-head">
-                                <span class="pf-sec-icon"><img src="assets/images/icon-scenario.png" alt="Scenario Icon"></span>
-                                <h4>The Scenario</h4>
-                            </div>
-                            <p>The client manages multiple records manually, resulting in inconsistent data, difficulty tracking updates, and time-consuming searches.</p>
+                        <h5 class="pf-do-title">What I did</h5>
+                        <ul class="pf-do">
+                            <li>Built a weekly schedule that shows call-outs, covered shifts, and open shifts at a glance</li>
+                            <li>Logged every call-out with the reason, the time, and case notes</li>
+                            <li>Added a "who can cover" list that checks the day, hours worked, and county</li>
+                            <li>Wrote message templates and a weekly report for leadership</li>
+                        </ul>
+
+                        <ul class="pf-skills">
+                            <li>Google Sheets</li>
+                            <li>VLOOKUP</li>
+                            <li>Scheduling</li>
+                            <li>Conditional formatting</li>
+                        </ul>
+
+                        <div class="pf-results">
+                            <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-search"/></svg></span><span>Finds 3 replacements fast</span></div>
+                            <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-clipboard"/></svg></span><span>Call-outs logged with notes</span></div>
+                            <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-chart"/></svg></span><span>Weekly report built in</span></div>
                         </div>
 
-                        <div class="pf-block">
-                            <div class="pf-block-head">
-                                <span class="pf-sec-icon"><img src="assets/images/icon-problem.png" alt="Problem Icon"></span>
-                                <h4>The Problem</h4>
-                            </div>
-                            <ul>
-                                <li>Disorganized data entries</li>
-                                <li>Missing or incomplete information</li>
-                                <li>Difficult to track updates</li>
-                                <li>Time wasted searching for records</li>
-                            </ul>
-                        </div>
-
-                        <div class="pf-block">
-                            <div class="pf-block-head">
-                                <span class="pf-sec-icon"><img src="assets/images/icon-approach.png" alt="Approach Icon"></span>
-                                <h4>My Approach</h4>
-                            </div>
-                            <ul>
-                                <li>Reviewed existing data structure</li>
-                                <li>Cleaned and standardized entries</li>
-                                <li>Created a structured tracking system</li>
-                                <li>Added clear categories and fields</li>
-                                <li>Ensured consistency across all records</li>
-                            </ul>
-                        </div>
-
-                        <div class="pf-block">
-                            <div class="pf-block-head">
-                                <span class="pf-sec-icon"><img src="assets/images/icon-result.png" alt="Result Icon"></span>
-                                <h4>The Result</h4>
-                            </div>
-                            <div class="pf-results">
-                                <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-bolt"/></svg></span><span>Faster data access</span></div>
-                                <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-target"/></svg></span><span>Reduced errors</span></div>
-                                <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-clipboard"/></svg></span><span>Clear tracking progress</span></div>
-                                <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-folder"/></svg></span><span>Better organization</span></div>
-                            </div>
-                        </div>
+                        <p class="pf-data">Sample workbook with fictional data: 14 caregivers, 30 clients (initials only), 229 shifts over 4 weeks.</p>
+                        <!-- REPLACE the link below with the published link to your Caregiver Shift Coverage sheet -->
+                        <a class="pf-btn" href="YOUR-CAREGIVER-SHEET-LINK" target="_blank" rel="noopener">View the live sheet <svg aria-hidden="true"><use href="#i-link"/></svg></a>
                     </div>
 
-                    <!-- Right Column: Visual Presentation Graphic -->
-                    <div class="pf-visual">
-                        <img src="assets/images/case-study-03-data.png" alt="Data Management Case Study Visualization">
+                    <div class="pf-visual" data-viewer>
+                        <div class="pf-win">
+                            <div class="pf-win-bar"><i></i><i></i><i></i><span class="pf-win-label">Schedule</span></div>
+                            <img class="pf-main-img" src="assets/images/case-study-02-shift-schedule.png" alt="Weekly caregiver schedule showing a call-out, a covered shift, and an open shift">
+                        </div>
+                        <div class="pf-thumbs">
+                            <button type="button" class="pf-thumb active" aria-pressed="true" data-label="Schedule" data-src="assets/images/case-study-02-shift-schedule.png" data-alt="Weekly caregiver schedule showing a call-out, a covered shift, and an open shift"><img src="assets/images/case-study-02-shift-schedule.png" alt="">Schedule</button>
+                            <button type="button" class="pf-thumb" aria-pressed="false" data-label="Who can cover" data-src="assets/images/case-study-02-who-can-cover.png" data-alt="List of caregivers ranked as replacements for an open shift"><img src="assets/images/case-study-02-who-can-cover.png" alt="">Who can cover</button>
+                            <button type="button" class="pf-thumb" aria-pressed="false" data-label="Weekly report" data-src="assets/images/case-study-02-weekly-report.png" data-alt="Weekly report with shift totals, call-outs, and charts"><img src="assets/images/case-study-02-weekly-report.png" alt="">Weekly report</button>
+                        </div>
                     </div>
 
                 </div>
             </article>
 
-            <!-- CASE STUDY 03 - PART 02: DYNAMIC SEARCH -->
+            <!-- CASE STUDY 03: DATA CLEANUP -->
             <article class="pf-card pf-flip pf-reveal">
                 <div class="pf-grid">
 
-                    <!-- Left Column: Details -->
                     <div>
-                        <span class="pf-tag">CASE STUDY 03 - PART 02</span>
-                        <h2 class="pf-title">Dynamic Search</h2>
-                        <h4 class="pf-sub">&amp; INTERACTIVE INSIGHTS</h4>
-                        <p class="pf-motto">Smart retrieval. Automated summaries. Effortless access.</p>
+                        <span class="pf-tag">CASE STUDY 03 | SAMPLE PROJECT</span>
+                        <h2 class="pf-title">Data Cleanup</h2>
+                        <h4 class="pf-sub">&amp; DATABASE SETUP</h4>
+                        <p class="pf-summary">312 messy rows turned into 287 clean, linked records.</p>
 
-                        <div class="pf-source">
-                            <strong>DATA SOURCE</strong>
-                            <p>This analysis is based on the data tracker from Case Study 03. (7 Client Records)</p>
+                        <h5 class="pf-do-title">What I did</h5>
+                        <ul class="pf-do">
+                            <li>Cleaned names, phone numbers, dates, and service names with formulas</li>
+                            <li>Found and removed 25 duplicates, keeping the first entry</li>
+                            <li>Logged every fix so it can be checked</li>
+                            <li>Moved the clean data into linked Clients, Jobs, and Invoices tabs with dropdowns</li>
+                        </ul>
+
+                        <ul class="pf-skills">
+                            <li>Google Sheets</li>
+                            <li>Data cleaning</li>
+                            <li>Formulas</li>
+                            <li>Dropdowns</li>
+                        </ul>
+
+                        <div class="pf-results">
+                            <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-folder"/></svg></span><span>312 rows to 287</span></div>
+                            <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-target"/></svg></span><span>25 duplicates removed</span></div>
+                            <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-clipboard"/></svg></span><span>0 errors left</span></div>
+                            <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-eye"/></svg></span><span>Every fix logged</span></div>
                         </div>
 
-                        <ul class="pf-tools">
-                            <li><span class="pf-ico"><svg class="pf-i"><use href="#i-chart"/></svg></span><span>Quickly summarize data using Pivot Tables</span></li>
-                            <li><span class="pf-ico"><svg class="pf-i"><use href="#i-search"/></svg></span><span>Look up specific information instantly with VLOOKUP</span></li>
-                            <li><span class="pf-ico"><svg class="pf-i"><use href="#i-calendar"/></svg></span><span>Track time and follow-ups with simple formulas</span></li>
-                            <li><span class="pf-ico"><svg class="pf-i"><use href="#i-eye"/></svg></span><span>Better visibility leads to better decisions</span></li>
-                        </ul>
+                        <p class="pf-data">Sample workbook with fictional data for a home services company: 312 raw rows, 140 clients.</p>
+                        <!-- REPLACE the link below with the published link to your Home Services Operations Hub sheet -->
+                        <a class="pf-btn" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTSxP1Qjz_VCoHUlOGj0aSn6Rlc9230HOvNjEJlLL3enEHhSvBaM8XLO-k1tKybcJpXlwz9ZDmA_HiX/pubhtml" target="_blank" rel="noopener">View the live sheet <svg aria-hidden="true"><use href="#i-link"/></svg></a>
                     </div>
 
-                    <!-- Right Column: Visual Presentation Graphic -->
                     <div class="pf-visual">
-                        <img src="assets/images/case-study-04-dashboard.png" alt="Dynamic Search Dashboard Visualization">
+                        <div class="pf-pair">
+                            <div>
+                                <p class="pf-cap">Before: raw export</p>
+                                <div class="pf-win">
+                                    <div class="pf-win-bar"><i></i><i></i><i></i><span>Raw export</span></div>
+                                    <img src="assets/images/case-study-03-raw-export.png" alt="Raw export with duplicate rows, mixed phone formats, and typos highlighted">
+                                </div>
+                            </div>
+                            <div>
+                                <p class="pf-cap">After: cleanup log</p>
+                                <div class="pf-win">
+                                    <div class="pf-win-bar"><i></i><i></i><i></i><span>Cleanup log</span></div>
+                                    <img src="assets/images/case-study-03-cleanup-log.png" alt="Cleanup log counting each fix, with 312 raw rows and 287 clean rows">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </article>
+
+            <!-- CASE STUDY 04: OPERATIONS DASHBOARD -->
+            <article class="pf-card pf-reveal">
+                <div class="pf-grid">
+
+                    <div>
+                        <span class="pf-tag">CASE STUDY 04 | SAMPLE PROJECT</span>
+                        <h2 class="pf-title">Operations Dashboard</h2>
+                        <h4 class="pf-sub">&amp; CLIENT LOOKUP</h4>
+                        <p class="pf-summary">Jobs, invoices, and stock on one page, with a client lookup.</p>
+
+                        <h5 class="pf-do-title">What I did</h5>
+                        <ul class="pf-do">
+                            <li>Built a dashboard that updates when the data changes</li>
+                            <li>Added a lookup: pick a client ID and see what they owe</li>
+                            <li>Flagged technicians booked twice at the same time</li>
+                            <li>Set stock rules that flag parts to reorder and suggest quantities</li>
+                        </ul>
+
+                        <ul class="pf-skills">
+                            <li>Google Sheets</li>
+                            <li>VLOOKUP</li>
+                            <li>Charts</li>
+                            <li>Conditional formatting</li>
+                        </ul>
+
+                        <div class="pf-results">
+                            <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-flag"/></svg></span><span>13 overdue invoices flagged</span></div>
+                            <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-calendar-check"/></svg></span><span>2 double-bookings caught</span></div>
+                            <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-bolt"/></svg></span><span>5 parts to reorder</span></div>
+                            <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-search"/></svg></span><span>Client history in one click</span></div>
+                        </div>
+
+                        <p class="pf-data">Sample workbook with fictional data: 287 jobs, 140 clients, 243 invoices.</p>
+                        <!-- REPLACE the link below with the published link to your Home Services Operations Hub sheet -->
+                        <a class="pf-btn" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQq0DvQCbtcXupkxCXLCOZaLggJiQk1SkUJhi5AyjbttfVOyft4sWpMxutTx85j-PGp6-KES4u0l_Tc/pubhtml" target="_blank" rel="noopener">View the live sheet <svg aria-hidden="true"><use href="#i-link"/></svg></a>
+                    </div>
+
+                    <div class="pf-visual" data-viewer>
+                        <div class="pf-win">
+                            <div class="pf-win-bar"><i></i><i></i><i></i><span class="pf-win-label">Dashboard</span></div>
+                            <img class="pf-main-img" src="assets/images/case-study-04-ops-dashboard.png" alt="Operations dashboard with job, revenue, invoice, and stock totals and a client lookup">
+                        </div>
+                        <div class="pf-thumbs">
+                            <button type="button" class="pf-thumb active" aria-pressed="true" data-label="Dashboard" data-src="assets/images/case-study-04-ops-dashboard.png" data-alt="Operations dashboard with job, revenue, invoice, and stock totals and a client lookup"><img src="assets/images/case-study-04-ops-dashboard.png" alt="">Dashboard</button>
+                            <button type="button" class="pf-thumb" aria-pressed="false" data-label="Dispatch" data-src="assets/images/case-study-04-dispatch.png" data-alt="Dispatch schedule with double-booked technicians highlighted"><img src="assets/images/case-study-04-dispatch.png" alt="">Dispatch</button>
+                            <button type="button" class="pf-thumb" aria-pressed="false" data-label="Parts stock" data-src="assets/images/case-study-04-parts-stock.png" data-alt="Parts stock list with low and reorder statuses"><img src="assets/images/case-study-04-parts-stock.png" alt="">Parts stock</button>
+                        </div>
                     </div>
 
                 </div>
@@ -801,6 +799,46 @@
             window.addEventListener('scroll', onScroll, { passive: true });
             onScroll();
 
+            // Thumbnails swap the main screenshot
+            document.querySelectorAll('[data-viewer]').forEach(function (viewer) {
+                var main = viewer.querySelector('.pf-main-img');
+                var label = viewer.querySelector('.pf-win-label');
+                var thumbs = viewer.querySelectorAll('.pf-thumb');
+                thumbs.forEach(function (btn) {
+                    btn.addEventListener('click', function () {
+                        main.src = btn.getAttribute('data-src');
+                        main.alt = btn.getAttribute('data-alt');
+                        label.textContent = btn.getAttribute('data-label');
+                        thumbs.forEach(function (t) {
+                            t.classList.remove('active');
+                            t.setAttribute('aria-pressed', 'false');
+                        });
+                        btn.classList.add('active');
+                        btn.setAttribute('aria-pressed', 'true');
+                    });
+                });
+            });
+
+            // Click a screenshot to enlarge it
+            var box = document.createElement('div');
+            box.className = 'pf-lightbox';
+            box.innerHTML = '<img alt="">';
+            document.body.appendChild(box);
+            var big = box.querySelector('img');
+            document.addEventListener('click', function (e) {
+                var img = e.target.closest('.pf-win img');
+                if (img) {
+                    big.src = img.src;
+                    big.alt = img.alt;
+                    box.classList.add('open');
+                } else if (box.classList.contains('open')) {
+                    box.classList.remove('open');
+                }
+            });
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') box.classList.remove('open');
+            });
+
             // Fade each case study in as it scrolls into view
             var els = document.querySelectorAll('.pf-reveal');
             if (!('IntersectionObserver' in window)) {
@@ -813,10 +851,7 @@
                     var el = entry.target;
                     el.classList.add('is-visible');
                     io.unobserve(el);
-                    // Hand the card back to its normal hover styles once it has appeared
-                    setTimeout(function () {
-                        el.classList.remove('pf-reveal', 'is-visible');
-                    }, 900);
+                    setTimeout(function () { el.classList.remove('pf-reveal', 'is-visible'); }, 900);
                 });
             }, { threshold: 0.08 });
             els.forEach(function (el) { io.observe(el); });
