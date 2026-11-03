@@ -153,11 +153,13 @@
             border-color: rgba(197, 168, 128, 0.7);
             box-shadow: 0 20px 50px rgba(10, 25, 47, 0.1);
         }
+
+        /* Text always starts at the top, so it never shifts when the picture side changes height */
         .pf-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
-            align-items: center;
+            align-items: start;
         }
 
         .pf-tag {
@@ -178,52 +180,8 @@
             color: var(--primary-navy);
             text-transform: uppercase;
         }
-        .pf-sub { margin-bottom: 0.5rem; font-size: 1.05rem; font-weight: 600; color: #a8815e; }
-        .pf-motto { margin-bottom: 1.5rem; font-size: 0.95rem; font-style: italic; color: var(--text-muted); }
+        .pf-sub { margin-bottom: 0.9rem; font-size: 1.05rem; font-weight: 600; color: #a8815e; }
 
-        /* Long layout (Case Study 01) */
-        .pf-block { padding: 1.2rem 0; border-top: 1px solid #EAE0D5; }
-        .pf-block:last-child { padding-bottom: 0; }
-        .pf-block-head { display: flex; align-items: center; gap: 0.85rem; margin-bottom: 0.6rem; }
-        .pf-sec-icon {
-            flex-shrink: 0;
-            width: 42px; height: 42px;
-            display: grid; place-items: center;
-            border-radius: 50%;
-            background: rgba(197, 168, 128, 0.2);
-            transition: background var(--transition-fast), transform 0.3s ease;
-        }
-        .pf-sec-icon img { width: 24px; height: 24px; object-fit: contain; display: block; }
-        .pf-block:hover .pf-sec-icon { background: rgba(197, 168, 128, 0.38); transform: scale(1.06); }
-        .pf-block-head h4 {
-            margin: 0;
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--primary-navy);
-            text-transform: uppercase;
-            letter-spacing: 0.4px;
-        }
-        .pf-block p, .pf-block ul { margin-left: calc(42px + 0.85rem); }
-        .pf-block p { font-size: 0.9rem; line-height: 1.6; color: #4a5568; }
-        .pf-block ul { list-style: none; padding: 0; }
-        .pf-block li {
-            position: relative;
-            margin-bottom: 0.4rem;
-            padding-left: 1.1rem;
-            font-size: 0.9rem;
-            line-height: 1.5;
-            color: #4a5568;
-        }
-        .pf-block li::before {
-            content: "";
-            position: absolute;
-            left: 0; top: 0.55em;
-            width: 6px; height: 6px;
-            border-radius: 50%;
-            background: var(--accent-gold);
-        }
-
-        /* Short layout (Case Studies 02 to 04) */
         .pf-summary { margin: 0 0 1.1rem; font-size: 1rem; line-height: 1.55; color: var(--text-primary); }
         .pf-do-title {
             margin: 0 0 0.5rem;
@@ -289,7 +247,7 @@
             stroke-linecap: round; stroke-linejoin: round;
         }
 
-        /* Icons and result chips */
+        /* Icons and result chips (always three per case study) */
         .pf-i {
             width: 18px; height: 18px;
             fill: none;
@@ -308,19 +266,19 @@
         }
         .pf-results {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 0.75rem;
             margin-top: 1.1rem;
         }
         .pf-result {
             display: flex;
             align-items: center;
-            gap: 0.7rem;
-            padding: 0.6rem 0.8rem;
+            gap: 0.6rem;
+            padding: 0.6rem 0.7rem;
             background: var(--bg-surface);
             border: 1px solid var(--border-color);
             border-radius: 10px;
-            font-size: 0.88rem;
+            font-size: 0.84rem;
             font-weight: 600;
             line-height: 1.3;
             color: var(--primary-navy);
@@ -333,7 +291,7 @@
         }
         .pf-result:hover .pf-ico { background: var(--accent-gold); transform: scale(1.08); }
 
-        /* Screenshot frames */
+        /* Screenshot frames: every picture is shown in the same 16:10 box */
         .pf-visual { position: relative; }
         .pf-visual::before {
             content: "";
@@ -366,43 +324,50 @@
         }
         .pf-win-bar i { width: 9px; height: 9px; border-radius: 50%; background: #cbd5e1; display: inline-block; }
         .pf-win-bar span { margin-left: 6px; }
-        .pf-win img { display: block; width: 100%; height: auto; cursor: zoom-in; }
-        .pf-pair { position: relative; z-index: 1; display: grid; gap: 1.25rem; }
-        .pf-cap {
-            margin: 0 0 0.4rem;
-            font-family: var(--font-subheading);
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            color: var(--text-muted);
+        .pf-shot { aspect-ratio: 16 / 10; background: #ffffff; overflow: hidden; }
+        .pf-shot img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top left;
+            cursor: zoom-in;
         }
         .pf-thumbs {
             position: relative;
             z-index: 1;
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+            display: flex;
             gap: 8px;
             margin-top: 14px;
         }
         .pf-thumb {
+            flex: 0 0 calc((100% - 16px) / 3);
             padding: 5px;
             border: 1px solid var(--border-color);
             border-radius: 8px;
             background: var(--bg-white);
             font: inherit;
             font-size: 0.72rem;
+            line-height: 1.25;
             color: var(--text-muted);
             text-align: center;
             cursor: pointer;
             transition: border-color var(--transition-fast), color var(--transition-fast), box-shadow var(--transition-fast);
         }
-        .pf-thumb img { display: block; width: 100%; height: auto; margin-bottom: 4px; border-radius: 4px; }
+        .pf-thumb img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+            object-position: top left;
+            margin-bottom: 4px;
+            border-radius: 4px;
+        }
         .pf-thumb:hover, .pf-thumb.active { border-color: var(--accent-gold); color: var(--primary-navy); }
         .pf-thumb.active { box-shadow: 0 0 0 2px rgba(197, 168, 128, 0.4); }
         .pf-thumb:focus-visible, .pf-btn:focus-visible { outline: 3px solid var(--accent-gold); outline-offset: 2px; }
 
-        /* Click-to-enlarge */
+        /* Click-to-enlarge (shows the whole picture, uncropped) */
         .pf-lightbox {
             position: fixed;
             inset: 0;
@@ -434,7 +399,7 @@
             .pf-shape { animation: none !important; }
             .pf-in { opacity: 1; transform: none; animation: none; }
             .js .pf-reveal { opacity: 1; transform: none; transition: none; }
-            .pf-result, .pf-ico, .pf-sec-icon, .pf-visual::before, .pf-btn { transition: none; }
+            .pf-result, .pf-ico, .pf-visual::before, .pf-btn { transition: none; }
             .pf-result:hover, .pf-btn:hover, .pf-visual:hover::before { transform: none; }
         }
 
@@ -452,14 +417,13 @@
             .pf-main::after { display: none; }
             .pf-card { padding: 2rem 1.35rem 1.75rem; margin-bottom: 2.5rem; }
             .pf-title { font-size: 1.8rem; }
-            .pf-block p, .pf-block ul { margin-left: 0; }
-            .pf-results { grid-template-columns: 1fr 1fr; }
+            .pf-results { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Icon set used by the result chips and button -->
+    <!-- Icon set used by the result chips and buttons -->
     <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
         <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
         <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4"/><path d="M5 4h12l-2.5 4L17 12H5"/></symbol>
@@ -471,7 +435,6 @@
         <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 3h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol>
         <symbol id="i-chart" viewBox="0 0 24 24"><path d="M6 20v-5M12 20V9M18 20V4"/></symbol>
         <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></symbol>
-        <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
         <symbol id="i-link" viewBox="0 0 24 24"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></symbol>
     </svg>
 
@@ -510,7 +473,7 @@
             <span class="badge pf-in" style="--d: 0.05s;">Case Studies</span>
             <h1 class="pf-in" style="--d: 0.15s;">Work <span class="pf-gold">Examples</span></h1>
             <p class="pf-in" style="--d: 0.3s;">
-                Sample projects built with fictional data to show how I organize schedules, records, and reports.
+                Sample projects built with fictional data to show how I organize inboxes, schedules, records, and reports.
             </p>
         </div>
 
@@ -532,62 +495,37 @@
                     <div>
                         <span class="pf-tag">CASE STUDY 01 | SAMPLE PROJECT</span>
                         <h2 class="pf-title">Inbox Management</h2>
-                        <h4 class="pf-sub">SYSTEM FOR A BUSY EXECUTIVE</h4>
-                        <p class="pf-motto">Organized. Prioritized. Nothing missed.</p>
+                        <h4 class="pf-sub">&amp; EMAIL PRIORITIZING</h4>
+                        <p class="pf-summary">An executive with 50+ emails a day was missing messages and replying late. I set up a system so nothing gets lost.</p>
 
-                        <div class="pf-block">
-                            <div class="pf-block-head">
-                                <span class="pf-sec-icon"><img src="assets/images/icon-scenario.png" alt="Scenario Icon"></span>
-                                <h4>The Scenario</h4>
-                            </div>
-                            <p>The client receives 50+ emails daily, leading to missed messages, delayed responses, and difficulty prioritizing tasks.</p>
+                        <h5 class="pf-do-title">What I did</h5>
+                        <ul class="pf-do">
+                            <li>Reviewed email types and common senders</li>
+                            <li>Created labels based on priority and category</li>
+                            <li>Set up filters to sort incoming email automatically</li>
+                            <li>Flagged urgent messages for quick attention</li>
+                        </ul>
+
+                        <ul class="pf-skills">
+                            <li>Gmail</li>
+                            <li>Labels and filters</li>
+                            <li>Prioritizing</li>
+                            <li>Inbox organization</li>
+                        </ul>
+
+                        <div class="pf-results">
+                            <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-clock"/></svg></span><span>Faster response time</span></div>
+                            <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-flag"/></svg></span><span>Clear prioritization</span></div>
+                            <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-mail-check"/></svg></span><span>Zero missed emails</span></div>
                         </div>
 
-                        <div class="pf-block">
-                            <div class="pf-block-head">
-                                <span class="pf-sec-icon"><img src="assets/images/icon-problem.png" alt="Problem Icon"></span>
-                                <h4>The Problem</h4>
-                            </div>
-                            <ul>
-                                <li>Important emails get buried</li>
-                                <li>No clear categorization</li>
-                                <li>Delayed responses</li>
-                                <li>Inbox clutter affecting productivity</li>
-                            </ul>
-                        </div>
-
-                        <div class="pf-block">
-                            <div class="pf-block-head">
-                                <span class="pf-sec-icon"><img src="assets/images/icon-approach.png" alt="Approach Icon"></span>
-                                <h4>My Approach</h4>
-                            </div>
-                            <ul>
-                                <li>Reviewed email types and common senders</li>
-                                <li>Created a labeling system based on priority and category</li>
-                                <li>Set up filters to automatically organize incoming emails</li>
-                                <li>Flagged urgent messages for immediate attention</li>
-                            </ul>
-                        </div>
-
-                        <div class="pf-block">
-                            <div class="pf-block-head">
-                                <span class="pf-sec-icon"><img src="assets/images/icon-result.png" alt="Result Icon"></span>
-                                <h4>The Result</h4>
-                            </div>
-                            <p>Emails are now sorted automatically, reducing clutter and making it easier to focus on priority tasks.</p>
-
-                            <div class="pf-results">
-                                <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-clock"/></svg></span><span>Faster response time</span></div>
-                                <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-flag"/></svg></span><span>Clear prioritization</span></div>
-                                <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-mail-check"/></svg></span><span>Zero missed emails</span></div>
-                            </div>
-                        </div>
+                        <p class="pf-data">Sample setup built with fictional emails.</p>
                     </div>
 
                     <div class="pf-visual">
                         <div class="pf-win">
-                            <div class="pf-win-bar"><i></i><i></i><i></i><span>Inbox system</span></div>
-                            <img src="assets/images/case-study-01-inbox.png" alt="Inbox Management Case Study Visualization">
+                            <div class="pf-win-bar"><i></i><i></i><i></i><span>Before (top) and after (bottom)</span></div>
+                            <div class="pf-shot"><img src="assets/images/case-study-01-inbox.png" alt="Gmail inbox before and after: the top inbox has no labels, and the bottom inbox has colored labels for clients, internal, follow-up, and urgent messages"></div>
                         </div>
                     </div>
 
@@ -595,7 +533,7 @@
             </article>
 
             <!-- CASE STUDY 02: SHIFT COVERAGE -->
-            <article class="pf-card pf-reveal">
+            <article class="pf-card pf-flip pf-reveal">
                 <div class="pf-grid">
 
                     <div>
@@ -632,7 +570,7 @@
                     <div class="pf-visual" data-viewer>
                         <div class="pf-win">
                             <div class="pf-win-bar"><i></i><i></i><i></i><span class="pf-win-label">Schedule</span></div>
-                            <img class="pf-main-img" src="assets/images/case-study-02-shift-schedule.png" alt="Weekly caregiver schedule showing a call-out, a covered shift, and an open shift">
+                            <div class="pf-shot"><img class="pf-main-img" src="assets/images/case-study-02-shift-schedule.png" alt="Weekly caregiver schedule showing a call-out, a covered shift, and an open shift"></div>
                         </div>
                         <div class="pf-thumbs">
                             <button type="button" class="pf-thumb active" aria-pressed="true" data-label="Schedule" data-src="assets/images/case-study-02-shift-schedule.png" data-alt="Weekly caregiver schedule showing a call-out, a covered shift, and an open shift"><img src="assets/images/case-study-02-shift-schedule.png" alt="">Schedule</button>
@@ -645,7 +583,7 @@
             </article>
 
             <!-- CASE STUDY 03: DATA CLEANUP -->
-            <article class="pf-card pf-flip pf-reveal">
+            <article class="pf-card pf-reveal">
                 <div class="pf-grid">
 
                     <div>
@@ -673,29 +611,21 @@
                             <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-folder"/></svg></span><span>312 rows to 287</span></div>
                             <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-target"/></svg></span><span>25 duplicates removed</span></div>
                             <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-clipboard"/></svg></span><span>0 errors left</span></div>
-                            <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-eye"/></svg></span><span>Every fix logged</span></div>
                         </div>
 
                         <p class="pf-data">Sample workbook with fictional data for a home services company: 312 raw rows, 140 clients.</p>
                         <a class="pf-btn" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQq0DvQCbtcXupkxCXLCOZaLggJiQk1SkUJhi5AyjbttfVOyft4sWpMxutTx85j-PGp6-KES4u0l_Tc/pubhtml" target="_blank" rel="noopener">View the live sheet <svg aria-hidden="true"><use href="#i-link"/></svg></a>
                     </div>
 
-                    <div class="pf-visual">
-                        <div class="pf-pair">
-                            <div>
-                                <p class="pf-cap">Before: raw export</p>
-                                <div class="pf-win">
-                                    <div class="pf-win-bar"><i></i><i></i><i></i><span>Raw export</span></div>
-                                    <img src="assets/images/case-study-03-raw-export.png" alt="Raw export with duplicate rows, mixed phone formats, and typos highlighted">
-                                </div>
-                            </div>
-                            <div>
-                                <p class="pf-cap">After: cleanup log</p>
-                                <div class="pf-win">
-                                    <div class="pf-win-bar"><i></i><i></i><i></i><span>Cleanup log</span></div>
-                                    <img src="assets/images/case-study-03-cleanup-log.png" alt="Cleanup log counting each fix, with 312 raw rows and 287 clean rows">
-                                </div>
-                            </div>
+                    <div class="pf-visual" data-viewer>
+                        <div class="pf-win">
+                            <div class="pf-win-bar"><i></i><i></i><i></i><span class="pf-win-label">Before: raw export</span></div>
+                            <div class="pf-shot"><img class="pf-main-img" src="assets/images/case-study-03-raw-export.png" alt="Raw export with duplicate rows, mixed phone formats, and typos highlighted"></div>
+                        </div>
+                        <div class="pf-thumbs">
+                            <button type="button" class="pf-thumb active" aria-pressed="true" data-label="Before: raw export" data-src="assets/images/case-study-03-raw-export.png" data-alt="Raw export with duplicate rows, mixed phone formats, and typos highlighted"><img src="assets/images/case-study-03-raw-export.png" alt="">Before</button>
+                            <button type="button" class="pf-thumb" aria-pressed="false" data-label="Cleanup log" data-src="assets/images/case-study-03-cleanup-log.png" data-alt="Cleanup log counting each fix, with 312 raw rows and 287 clean rows"><img src="assets/images/case-study-03-cleanup-log.png" alt="">Cleanup log</button>
+                            <button type="button" class="pf-thumb" aria-pressed="false" data-label="After: clean jobs" data-src="assets/images/case-study-03-clean-jobs.png" data-alt="Clean jobs tab with client names looked up from the clients tab and invoice status"><img src="assets/images/case-study-03-clean-jobs.png" alt="">After</button>
                         </div>
                     </div>
 
@@ -703,7 +633,7 @@
             </article>
 
             <!-- CASE STUDY 04: OPERATIONS DASHBOARD -->
-            <article class="pf-card pf-reveal">
+            <article class="pf-card pf-flip pf-reveal">
                 <div class="pf-grid">
 
                     <div>
@@ -731,7 +661,6 @@
                             <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-flag"/></svg></span><span>13 overdue invoices flagged</span></div>
                             <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-calendar-check"/></svg></span><span>2 double-bookings caught</span></div>
                             <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-bolt"/></svg></span><span>5 parts to reorder</span></div>
-                            <div class="pf-result"><span class="pf-ico"><svg class="pf-i"><use href="#i-search"/></svg></span><span>Client history in one click</span></div>
                         </div>
 
                         <p class="pf-data">Sample workbook with fictional data: 287 jobs, 140 clients, 243 invoices.</p>
@@ -741,12 +670,12 @@
                     <div class="pf-visual" data-viewer>
                         <div class="pf-win">
                             <div class="pf-win-bar"><i></i><i></i><i></i><span class="pf-win-label">Dashboard</span></div>
-                            <img class="pf-main-img" src="assets/images/case-study-04-ops-dashboard.png" alt="Operations dashboard with job, revenue, invoice, and stock totals and a client lookup">
+                            <div class="pf-shot"><img class="pf-main-img" src="assets/images/case-study-04-ops-dashboard.png" alt="Operations dashboard with job, revenue, invoice, and stock totals and a client lookup"></div>
                         </div>
                         <div class="pf-thumbs">
                             <button type="button" class="pf-thumb active" aria-pressed="true" data-label="Dashboard" data-src="assets/images/case-study-04-ops-dashboard.png" data-alt="Operations dashboard with job, revenue, invoice, and stock totals and a client lookup"><img src="assets/images/case-study-04-ops-dashboard.png" alt="">Dashboard</button>
                             <button type="button" class="pf-thumb" aria-pressed="false" data-label="Dispatch" data-src="assets/images/case-study-04-dispatch.png" data-alt="Dispatch schedule with double-booked technicians highlighted"><img src="assets/images/case-study-04-dispatch.png" alt="">Dispatch</button>
-                            <button type="button" class="pf-thumb" aria-pressed="false" data-label="Parts stock" data-src="assets/images/case-study-04-parts-stock.png" data-alt="Parts stock list with low and reorder statuses"><img src="assets/images/case-study-04-parts-stock.png" alt="">Parts stock</button>
+                            <button type="button" class="pf-thumb" aria-pressed="false" data-label="Invoices" data-src="assets/images/case-study-04-invoices.png" data-alt="Invoices tab with paid, open, and overdue statuses and how many days past due"><img src="assets/images/case-study-04-invoices.png" alt="">Invoices</button>
                         </div>
                     </div>
 
@@ -823,7 +752,7 @@
             document.body.appendChild(box);
             var big = box.querySelector('img');
             document.addEventListener('click', function (e) {
-                var img = e.target.closest('.pf-win img');
+                var img = e.target.closest('.pf-shot img');
                 if (img) {
                     big.src = img.src;
                     big.alt = img.alt;
