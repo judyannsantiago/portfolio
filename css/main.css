@@ -460,9 +460,9 @@ p {
 .hm-scene svg { display: block; width: 100%; height: auto; }
 .hm-scene text { font-family: Inter, sans-serif; font-weight: 600; }
 .hm-scene .ln { fill: none; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
-.hm-scene .you { stroke: var(--accent-gold); }
+.hm-scene .you { stroke: #C5A880; }
 .hm-scene .client { stroke: #F8FAFC; }
-.hm-scene .f-gold { fill: var(--accent-gold); }
+.hm-scene .f-gold { fill: #C5A880; }
 .hm-scene .pv { transform-box: fill-box; transform-origin: 50% 0; }
 
 /* Girl runs over */
