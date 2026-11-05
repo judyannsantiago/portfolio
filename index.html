@@ -145,60 +145,7 @@
             box-shadow: 0 10px 24px rgba(197, 168, 128, 0.35);
         }
 
-        /* ---------- Chaos-to-order board (hero) ---------- */
-        .hm-board {
-            position: relative;
-            max-width: 760px;
-            height: 230px;
-            margin: 0 auto 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.04);
-        }
-        .hm-col-label {
-            position: absolute;
-            top: 12px;
-            left: calc(var(--col) * 25% + 1.5%);
-            width: 22%;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-align: left;
-            color: var(--accent-gold);
-            opacity: 0;
-            transition: opacity 0.5s ease 0.6s;
-        }
-        .hm-card {
-            position: absolute;
-            left: var(--cx);
-            top: var(--cy);
-            width: 22%;
-            padding: 9px 10px;
-            font-size: 0.8rem;
-            line-height: 1.25;
-            text-align: left;
-            color: var(--bg-white);
-            background: #13243f;
-            border: 1px solid rgba(255, 255, 255, 0.22);
-            border-radius: 8px;
-            transform: rotate(var(--r));
-            transition: left 0.8s cubic-bezier(.2, .8, .2, 1),
-                        top 0.8s cubic-bezier(.2, .8, .2, 1),
-                        transform 0.8s cubic-bezier(.2, .8, .2, 1),
-                        border-color 0.8s ease;
-            transition-delay: calc(var(--i) * 70ms);
-        }
-        .hm-board.sorted .hm-card {
-            left: calc(var(--col) * 25% + 1.5%);
-            top: calc(42px + var(--row) * 56px);
-            transform: none;
-        }
-        .hm-board.sorted .hm-col-label { opacity: 1; }
-        .hm-board.sorted .hm-card.done { border-color: var(--accent-gold); }
-        .hm-board.sorted .hm-card.done::after {
-            content: "\2713";
-            margin-left: 6px;
-            color: var(--accent-gold);
-        }
+        /* Caption + replay link under the hero scene (the scene itself is styled in css/main.css) */
         .hm-board-note {
             margin: 0;
             font-size: 0.95rem;
@@ -541,7 +488,6 @@
             .hm-in { opacity: 1; transform: none; animation: none; }
             .js .hm-reveal { opacity: 1; transform: none; transition: none; }
             .ind-details, .ind-toggle::before, .ind-toggle::after { transition: none; }
-            .hm-card, .hm-col-label { transition: none; }
             .hm-framework.lit .step-card .step-num { animation: none; }
         }
 
@@ -550,10 +496,6 @@
             .hm-hero h1 { font-size: 2.3rem; }
             .hm-shape.s1 { width: 200px; height: 200px; right: -60px; top: -70px; }
             .hm-shape.s2, .hm-shape.s3, .hm-shape.s4 { display: none; }
-            .hm-board { height: 200px; }
-            .hm-card { padding: 6px; font-size: 0.62rem; }
-            .hm-col-label { font-size: 0.68rem; }
-            .hm-board.sorted .hm-card { top: calc(36px + var(--row) * 46px); }
             .hm-wave svg { height: 36px; }
             .hm-industries, .hm-framework, .hm-services, .hm-tools { padding: 3.5rem 0; }
             .hm-services::before { width: 260px; height: 260px; }
@@ -605,23 +547,71 @@
                 <a href="contact.html" class="btn btn-secondary">Get In Touch</a>
             </div>
 
+            <!-- Helping-hand scene: she runs over, takes the workload, the client smiles -->
             <div class="hm-in" style="--d: 0.6s;">
-                <div class="hm-board" id="hmBoard" role="img" aria-label="Animation: messy requests such as visit changes, late deliveries, and invoices sort themselves into Urgent, Today, This week, and Done columns.">
-                    <span class="hm-col-label" style="--col:0">Urgent</span>
-                    <span class="hm-col-label" style="--col:1">Today</span>
-                    <span class="hm-col-label" style="--col:2">This week</span>
-                    <span class="hm-col-label" style="--col:3">Done</span>
+                <div class="hm-scene">
+                    <svg id="hmScene" viewBox="0 0 760 240" role="img" aria-label="Animation: a stick-figure assistant runs to an overloaded client, takes his huge stack of work, and the client smiles.">
+                        <line x1="20" y1="202" x2="740" y2="202" stroke="rgba(255,255,255,.18)" stroke-width="2" stroke-dasharray="4 6"/>
 
-                    <div class="hm-card" style="--i:0;--cx:58%;--cy:10%;--r:6deg;--col:0;--row:0">Visit change</div>
-                    <div class="hm-card" style="--i:1;--cx:6%;--cy:62%;--r:-5deg;--col:0;--row:1">Late delivery</div>
-                    <div class="hm-card" style="--i:2;--cx:30%;--cy:55%;--r:4deg;--col:1;--row:0">Caregiver shift</div>
-                    <div class="hm-card" style="--i:3;--cx:74%;--cy:58%;--r:-7deg;--col:1;--row:1">Dispatch update</div>
-                    <div class="hm-card" style="--i:4;--cx:12%;--cy:12%;--r:-4deg;--col:2;--row:0">Intake form</div>
-                    <div class="hm-card" style="--i:5;--cx:48%;--cy:30%;--r:8deg;--col:2;--row:1">Invoice check</div>
-                    <div class="hm-card done" style="--i:6;--cx:40%;--cy:68%;--r:-3deg;--col:3;--row:0">Reschedule</div>
-                    <div class="hm-card done" style="--i:7;--cx:70%;--cy:8%;--r:5deg;--col:3;--row:1">Records filed</div>
+                        <!-- Client -->
+                        <g transform="translate(640,0)">
+                            <circle class="ln client" cx="0" cy="128" r="16"/>
+                            <g class="sad">
+                                <circle cx="-11" cy="125" r="1.8" fill="#F8FAFC"/><circle cx="-4" cy="125" r="1.8" fill="#F8FAFC"/>
+                                <path class="ln client" style="stroke-width:2" d="M-13 137 Q-8 131 -3 137"/>
+                            </g>
+                            <g class="smile">
+                                <circle cx="-11" cy="125" r="1.8" fill="#F8FAFC"/><circle cx="-4" cy="125" r="1.8" fill="#F8FAFC"/>
+                                <path class="ln client" style="stroke-width:2" d="M-13 133 Q-8 140 -3 133"/>
+                            </g>
+                            <line class="ln client" x1="0" y1="144" x2="0" y2="172"/>
+                            <line class="ln client" x1="0" y1="172" x2="-9" y2="200"/>
+                            <line class="ln client" x1="0" y1="172" x2="9" y2="200"/>
+                            <line class="ln client pv clArm a1" x1="0" y1="152" x2="0" y2="176"/>
+                            <line class="ln client pv clArm a2" x1="0" y1="152" x2="0" y2="176"/>
+                            <circle class="sweat" cx="15" cy="116" r="3"/>
+                        </g>
+                        <rect class="fly" x="684" y="72" width="14" height="18" rx="2" fill="#F8FAFC"/>
+                        <rect class="fly" x="708" y="104" width="12" height="16" rx="2" fill="#C5A880" style="animation-delay:-.6s"/>
+
+                        <!-- You -->
+                        <g transform="translate(50,0)">
+                            <g id="hmGirlMove"><g class="bob">
+                                <path class="ln you" d="M-13 120 Q-34 112 -30 140"/>
+                                <circle class="ln you" cx="0" cy="128" r="16"/>
+                                <circle cx="4" cy="125" r="1.8" class="f-gold"/><circle cx="11" cy="125" r="1.8" class="f-gold"/>
+                                <path class="ln you" style="stroke-width:2" d="M3 133 Q8 139 13 133"/>
+                                <line class="ln you" x1="0" y1="144" x2="0" y2="172"/>
+                                <line class="ln you pv legA" x1="0" y1="172" x2="0" y2="200"/>
+                                <line class="ln you pv legB" x1="0" y1="172" x2="0" y2="200"/>
+                                <line class="ln you pv gArm armA" x1="0" y1="152" x2="0" y2="176"/>
+                                <line class="ln you pv gArm armB" x1="0" y1="152" x2="0" y2="176"/>
+                            </g></g>
+                        </g>
+
+                        <!-- The workload -->
+                        <g transform="translate(640,0)"><g class="stackMove"><g class="stackWob">
+                            <rect class="pp" x="-44" y="132" width="38" height="14" rx="2" fill="#F8FAFC" style="--dx:2px;--r:2deg"/>
+                            <rect class="pp f-gold" x="-44" y="118" width="38" height="14" rx="2" style="--dx:-4px;--r:-4deg"/>
+                            <rect class="pp" x="-44" y="104" width="38" height="14" rx="2" fill="#F8FAFC" style="--dx:5px;--r:5deg"/>
+                            <rect class="pp f-gold" x="-44" y="90" width="38" height="14" rx="2" style="--dx:-6px;--r:-6deg"/>
+                            <rect class="pp" x="-44" y="76" width="38" height="14" rx="2" fill="#F8FAFC" style="--dx:4px;--r:7deg"/>
+                            <rect class="pp f-gold" x="-44" y="62" width="38" height="14" rx="2" style="--dx:-3px;--r:-9deg"/>
+                        </g></g></g>
+
+                        <!-- Bubbles and tag -->
+                        <g class="bub-c">
+                            <rect x="563" y="12" width="104" height="30" rx="14" fill="#F8FAFC"/>
+                            <text x="615" y="33" text-anchor="middle" font-size="16" fill="#0A192F">Too much!</text>
+                        </g>
+                        <g class="bub-g">
+                            <rect x="466" y="12" width="128" height="30" rx="14" class="f-gold"/>
+                            <text x="530" y="33" text-anchor="middle" font-size="16" fill="#0A192F">I've got this!</text>
+                        </g>
+                        <text class="done-tag f-gold" x="640" y="40" text-anchor="middle" font-size="20">Handled &#10003;</text>
+                    </svg>
                 </div>
-                <p class="hm-board-note">Requests arrive messy. I turn them into a clear schedule.<button type="button" class="hm-replay" id="hmReplay">Replay</button></p>
+                <p class="hm-board-note">Hand over the workload. I handle it, and you get your time back.<button type="button" class="hm-replay" id="hmReplay">Replay</button></p>
             </div>
         </div>
 
@@ -890,19 +880,29 @@
             window.addEventListener('scroll', onScroll, { passive: true });
             onScroll();
 
-            // Chaos-to-order board: messy requests sort into a clear schedule
-            var board = document.getElementById('hmBoard');
+            // Helping-hand scene: she runs over, takes the workload, the client smiles
+            var scene = document.getElementById('hmScene');
             var replay = document.getElementById('hmReplay');
-            if (board) {
+            var timers = [];
+            function later(ms, fn) { timers.push(setTimeout(fn, ms)); }
+            function play() {
+                timers.forEach(clearTimeout);
+                timers = [];
+                scene.setAttribute('class', 'reset');
+                void scene.getBoundingClientRect();
+                scene.setAttribute('class', '');
+                later(500,  function () { scene.classList.add('go', 'moved'); });
+                later(3150, function () { scene.classList.remove('go'); scene.classList.add('at'); });
+                later(3900, function () { scene.classList.add('take'); });
+                later(4900, function () { scene.classList.add('happy'); });
+            }
+            if (scene) {
                 if (reduce) {
-                    board.classList.add('sorted');
+                    scene.setAttribute('class', 'moved at take happy');
                     if (replay) replay.hidden = true;
                 } else {
-                    setTimeout(function () { board.classList.add('sorted'); }, 1200);
-                    if (replay) replay.addEventListener('click', function () {
-                        board.classList.remove('sorted');
-                        setTimeout(function () { board.classList.add('sorted'); }, 1400);
-                    });
+                    setTimeout(play, 1200);
+                    if (replay) replay.addEventListener('click', play);
                 }
             }
 
