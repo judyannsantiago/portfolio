@@ -447,6 +447,76 @@ p {
 
 
 /* ==========================================================================
+   HOME PAGE HERO: HELPING-HAND SCENE (stick figures)
+   ========================================================================== */
+.hm-scene {
+    max-width: 760px;
+    margin: 0 auto 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    overflow: hidden;
+}
+.hm-scene svg { display: block; width: 100%; height: auto; }
+.hm-scene text { font-family: Inter, sans-serif; font-weight: 600; }
+.hm-scene .ln { fill: none; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+.hm-scene .you { stroke: var(--accent-gold); }
+.hm-scene .client { stroke: #F8FAFC; }
+.hm-scene .f-gold { fill: var(--accent-gold); }
+.hm-scene .pv { transform-box: fill-box; transform-origin: 50% 0; }
+
+/* Girl runs over */
+#hmGirlMove { transform: translateX(0); transition: transform 2.6s linear; }
+#hmScene.moved #hmGirlMove { transform: translateX(480px); }
+#hmScene.go .legA, #hmScene.go .armB { animation: hm-sw 0.3s ease-in-out infinite alternate; }
+#hmScene.go .legB, #hmScene.go .armA { animation: hm-sw 0.3s ease-in-out infinite alternate-reverse; }
+#hmScene.go .bob { animation: hm-bob 0.15s ease-in-out infinite alternate; }
+@keyframes hm-sw  { from { transform: rotate(-38deg); } to { transform: rotate(38deg); } }
+@keyframes hm-bob { from { transform: translateY(0); } to { transform: translateY(-4px); } }
+.gArm { transition: transform 0.4s ease; }
+#hmScene.at .gArm { transform: rotate(-95deg); }
+#hmScene.at .gArm.armB { transform: rotate(-88deg); }
+
+/* Client under pressure */
+.clArm { transition: transform 0.6s ease; }
+.clArm.a1 { transform: rotate(100deg); }
+.clArm.a2 { transform: rotate(92deg); }
+#hmScene.take .clArm { transform: rotate(8deg); }
+.sweat { fill: #9ad1ff; animation: hm-drip 1.2s linear infinite; }
+@keyframes hm-drip { from { transform: translateY(0); opacity: 1; } to { transform: translateY(14px); opacity: 0; } }
+.fly { transform-box: fill-box; transform-origin: 50% 50%; animation: hm-fly 1.6s ease-in-out infinite alternate; transition: opacity 0.4s ease; }
+@keyframes hm-fly { from { transform: translateY(-5px) rotate(-8deg); } to { transform: translateY(6px) rotate(10deg); } }
+#hmScene.take .fly, #hmScene.take .sweat { opacity: 0; }
+
+/* The workload */
+.stackMove { transition: transform 0.9s cubic-bezier(.5, 0, .2, 1); }
+#hmScene.take .stackMove { transform: translateX(-62px); }
+.stackWob { transform-box: fill-box; transform-origin: 50% 100%; animation: hm-wob 0.5s ease-in-out infinite alternate; }
+@keyframes hm-wob { from { transform: rotate(-2.5deg); } to { transform: rotate(2.5deg); } }
+#hmScene.take .stackWob { animation: none; }
+.pp { transform-box: fill-box; transform-origin: 50% 50%; transform: translateX(var(--dx)) rotate(var(--r)); transition: transform 0.6s ease; }
+#hmScene.take .pp { transform: none; }
+
+/* Faces and speech bubbles */
+.smile, .done-tag, .bub-g { opacity: 0; transition: opacity 0.35s ease, transform 0.35s ease; }
+.sad, .bub-c { transition: opacity 0.35s ease; }
+#hmScene.take .bub-c { opacity: 0; }
+#hmScene.at .bub-g { opacity: 1; }
+#hmScene.happy .bub-g { opacity: 0; }
+#hmScene.happy .sad { opacity: 0; }
+#hmScene.happy .smile { opacity: 1; }
+.done-tag { transform: translateY(6px); }
+#hmScene.happy .done-tag { opacity: 1; transform: none; }
+
+/* Snap back instantly when replaying */
+#hmScene.reset * { transition: none !important; animation: none !important; }
+
+@media (prefers-reduced-motion: reduce) {
+    .hm-scene * { transition: none !important; animation: none !important; }
+}
+
+
+/* ==========================================================================
    RESPONSIVE MEDIA QUERIES (MOBILE & TABLET AUTO-ADJUST)
    ========================================================================== */
 @media screen and (max-width: 768px) {
