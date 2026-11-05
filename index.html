@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Judy Ann Santiago | ADMINISTRATIVE SUPPORT | CUSTOMER SUPPORT | BACK-OFFICE OPERATIONS</title>
-    <meta name="description" content="Your backend partner for data entry, inbox triage, customer support, and administrative execution.">
+    <title>Judy Ann Santiago | Administrative Support | Scheduling &amp; Coordination | Back-Office Operations</title>
+    <meta name="description" content="Administrative and coordination support: scheduling, records, inbox management, and follow-ups, backed by four years of high-volume operations work.">
     <script>document.documentElement.classList.add('js');</script>
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-    
+
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/components.css">
@@ -144,33 +144,77 @@
             transform: translateY(-2px);
             box-shadow: 0 10px 24px rgba(197, 168, 128, 0.35);
         }
-        .hm-hero .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 1.25rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.14);
-            padding-top: 2rem;
-        }
-        .hm-stat {
-            min-width: 190px;
-            padding: 1.25rem 1.5rem;
-            background: rgba(255, 255, 255, 0.06);
+
+        /* ---------- Chaos-to-order board (hero) ---------- */
+        .hm-board {
+            position: relative;
+            max-width: 760px;
+            height: 230px;
+            margin: 0 auto 1rem;
             border: 1px solid rgba(255, 255, 255, 0.14);
             border-radius: 12px;
-            transition: transform var(--transition-fast), border-color var(--transition-fast);
+            background: rgba(255, 255, 255, 0.04);
         }
-        .hm-stat:hover {
-            transform: translateY(-3px);
-            border-color: var(--accent-gold);
-        }
-        .hm-hero .stat-number {
+        .hm-col-label {
+            position: absolute;
+            top: 12px;
+            left: calc(var(--col) * 25% + 1.5%);
+            width: 22%;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-align: left;
             color: var(--accent-gold);
-            font-size: 2.2rem;
-            line-height: 1.1;
+            opacity: 0;
+            transition: opacity 0.5s ease 0.6s;
         }
-        .hm-hero .stat-label {
+        .hm-card {
+            position: absolute;
+            left: var(--cx);
+            top: var(--cy);
+            width: 22%;
+            padding: 9px 10px;
+            font-size: 0.8rem;
+            line-height: 1.25;
+            text-align: left;
+            color: var(--bg-white);
+            background: #13243f;
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            border-radius: 8px;
+            transform: rotate(var(--r));
+            transition: left 0.8s cubic-bezier(.2, .8, .2, 1),
+                        top 0.8s cubic-bezier(.2, .8, .2, 1),
+                        transform 0.8s cubic-bezier(.2, .8, .2, 1),
+                        border-color 0.8s ease;
+            transition-delay: calc(var(--i) * 70ms);
+        }
+        .hm-board.sorted .hm-card {
+            left: calc(var(--col) * 25% + 1.5%);
+            top: calc(42px + var(--row) * 56px);
+            transform: none;
+        }
+        .hm-board.sorted .hm-col-label { opacity: 1; }
+        .hm-board.sorted .hm-card.done { border-color: var(--accent-gold); }
+        .hm-board.sorted .hm-card.done::after {
+            content: "\2713";
+            margin-left: 6px;
+            color: var(--accent-gold);
+        }
+        .hm-board-note {
+            margin: 0;
+            font-size: 0.95rem;
             color: rgba(248, 250, 252, 0.75);
         }
+        .hm-replay {
+            margin-left: 8px;
+            padding: 0;
+            border: 0;
+            background: none;
+            font: inherit;
+            color: var(--accent-gold);
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        .hm-replay:focus-visible { outline: 3px solid var(--accent-gold); outline-offset: 3px; }
 
         .hm-wave {
             position: absolute;
@@ -336,6 +380,15 @@
             background: var(--accent-gold);
             color: var(--primary-navy);
         }
+        /* One-time "workflow" pulse: each step lights up in order */
+        @keyframes hm-step-glow {
+            0%, 100% { background: var(--primary-navy); color: var(--accent-gold); }
+            35%, 65% { background: var(--accent-gold); color: var(--primary-navy); }
+        }
+        .hm-framework.lit .step-card .step-num { animation: hm-step-glow 1s ease both; }
+        .hm-framework.lit .step-card:nth-child(2) .step-num { animation-delay: 0.45s; }
+        .hm-framework.lit .step-card:nth-child(3) .step-num { animation-delay: 0.9s; }
+        .hm-framework.lit .step-card:nth-child(4) .step-num { animation-delay: 1.35s; }
 
         /* ---------- Services (navy) ---------- */
         .hm-services {
@@ -488,6 +541,8 @@
             .hm-in { opacity: 1; transform: none; animation: none; }
             .js .hm-reveal { opacity: 1; transform: none; transition: none; }
             .ind-details, .ind-toggle::before, .ind-toggle::after { transition: none; }
+            .hm-card, .hm-col-label { transition: none; }
+            .hm-framework.lit .step-card .step-num { animation: none; }
         }
 
         @media screen and (max-width: 768px) {
@@ -495,7 +550,10 @@
             .hm-hero h1 { font-size: 2.3rem; }
             .hm-shape.s1 { width: 200px; height: 200px; right: -60px; top: -70px; }
             .hm-shape.s2, .hm-shape.s3, .hm-shape.s4 { display: none; }
-            .hm-stat { width: 100%; min-width: 0; }
+            .hm-board { height: 200px; }
+            .hm-card { padding: 6px; font-size: 0.62rem; }
+            .hm-col-label { font-size: 0.68rem; }
+            .hm-board.sorted .hm-card { top: calc(36px + var(--row) * 46px); }
             .hm-wave svg { height: 36px; }
             .hm-industries, .hm-framework, .hm-services, .hm-tools { padding: 3.5rem 0; }
             .hm-services::before { width: 260px; height: 260px; }
@@ -538,23 +596,32 @@
         <span class="hm-shape s4" aria-hidden="true"></span>
 
         <div class="container">
-            <span class="badge hm-in" style="--d: 0.05s;">ADMINISTRATIVE SUPPORT | CUSTOMER SUPPORT | BACK-OFFICE OPERATIONS</span>
+            <span class="badge hm-in" style="--d: 0.05s;">ADMINISTRATIVE SUPPORT | SCHEDULING &amp; COORDINATION | BACK-OFFICE OPERATIONS</span>
             <h1 class="hm-in" style="--d: 0.15s;">THE <span class="hm-gold">BACKEND PARTNER</span> YOUR BUSINESS NEEDS.</h1>
             <p class="hero-subtitle hm-in" style="--d: 0.3s;">
-                Hand over the data entry, customer support queues, and daily admin work to someone who actually loves the details so you can get back to building your business.
+                Four years of high-volume, deadline-driven support behind me. Now I'm focused on admin and coordination for home care and logistics teams: scheduling, records, and follow-ups handled accurately.
             </p>
             <div class="hero-cta hm-in" style="--d: 0.45s;">
                 <a href="contact.html" class="btn btn-secondary">Get In Touch</a>
             </div>
-            <div class="hero-stats hm-in" style="--d: 0.6s;">
-                <div class="stat-item hm-stat">
-                    <span class="stat-number"><span class="hm-count" data-target="100">100</span>%</span>
-                    <span class="stat-label">Detail Focused</span>
+
+            <div class="hm-in" style="--d: 0.6s;">
+                <div class="hm-board" id="hmBoard" role="img" aria-label="Animation: messy requests such as visit changes, late deliveries, and invoices sort themselves into Urgent, Today, This week, and Done columns.">
+                    <span class="hm-col-label" style="--col:0">Urgent</span>
+                    <span class="hm-col-label" style="--col:1">Today</span>
+                    <span class="hm-col-label" style="--col:2">This week</span>
+                    <span class="hm-col-label" style="--col:3">Done</span>
+
+                    <div class="hm-card" style="--i:0;--cx:58%;--cy:10%;--r:6deg;--col:0;--row:0">Visit change</div>
+                    <div class="hm-card" style="--i:1;--cx:6%;--cy:62%;--r:-5deg;--col:0;--row:1">Late delivery</div>
+                    <div class="hm-card" style="--i:2;--cx:30%;--cy:55%;--r:4deg;--col:1;--row:0">Caregiver shift</div>
+                    <div class="hm-card" style="--i:3;--cx:74%;--cy:58%;--r:-7deg;--col:1;--row:1">Dispatch update</div>
+                    <div class="hm-card" style="--i:4;--cx:12%;--cy:12%;--r:-4deg;--col:2;--row:0">Intake form</div>
+                    <div class="hm-card" style="--i:5;--cx:48%;--cy:30%;--r:8deg;--col:2;--row:1">Invoice check</div>
+                    <div class="hm-card done" style="--i:6;--cx:40%;--cy:68%;--r:-3deg;--col:3;--row:0">Reschedule</div>
+                    <div class="hm-card done" style="--i:7;--cx:70%;--cy:8%;--r:5deg;--col:3;--row:1">Records filed</div>
                 </div>
-                <div class="stat-item hm-stat">
-                    <span class="stat-number">Zero</span>
-                    <span class="stat-label">Missed Deadlines</span>
-                </div>
+                <p class="hm-board-note">Requests arrive messy. I turn them into a clear schedule.<button type="button" class="hm-replay" id="hmReplay">Replay</button></p>
             </div>
         </div>
 
@@ -572,9 +639,9 @@
                 <h2>Sectors &amp; Account Background</h2>
                 <p>Core operational experience across diverse customer support and administrative environments.</p>
             </div>
-            
+
             <div class="industries-grid" data-stagger>
-                
+
                 <!-- Card 1: Retail & E-Commerce -->
                 <div class="industry-card" role="button" tabindex="0" aria-expanded="false">
                     <span class="ind-toggle" aria-hidden="true"></span>
@@ -584,7 +651,7 @@
                     <h3>Retail &amp; E-Commerce</h3>
                     <div class="ind-details">
                         <div class="ind-details-inner">
-                            <p>Managed frontline customer service queues for online retail and dropshipping accounts, handling order inquiries, shipping exceptions, and customer satisfaction resolutions.</p>
+                            <p>Tracked orders, shipping exceptions, and customer follow-ups across online retail and dropshipping accounts, keeping details accurate and customers informed.</p>
                         </div>
                     </div>
                 </div>
@@ -598,7 +665,7 @@
                     <h3>Reservation &amp; Booking</h3>
                     <div class="ind-details">
                         <div class="ind-details-inner">
-                            <p>Handled reservation specialist responsibilities for vehicle rental accounts, processing booking modifications, customer requests, and high-volume queue management.</p>
+                            <p>Handled bookings, changes, and cancellations for vehicle rental accounts in high-volume queues, where timing and accuracy matter.</p>
                         </div>
                     </div>
                 </div>
@@ -612,7 +679,7 @@
                     <h3>EdTech &amp; Student Support</h3>
                     <div class="ind-details">
                         <div class="ind-details-inner">
-                            <p>Served as a student advocate and member of the billing team for online educational platforms, managing user accounts, support tickets, and financial inquiries.</p>
+                            <p>Managed accounts, records, and billing questions for online education platforms, including refunds, subscriptions, and escalations.</p>
                         </div>
                     </div>
                 </div>
@@ -626,7 +693,7 @@
                     <h3>Operations &amp; Administration</h3>
                     <div class="ind-details">
                         <div class="ind-details-inner">
-                            <p>Specialized in back-end operational support, customer queue sorting, data entry, ticket triage, and resolving account or billing exceptions with precision and minimal supervision.</p>
+                            <p>Back-office support: data entry, ticket triage, record keeping, and resolving exceptions with minimal supervision.</p>
                         </div>
                     </div>
                 </div>
@@ -636,7 +703,7 @@
     </section>
 
     <!-- Framework Section -->
-    <section class="framework-section hm-framework hm-sec">
+    <section class="framework-section hm-framework hm-sec" id="hmFramework">
         <div class="container">
             <div class="section-title text-center hm-reveal">
                 <h2>My Approach to Organized Work</h2>
@@ -675,32 +742,32 @@
                 <p>Tailored administrative and operational assistance to free up your bandwidth.</p>
             </div>
             <div class="services-grid" data-stagger>
-                
-                <!-- Card 1: General Admin Support -->
+
+                <!-- Card 1: Scheduling & Calendar Coordination -->
                 <div class="service-box">
                     <div class="service-icon">
-                        <img src="assets/images/icon-calendar.png" alt="General Admin Support Icon">
+                        <img src="assets/images/icon-calendar.png" alt="Scheduling &amp; Calendar Coordination Icon">
                     </div>
-                    <h3>General Admin Support</h3>
-                    <p>Executive &amp; Personal Assistant tasks, organization, and daily workflow maintenance.</p>
+                    <h3>Scheduling &amp; Calendar Coordination</h3>
+                    <p>Appointments, bookings, reminders, and rescheduling managed in one organized calendar.</p>
                 </div>
 
-                <!-- Card 2: Customer Service & Support -->
+                <!-- Card 2: Client & Vendor Communication -->
                 <div class="service-box">
                     <div class="service-icon">
-                        <img src="assets/images/icon-inbox.png" alt="Customer Service &amp; Support Icon">
+                        <img src="assets/images/icon-inbox.png" alt="Client &amp; Vendor Communication Icon">
                     </div>
-                    <h3>Customer Service &amp; Support</h3>
-                    <p>Frontline inquiry resolution, ticket triage, support queue management, and client follow-ups.</p>
+                    <h3>Client &amp; Vendor Communication</h3>
+                    <p>Inbox management, follow-ups, and status updates so nothing waits on a reply.</p>
                 </div>
 
-                <!-- Card 3: CRM & Data Entry -->
+                <!-- Card 3: Records & Data Entry -->
                 <div class="service-box">
                     <div class="service-icon">
-                        <img src="assets/images/icon-crm.png" alt="CRM &amp; Data Entry Icon">
+                        <img src="assets/images/icon-crm.png" alt="Records &amp; Data Entry Icon">
                     </div>
-                    <h3>CRM &amp; Data Entry</h3>
-                    <p>Database clean-up, spreadsheet formatting with lookup automation, and CRM pipeline tracking.</p>
+                    <h3>Records &amp; Data Entry</h3>
+                    <p>Accurate data entry, database clean-up, spreadsheet tracking, and client or order records.</p>
                 </div>
 
                 <!-- Card 4: Digital File Organization -->
@@ -713,7 +780,7 @@
                 </div>
 
             </div>
-            
+
             <div class="hm-reveal" style="text-align: center; margin-top: 35px;">
                 <a href="services.html" class="btn btn-secondary">View All Services &rarr;</a>
             </div>
@@ -727,7 +794,7 @@
                 <h2>Tools &amp; Tech Stack</h2>
                 <p style="max-width: 700px; margin: 0 auto;">Software and platforms I use to manage backend operations, queues, billing, and administrative workflows.</p>
             </div>
-            
+
             <div class="hm-tools-card hm-reveal">
                 <img src="assets/images/tools3.png" alt="Judy Ann Santiago - Tools &amp; Tech Stack Grid">
             </div>
@@ -823,6 +890,22 @@
             window.addEventListener('scroll', onScroll, { passive: true });
             onScroll();
 
+            // Chaos-to-order board: messy requests sort into a clear schedule
+            var board = document.getElementById('hmBoard');
+            var replay = document.getElementById('hmReplay');
+            if (board) {
+                if (reduce) {
+                    board.classList.add('sorted');
+                    if (replay) replay.hidden = true;
+                } else {
+                    setTimeout(function () { board.classList.add('sorted'); }, 1200);
+                    if (replay) replay.addEventListener('click', function () {
+                        board.classList.remove('sorted');
+                        setTimeout(function () { board.classList.add('sorted'); }, 1400);
+                    });
+                }
+            }
+
             // Click-to-reveal sector cards (mouse and keyboard)
             document.querySelectorAll('.industry-card').forEach(function (card) {
                 function toggle() {
@@ -866,22 +949,18 @@
                     });
                 }, { threshold: 0.12 });
                 els.forEach(function (el) { io.observe(el); });
-            }
 
-            // Count the 100 up
-            var counter = document.querySelector('.hm-count');
-            if (counter && !reduce) {
-                var target = parseInt(counter.getAttribute('data-target'), 10);
-                var start = null;
-                var duration = 1400;
-                counter.textContent = 0;
-                function step(ts) {
-                    if (!start) start = ts;
-                    var p = Math.min((ts - start) / duration, 1);
-                    counter.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
-                    if (p < 1) requestAnimationFrame(step);
+                // Light up the four approach steps in order, once
+                var fw = document.getElementById('hmFramework');
+                if (fw) {
+                    var fio = new IntersectionObserver(function (entries) {
+                        if (entries[0].isIntersecting) {
+                            fw.classList.add('lit');
+                            fio.disconnect();
+                        }
+                    }, { threshold: 0.4 });
+                    fio.observe(fw);
                 }
-                setTimeout(function () { requestAnimationFrame(step); }, 700);
             }
         })();
     </script>
