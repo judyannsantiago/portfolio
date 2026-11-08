@@ -138,56 +138,40 @@
             box-shadow: 0 10px 24px rgba(197, 168, 128, 0.35);
         }
 
-        /* ---------- Headline: only the U stays and becomes a winking face ---------- */
-        .hm-sr {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            overflow: hidden;
-            clip: rect(0 0 0 0);
-            white-space: nowrap;
-        }
+        /* ---------- Headline: the real U morphs into a winking face ---------- */
         .hm-w { transition: opacity 0.6s ease; }
         .hm-solo .hm-w { opacity: 0; }
-
-        .hm-you {
-            display: inline-block;
-            color: var(--bg-white);
-            cursor: pointer;
-        }
+        
+        .hm-you { display: inline-block; color: var(--bg-white); cursor: pointer; }
         .hm-u {
             position: relative;
             display: inline-block;
-            width: 0.6em;
-            height: 0.76em;
-            margin: 0 0.015em;
-            vertical-align: -0.03em;
             transform: translateX(var(--dx, 0px)) scale(var(--s, 1));
             transition: transform 0.9s cubic-bezier(.4, 0, .2, 1);
         }
-        .hm-ush { display: block; width: 100%; height: 100%; overflow: visible; }
-        .hm-ul, .hm-um { transition: opacity 0.35s ease; }
-        .hm-um { opacity: 0; }
-        .hm-face .hm-ul { opacity: 0; }
-        .hm-face .hm-um { opacity: 1; }
-
-        .hm-eyes {
+        .hm-g { display: inline-block; transition: opacity 0.15s ease; }
+        .hm-g i { display: inline-block; width: 0; height: 0; }
+        .hm-svg {
             position: absolute;
-            left: 50%;
-            top: -0.34em;
-            width: 0.99em;
-            height: 0.27em;
-            transform: translateX(-50%);
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: visible;
             opacity: 0;
-            transition: opacity 0.4s ease;
+            transition: opacity 0.15s ease;
+            pointer-events: none;
         }
+        .hm-use .hm-g { opacity: 0; }
+        .hm-use .hm-svg { opacity: 1; }
+        
+        .hm-eyes { opacity: 0; transition: opacity 0.4s ease; }
         .hm-face .hm-eyes { opacity: 1; }
-        .hm-eyes svg { display: block; width: 100%; height: 100%; overflow: visible; }
-        .hm-eye { fill: currentColor; transition: opacity 0.15s ease; }
-        .hm-wk { opacity: 0; transition: opacity 0.15s ease; }
+        .hm-eye { fill: currentColor; transition: opacity 0.12s ease; }
+        .hm-wk { opacity: 0; transition: opacity 0.12s ease; }
         .hm-wink .hm-eyeR { opacity: 0; }
         .hm-wink .hm-wk { opacity: 1; }
-
+        
         /* ---------- Helping-hand scene (hero) ---------- */
         .hm-scene {
             max-width: 760px;
@@ -647,7 +631,7 @@
 
         <div class="container">
             <span class="badge hm-in" style="--d: 0.05s;">CUSTOMER SUPPORT | ADMIN | COORDINATION</span>
-            <h1 class="hm-in" style="--d: 0.15s;" id="hmHead"><span class="hm-w">THE</span> <span class="hm-gold"><span class="hm-w">SUPPORT</span> <span class="hm-you" id="hmYou"><span class="hm-w">YO</span><span class="hm-u" id="hmU"><span class="hm-sr">U</span><svg class="hm-ush" viewBox="0 0 40 54" aria-hidden="true"><path class="hm-ul" d="M7 4 V30 Q7 49 20 49 Q33 49 33 30 V4" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path class="hm-um" d="M-12 18 Q20 66 52 18" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></svg><span class="hm-eyes" aria-hidden="true"><svg viewBox="0 0 66 18"><circle class="hm-eye" cx="14" cy="9" r="4.5"/><circle class="hm-eye hm-eyeR" cx="52" cy="9" r="4.5"/><path class="hm-wk" d="M46.5 11 Q52 4 57.5 11" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg></span></span></span> <span class="hm-w">NEED.</span></span></h1>
+            <h1 class="hm-in" style="--d: 0.15s;" id="hmHead"><span class="hm-w">THE</span> <span class="hm-gold"><span class="hm-w">SUPPORT</span> <span class="hm-you" id="hmYou"><span class="hm-w">YO</span><span class="hm-u" id="hmU"><span class="hm-g" id="hmG">U<i id="hmB"></i></span><svg class="hm-svg" aria-hidden="true"><path id="hmPath" fill="none" stroke="currentColor" stroke-linejoin="round"/><g class="hm-eyes"><circle id="hmEL" class="hm-eye"/><circle id="hmER" class="hm-eye hm-eyeR"/><path id="hmWK" class="hm-wk" fill="none" stroke="currentColor" stroke-linecap="round"/></g></svg></span></span> <span class="hm-w">NEED.</span></span></h1>
             <div class="hero-cta hm-in" style="--d: 0.3s;">
                 <a href="contact.html" class="btn btn-secondary">Get In Touch</a>
             </div>
@@ -985,47 +969,129 @@
             window.addEventListener('scroll', onScroll, { passive: true });
             onScroll();
 
-            // Headline: everything fades except the U, which becomes a smiling, winking face
+            // Headline: the real U slides to the center, then morphs into a smiling, winking face
             var head = document.getElementById('hmHead');
             var you = document.getElementById('hmYou');
             var uEl = document.getElementById('hmU');
+            var gEl = document.getElementById('hmG');
+            var bEl = document.getElementById('hmB');
+            var pth = document.getElementById('hmPath');
+            var eyeL = document.getElementById('hmEL');
+            var eyeR = document.getElementById('hmER');
+            var wk = document.getElementById('hmWK');
             var faceTimers = [];
             var faceBusy = false;
             function faceLater(ms, fn) { faceTimers.push(setTimeout(fn, ms)); }
+            function lerp(a, b, p) { return a + (b - a) * p; }
+            function tween(ms, fn) {
+                var t0 = performance.now();
+                (function step(now) {
+                    var k = Math.min(1, (now - t0) / ms);
+                    fn(k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2);
+                    if (k < 1) requestAnimationFrame(step);
+                })(t0);
+            }
+            
+            // Measure the real U glyph (size and stem thickness) so the drawn U matches it
+            function measureU() {
+                var cs = getComputedStyle(head);
+                var fs = parseFloat(cs.fontSize);
+                var big = 200;
+                var c = document.createElement('canvas');
+                c.width = 300; c.height = 300;
+                var x = c.getContext('2d');
+                x.font = cs.fontWeight + ' ' + big + 'px ' + cs.fontFamily;
+                x.textBaseline = 'alphabetic';
+                var m = x.measureText('U');
+                x.fillText('U', 40, 240);
+                var asc = m.actualBoundingBoxAscent, dsc = m.actualBoundingBoxDescent;
+                var row = Math.round(240 - asc + 0.35 * (asc + dsc));
+                var d = x.getImageData(0, row, 300, 1).data, run = 0, on = false;
+                for (var i = 0; i < 300; i++) {
+                    if (d[i * 4 + 3] > 128) { on = true; run++; } else if (on) break;
+                }
+                var k = fs / big;
+                return { l: -m.actualBoundingBoxLeft * k, r: m.actualBoundingBoxRight * k,
+                         top: asc * k, bot: dsc * k, s: run * k };
+            }
+            
+            // Returns draw(p): p = 0 is the plain U, p = 1 is the smile
+            function buildFace(M) {
+                var ur = uEl.getBoundingClientRect();
+                var gr = gEl.getBoundingClientRect();
+                var br = bEl.getBoundingClientRect();
+                var ox = gr.left - ur.left, base = br.bottom - ur.top;
+                var L = ox + M.l, R = ox + M.r, T = base - M.top, B = base + M.bot;
+                var h = B - T, cx = (L + R) / 2, cy = (T + B) / 2;
+                var s = M.s > 0 ? M.s : (R - L) * 0.3;
+                var w0 = (R - L) - s, b0 = B - s / 2, m0 = b0 - w0 / 2;
+            
+                var ey = cy - 0.55 * h, ex = 0.42 * h;
+                eyeL.setAttribute('cx', cx - ex); eyeL.setAttribute('cy', ey); eyeL.setAttribute('r', 0.09 * h);
+                eyeR.setAttribute('cx', cx + ex); eyeR.setAttribute('cy', ey); eyeR.setAttribute('r', 0.09 * h);
+                wk.setAttribute('d', 'M' + (cx + ex - 0.14 * h) + ' ' + (ey + 0.04 * h) +
+                    ' Q' + (cx + ex) + ' ' + (ey - 0.14 * h) + ' ' + (cx + ex + 0.14 * h) + ' ' + (ey + 0.04 * h));
+                wk.setAttribute('stroke-width', 0.07 * h);
+            
+                return function (p) {
+                    var w = lerp(w0, 1.5 * h, p);
+                    var l = cx - w / 2, r = cx + w / 2;
+                    var t = lerp(T, cy - 0.1 * h, p);
+                    var m = lerp(m0, cy - 0.1 * h, p);
+                    var b = lerp(b0, cy + 0.2 * h, p);
+                    var q = 0.2 * p;
+                    var by = m + (b - m) / 0.75;
+                    pth.setAttribute('d', 'M' + l + ' ' + t + ' L' + l + ' ' + m +
+                        ' C' + (l + q * w) + ' ' + by + ' ' + (r - q * w) + ' ' + by + ' ' + r + ' ' + m +
+                        ' L' + r + ' ' + t);
+                    pth.setAttribute('stroke-width', s * (1 - 0.2 * p));
+                    pth.setAttribute('stroke-linecap', p > 0.25 ? 'round' : 'butt');
+                };
+            }
+            
             function playFace() {
                 if (faceBusy) return;
                 faceBusy = true;
                 faceTimers.forEach(clearTimeout);
                 faceTimers = [];
-
+            
+                var draw;
+                try { draw = buildFace(measureU()); } catch (err) { faceBusy = false; return; }
+                draw(0);
+            
                 // How far the U must slide to sit in the middle of the headline
                 var u = uEl.getBoundingClientRect();
                 var h = head.getBoundingClientRect();
                 var dx = (h.left + h.width / 2) - (u.left + u.width / 2);
-
+            
                 head.classList.add('hm-solo');
                 uEl.style.setProperty('--dx', dx + 'px');
                 uEl.style.setProperty('--s', '1.25');
-
-                faceLater(700,  function () { head.classList.add('hm-face'); });
-                faceLater(1500, function () { head.classList.add('hm-wink'); });
-                faceLater(2200, function () { head.classList.remove('hm-wink'); });
-
-                // To keep the words hidden for good, delete these last two timers
-                faceLater(3600, function () { head.classList.remove('hm-face', 'hm-wink'); });
-                faceLater(4000, function () {
+            
+                // The U reaches the center, then slowly turns into the smile
+                faceLater(1000, function () { head.classList.add('hm-use'); tween(1100, draw); });
+                faceLater(2300, function () { head.classList.add('hm-face'); });
+                faceLater(3100, function () { head.classList.add('hm-wink'); });
+                faceLater(3700, function () { head.classList.remove('hm-wink'); });
+            
+                // To keep the words hidden for good, delete the timers below this line
+                faceLater(4700, function () { head.classList.remove('hm-face'); });
+                faceLater(5000, function () { tween(900, function (p) { draw(1 - p); }); });
+                faceLater(5950, function () { head.classList.remove('hm-use'); });
+                faceLater(6100, function () {
                     uEl.style.removeProperty('--dx');
                     uEl.style.removeProperty('--s');
                     head.classList.remove('hm-solo');
                 });
-                faceLater(5000, function () { faceBusy = false; });
+                faceLater(7100, function () { faceBusy = false; });
             }
             if (you && !reduce) {
-                setTimeout(playFace, 1400);
+                var startFace = function () { setTimeout(playFace, 1400); };
+                if (document.fonts && document.fonts.ready) { document.fonts.ready.then(startFace); } else { startFace(); }
                 you.addEventListener('mouseenter', playFace);
                 you.addEventListener('click', playFace);
             }
-
+            
             // Helping-hand scene: she runs over, takes the workload, the client smiles (loops)
             var scene = document.getElementById('hmScene');
             var toggleBtn = document.getElementById('hmReplay');
