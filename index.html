@@ -138,7 +138,7 @@
             box-shadow: 0 10px 24px rgba(197, 168, 128, 0.35);
         }
 
-        /* ---------- Animated "YOU" in the headline ---------- */
+        /* ---------- Headline: only the U stays and becomes a winking face ---------- */
         .hm-sr {
             position: absolute;
             width: 1px;
@@ -147,54 +147,46 @@
             clip: rect(0 0 0 0);
             white-space: nowrap;
         }
+        .hm-w { transition: opacity 0.6s ease; }
+        .hm-solo .hm-w { opacity: 0; }
+
         .hm-you {
-            position: relative;
             display: inline-block;
             color: var(--bg-white);
             cursor: pointer;
-            transition: text-shadow 0.4s ease;
         }
-        .hm-you.glow { text-shadow: 0 0 20px rgba(197, 168, 128, 0.6); }
-
-        /* The "O" is a little face */
-        .hm-o {
+        .hm-u {
+            position: relative;
             display: inline-block;
-            width: 0.56em;
+            width: 0.6em;
             height: 0.76em;
             margin: 0 0.015em;
             vertical-align: -0.03em;
+            transform: translateX(var(--dx, 0px)) scale(var(--s, 1));
+            transition: transform 0.9s cubic-bezier(.4, 0, .2, 1);
         }
-        .hm-o svg { display: block; width: 100%; height: 100%; overflow: visible; }
-        .hm-eye { fill: currentColor; transition: opacity 0.15s ease; }
-        .hm-wk { opacity: 0; transition: opacity 0.15s ease; }
-        .hm-mouth {
-            transform-box: fill-box;
-            transform-origin: 50% 0;
-            transition: transform 0.3s ease;
-        }
-        .hm-you.wink .hm-eyeL { opacity: 0; }
-        .hm-you.wink .hm-wk { opacity: 1; }
-        .hm-you.smile .hm-mouth { transform: scaleY(1.7) scaleX(1.12); }
+        .hm-ush { display: block; width: 100%; height: 100%; overflow: visible; }
+        .hm-ul, .hm-um { transition: opacity 0.35s ease; }
+        .hm-um { opacity: 0; }
+        .hm-face .hm-ul { opacity: 0; }
+        .hm-face .hm-um { opacity: 1; }
 
-        /* The pointing hand */
-        .hm-hand {
+        .hm-eyes {
             position: absolute;
             left: 50%;
-            top: 88%;
-            width: 0.55em;
-            height: 0.78em;
+            top: -0.34em;
+            width: 0.99em;
+            height: 0.27em;
+            transform: translateX(-50%);
             opacity: 0;
-            transform: translate(-50%, 14px);
-            transition: opacity 0.4s ease, transform 0.4s ease;
-            pointer-events: none;
+            transition: opacity 0.4s ease;
         }
-        .hm-hand svg { display: block; width: 100%; height: 100%; }
-        .hm-you.show .hm-hand { opacity: 1; transform: translate(-50%, 0); }
-        .hm-you.jab .hm-hand { animation: hm-jab 0.45s ease-in-out 2; }
-        @keyframes hm-jab {
-            0%, 100% { transform: translate(-50%, 0); }
-            50% { transform: translate(-50%, -10px); }
-        }
+        .hm-face .hm-eyes { opacity: 1; }
+        .hm-eyes svg { display: block; width: 100%; height: 100%; overflow: visible; }
+        .hm-eye { fill: currentColor; transition: opacity 0.15s ease; }
+        .hm-wk { opacity: 0; transition: opacity 0.15s ease; }
+        .hm-wink .hm-eyeR { opacity: 0; }
+        .hm-wink .hm-wk { opacity: 1; }
 
         /* ---------- Helping-hand scene (hero) ---------- */
         .hm-scene {
@@ -603,7 +595,7 @@
             .js .hm-reveal { opacity: 1; transform: none; transition: none; }
             .ind-details, .ind-toggle::before, .ind-toggle::after { transition: none; }
             .hm-scene * { transition: none !important; animation: none !important; }
-            .hm-you, .hm-you *, .hm-hand { transition: none !important; animation: none !important; }
+            .hm-w, .hm-u, .hm-u *, .hm-eyes { transition: none !important; animation: none !important; }
             .hm-framework.lit .step-card .step-num { animation: none; }
         }
 
@@ -655,7 +647,7 @@
 
         <div class="container">
             <span class="badge hm-in" style="--d: 0.05s;">CUSTOMER SUPPORT | ADMIN | COORDINATION</span>
-            <h1 class="hm-in" style="--d: 0.15s;">THE <span class="hm-gold">SUPPORT <span class="hm-you" id="hmYou"><span>Y</span><span class="hm-o"><span class="hm-sr">O</span><svg viewBox="0 0 40 54" aria-hidden="true"><ellipse cx="20" cy="27" rx="14" ry="22" fill="none" stroke="currentColor" stroke-width="6"/><circle class="hm-eye hm-eyeL" cx="14" cy="22" r="2.8"/><path class="hm-wk" d="M10.5 22.5 Q14 18.5 17.5 22.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><circle class="hm-eye" cx="26" cy="22" r="2.8"/><path class="hm-mouth" d="M12.5 31 Q20 36 27.5 31" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg></span><span>U</span><span class="hm-hand" aria-hidden="true"><svg viewBox="0 0 40 56"><line x1="20" y1="9" x2="20" y2="30" stroke="#C5A880" stroke-width="10" stroke-linecap="round"/><rect x="7" y="26" width="26" height="26" rx="9" fill="#C5A880"/><ellipse cx="7" cy="38" rx="4.5" ry="7" fill="#C5A880"/><path d="M15 38 V44 M21 38 V44 M27 38 V44" stroke="#0A192F" stroke-width="1.8" stroke-linecap="round" opacity="0.45"/></svg></span></span> NEED.</span></h1>
+            <h1 class="hm-in" style="--d: 0.15s;" id="hmHead"><span class="hm-w">THE</span> <span class="hm-gold"><span class="hm-w">SUPPORT</span> <span class="hm-you" id="hmYou"><span class="hm-w">YO</span><span class="hm-u" id="hmU"><span class="hm-sr">U</span><svg class="hm-ush" viewBox="0 0 40 54" aria-hidden="true"><path class="hm-ul" d="M7 4 V30 Q7 49 20 49 Q33 49 33 30 V4" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path class="hm-um" d="M-12 18 Q20 66 52 18" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></svg><span class="hm-eyes" aria-hidden="true"><svg viewBox="0 0 66 18"><circle class="hm-eye" cx="14" cy="9" r="4.5"/><circle class="hm-eye hm-eyeR" cx="52" cy="9" r="4.5"/><path class="hm-wk" d="M46.5 11 Q52 4 57.5 11" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg></span></span></span> <span class="hm-w">NEED.</span></span></h1>
             <div class="hero-cta hm-in" style="--d: 0.3s;">
                 <a href="contact.html" class="btn btn-secondary">Get In Touch</a>
             </div>
@@ -993,34 +985,45 @@
             window.addEventListener('scroll', onScroll, { passive: true });
             onScroll();
 
-            // Headline: a hand points at "YOU", the O winks, then smiles
+            // Headline: everything fades except the U, which becomes a smiling, winking face
+            var head = document.getElementById('hmHead');
             var you = document.getElementById('hmYou');
-            var youTimers = [];
-            var youBusy = false;
-            function youLater(ms, fn) { youTimers.push(setTimeout(fn, ms)); }
-            function playYou() {
-                if (youBusy) return;
-                youBusy = true;
-                youTimers.forEach(clearTimeout);
-                youTimers = [];
-                you.className = 'hm-you';
-                youLater(400,  function () { you.classList.add('show'); });
-                youLater(900,  function () { you.classList.add('jab'); });
-                youLater(1900, function () { you.classList.remove('jab'); you.classList.add('wink'); });
-                youLater(2500, function () {
-                    you.classList.remove('wink', 'show');
-                    you.classList.add('smile', 'glow');
+            var uEl = document.getElementById('hmU');
+            var faceTimers = [];
+            var faceBusy = false;
+            function faceLater(ms, fn) { faceTimers.push(setTimeout(fn, ms)); }
+            function playFace() {
+                if (faceBusy) return;
+                faceBusy = true;
+                faceTimers.forEach(clearTimeout);
+                faceTimers = [];
+
+                // How far the U must slide to sit in the middle of the headline
+                var u = uEl.getBoundingClientRect();
+                var h = head.getBoundingClientRect();
+                var dx = (h.left + h.width / 2) - (u.left + u.width / 2);
+
+                head.classList.add('hm-solo');
+                uEl.style.setProperty('--dx', dx + 'px');
+                uEl.style.setProperty('--s', '1.25');
+
+                faceLater(700,  function () { head.classList.add('hm-face'); });
+                faceLater(1500, function () { head.classList.add('hm-wink'); });
+                faceLater(2200, function () { head.classList.remove('hm-wink'); });
+
+                // To keep the words hidden for good, delete these last two timers
+                faceLater(3600, function () { head.classList.remove('hm-face', 'hm-wink'); });
+                faceLater(4000, function () {
+                    uEl.style.removeProperty('--dx');
+                    uEl.style.removeProperty('--s');
+                    head.classList.remove('hm-solo');
                 });
-                youLater(3700, function () { you.classList.remove('glow'); youBusy = false; });
+                faceLater(5000, function () { faceBusy = false; });
             }
-            if (you) {
-                if (reduce) {
-                    you.classList.add('smile');
-                } else {
-                    setTimeout(playYou, 1400);
-                    you.addEventListener('mouseenter', playYou);
-                    you.addEventListener('click', playYou);
-                }
+            if (you && !reduce) {
+                setTimeout(playFace, 1400);
+                you.addEventListener('mouseenter', playFace);
+                you.addEventListener('click', playFace);
             }
 
             // Helping-hand scene: she runs over, takes the workload, the client smiles (loops)
